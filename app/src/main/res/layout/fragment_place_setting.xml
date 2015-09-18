@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#65000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="86"
+        android:orientation="vertical">
+        <LinearLayout android:id="@+id/ll_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="#90000000">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="70"
+                    android:paddingLeft="20dp">
+                    <TextView android:id="@+id/set_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="블루투스 비밀번호 변경"
+                        android:textSize="18dp"
+                        android:textColor="#d7d7d7"/>
+                    <TextView android:id="@+id/explain_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/set_text"
+                        android:text="변경시 현재 등록돼 있는 플러그는 모두 초기화해야 합니다."
+                        android:textSize="12dp"
+                        android:textColor="#959595"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@+id/rl_change_password_btn"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#80000000">
+                <TextView android:id="@+id/tv_bl_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:maxLines="20"
+                    android:textSize="23sp"
+                    android:textColor="@color/color06"/>
+                <ImageView android:id="@+id/iv_arrow_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/selector_open_close_arrow_btn"/>
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/rl_edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:visibility="gone">
+                <EditText android:id="@+id/et_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_current_password"
+                    android:paddingLeft="7.5dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/box_input2"
+                    android:hint="새 비밀번호"
+                    android:textColorHint="@color/color04"
+                    android:textColor="@color/color01"
+                    android:textSize="19sp"/>
+                <ImageView android:id="@+id/iv_finish_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_new_password"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/selector_finish_btn"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/line_division2"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"/>
+    </LinearLayout>
+</LinearLayout>

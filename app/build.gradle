@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.sicoms.smartplug"
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        versionName project.VERSION_NAME
+        versionCode Integer.parseInt(project.VERSION_CODE)
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(keystore_debug)
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        release {
+            storeFile file(keystore)
+            storePassword keystore_pass
+            keyAlias key_alias
+            keyPassword key_pass
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+            debuggable false // debugging 허용 안함
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
+    compile 'com.google.android.gms:play-services-maps:7.3.0'
+    compile 'com.google.android.gms:play-services-gcm:7.3.0'
+    compile 'de.greenrobot:greendao:1.3.7'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile project(':library_pulltorefresh')
+    compile project(':library_bluetoothLE')
+    compile project(':library_MaterialNavigationDrawer')
+    compile project(':library_slidingDrawer')
+    compile project(':library_spinnerwheel')
+    compile project(':library_CropImage')
+    compile project(':library_fab')
+    compile project(':library_asynchttp')
+    compile files('libs/meshlibrary.jar')
+    compile files('libs/commons-codec-1.9.jar')
+}

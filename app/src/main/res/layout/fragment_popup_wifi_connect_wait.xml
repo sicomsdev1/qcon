@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp"
+    android:background="@color/transparent">
+    <TextView android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="플러그에 Wi-Fi 연결을 시도하고 있습니다. \n연결이 완료되면 확인 버튼을 눌러주세요."
+        android:textSize="17sp"
+        android:textColor="@color/color01"/>
+
+    <ImageView android:id="@+id/iv_confirm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/selector_confirm_btn"/>
+
+</RelativeLayout>

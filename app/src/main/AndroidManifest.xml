@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sicoms.smartplug" >
+
+    <permission
+        android:name="com.sicoms.smartplug.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="com.sicoms.smartplug.locationapi.maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="com.sicoms.smartplug.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.sicoms.smartplug.permission.C2D_MESSAGE" />
+
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:name="com.sicoms.smartplug.GlobalApplication"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true">
+       <!-- android:theme="@style/AppTheme" -->
+        <activity
+            android:name=".login.activity.IntroActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.activity.MainActivity"
+            android:theme="@style/MainTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".member.activity.MemberActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".plug.activity.PlugMainActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".plug.activity.PlugActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".plug.activity.RegDeviceActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".group.activity.GroupActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".group.activity.GroupCreatorActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".group.activity.GroupMemberEditActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".menu.activity.PlaceActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".menu.activity.MypageActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".menu.activity.PlaceSettingActivity"
+            android:theme="@style/SubTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+        <activity android:name="com.android.camera.CropImage"/>
+
+        <service
+            android:name="com.csr.mesh.MeshService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.sicoms.smartplug.network.bluetooth.BluetoothLeService"
+            android:enabled="true"
+            android:exported="false" />
+        <service android:name=".gcm.GcmIntentService" />
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1561469147435412"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <!-- GCM 리시버 -->
+        <receiver
+            android:name=".gcm.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.sicoms.smartplug" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

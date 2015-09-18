@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="7dp"
+    android:background="#65000000">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginBottom="10dp">
+        <EditText android:id="@+id/et_place_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:background="@drawable/box_input2"
+            android:hint="장소를 입력해주세요."
+            android:textColorHint="@color/color04"
+            android:textColor="@color/color01"
+            android:textSize="19sp"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:maxLength="40"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rl_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="59"
+        android:layout_marginBottom="15dp">
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.MapFragment" />
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/rl_change_picture_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:background="#80000000">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="5dp"
+            android:text="장소 사진 변경"
+            android:textSize="24sp"
+            android:textColor="@color/color01"/>
+        <ImageView android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="5dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/icon_list_arrow_b"/>
+        <ImageView android:id="@+id/iv_place_img"
+            android:layout_width="80dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/arrow"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView android:id="@+id/iv_finish_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/selector_finish_btn"/>
+    </RelativeLayout>
+</LinearLayout>

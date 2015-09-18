@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QCon</string>
+
+    <string name="google_maps_key">AIzaSyA6us6eZUfbRlSP9ONr_GNL-KjuxszRaQo</string>
+    <string name="facebook_app_id">1561469147435412</string>
+    <string name="kakao_app_key">bd17b0e93c03f28db3ac74b952c59378</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="app_finish">뒤로 버튼을 한번 더 누르시면 종료됩니다.</string>
+
+    <string name="blutooth_is_not_connected">블루투스에 연결되지 않았습니다.</string>
+    <string name="password_more_than_four">4자리 이상의 비밀번호를 입력해주세요.</string>
+    <string name="password_not_default">다른 비밀번호를 입력해주세요.</string>
+
+    <string name="menu_place_title">플레이스</string>
+
+    <string name="set_group">그룹 설정</string>
+    <string name="set_group_list">그룹 리스트</string>
+    <string name="charge">요금(원)</string>
+    <string name="charge_set">요금 설정</string>
+    <string name="currency">원</string>
+    <string name="usage">사용량(wh)</string>
+    <string name="w">W</string>
+    <string name="kwh">kwh</string>
+    <string name="plug_edit">편집</string>
+    <string name="plug_tab_left_text">차단일정</string>
+    <string name="plug_tab_right_text">대기전력</string>
+    <string name="morning">AM</string>
+    <string name="afternoon">PM</string>
+    <string name="oneday">하루</string>
+    <string name="sunday">일</string>
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="plug_wifi_text">Wi-Fi</string>
+    <string name="plug_bluetooth_text">Bluetooth</string>
+    <string name="plug_set_connected_plug">연결 된 플러그</string>
+    <string name="plug_edit_group_name">그룹</string>
+    <string name="plug_edit_plug_name">플러그명</string>
+    <string name="group_text">그룹</string>
+
+    <string name="plug_set_edit">편집</string>
+    <string name="bluetooth_is_reg">등록됨</string>
+    <string name="bluetooth_is_not_reg">등록안됨</string>
+    <string name="plug_group_edit_title">새로운 그룹</string>
+    <string name="plug_group_none">그룹 없음</string>
+    <string name="mygoup">내그룹</string>
+
+    <string name="plug_icon01">미지정</string>
+    <string name="plug_icon02">조명</string>
+    <string name="plug_icon03">영상</string>
+    <string name="plug_icon04">음향</string>
+    <string name="plug_icon05">전열</string>
+    <string name="plug_icon06">난방</string>
+    <string name="plug_icon07">냉방</string>
+    <string name="plug_icon08">PC</string>
+    <string name="plug_icon09">오피스</string>
+    <string name="plug_icon10">주방가전</string>
+    <string name="plug_icon11">멀티탭</string>
+    <string name="plug_icon12">스위치</string>
+    <string name="plug_icon13">벽면콘센트</string>
+    <string name="plug_icon14">LED</string>
+    <string name="plug_icon15">TV</string>
+    <string name="plug_icon16">냉장고</string>
+    <string name="plug_icon17">복합기</string>
+    <string name="plug_icon18">BType</string>
+
+    <string name="price_set_info">한국전력공사 \'전기요금계산기\'에서 \n계약종별로 전기요금 정보를 확인할 수 있습니다.</string>
+    <string name="price_set_calculator">전기요금계산기바로가기</string>
+
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="complete">완료</string>
+
+    <string name="scan_connect">Scan and Connect</string>
+    <string name="qr_code">QR Code</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="apply">Apply</string>
+    <string name="add_group">Add Group</string>
+    <string name="menu_rename">Rename</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_info">Firmware Info</string>
+    <string name="menu_models_supported">Models supported</string>
+    <string name="menu_get_data">Request Data</string>
+    <string name="menu_device_info">Device info</string>
+    <string name="network_phrase">Enter password</string>
+    <string name="authorise">Authorise Devices</string>
+    <string name="key_required">Enter a network phrase and press OK to continue</string>
+    <string name="unknown">unknown</string>
+    <string name="associating">Associating device</string>
+    <string name="association_fail">Device association failed</string>
+    <string name="short_code_prompt">Enter short code</string>
+    <string name="short_code_match_fail">Short code doesn\'t match UUID</string>
+    <string name="shortcode_invalid">Invalid short code</string>
+    <string name="enter_new_name">Enter new name</string>
+    <string name="group_update">Sending group update</string>
+    <string name="group_update_with_problems">Groups updated with some problems.</string>
+    <string name="confirm_remove">Remove device. Are you sure?</string>
+    <string name="confirm_remove_local">Confirmation from device was not seen. Remove device locally anyway?</string>
+    <string name="removing">Removing device</string>
+    <string name="getting_data">Getting data...</string>
+    <string name="enter_group_name">Enter name for group</string>
+    <string name="waiting_for_response">Waiting for response</string>
+    <string name="firmware_version_is">Firmware version is</string>
+    <string name="firmware_get_fail">Failed to get firmware version</string>
+    <string name="configuration_get_fail">Failed to get configuration info</string>
+    <string name="bluetooth_not_enabled">Bluetooth not enabled</string>
+    <string name="bluetooth_enabled">Bluetooth enabled</string>
+    <string name="bluetooth_disabled">Bluetooth disabled</string>
+    <string name="connecting">Connecting…</string>
+    <string name="all_lights">All lights</string>
+    <string name="group">Group</string>
+    <string name="groups">groups</string>
+    <string name="disconnected">Disconnected from bridge device</string>
+    <string name="light">Light</string>
+    <string name="switch_">Switch</string>
+    <string name="sensor">Sensor</string>
+    <string name="group_update_ok">Groups updated OK</string>
+    <string name="group_query_fail">Failed to query number of supported groups</string>
+    <string name="group_no_changes">No changes made, nothing sent</string>
+    <string name="group_max_fail">Group update FAILED. Device supports maximum of</string>
+    <string name="group_timeout">Group update FAILED: timed out waiting for response from device.</string>
+    <string name="connect_faiL">Failed to connect</string>
+    <string name="added">added</string>
+    <string name="qr_to_uuid_fail">Failed to read UUID from QR code</string>
+    <string name="bridge_device">Connected Bridge Device</string>
+    <string name="not_support_any_model">No models supported</string>
+
+    <string name="facebook_success">성공</string>
+    <string name="facebook_cancelled">취소</string>
+    <string name="facebook_error">에러</string>
+    <string name="facebook_permission_not_granted">권한이 없습니다.</string>
+    <string name="facebook_successfully_posted_post">Post ID: %1$s</string>
+
+</resources>
+

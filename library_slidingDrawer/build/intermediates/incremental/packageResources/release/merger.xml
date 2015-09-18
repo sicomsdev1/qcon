@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/src/main/res"><file path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/src/main/res/values/styleables.xml" qualifiers=""><declare-styleable name="SlidingDrawer">
+        <attr format="boolean" name="animateOnClick"/>
+        <attr format="boolean" name="allowSingleTap"/>
+        <attr format="dimension" name="topOffset"/>
+        <attr format="dimension" name="bottomOffset"/>
+        <attr name="orientation"/>
+        <attr format="reference" name="handle"/>
+        <attr format="reference" name="content"/>
+    </declare-styleable><attr name="orientation">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr></file></source><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/build/generated/res/rs/release"/><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/build/generated/res/generated/release"/></dataSet><dataSet config="release"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/src/release/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="SlidingDrawer"><attr format="boolean" name="animateOnClick"/><attr format="boolean" name="allowSingleTap"/><attr format="dimension" name="topOffset"/><attr format="dimension" name="bottomOffset"/><attr name="orientation"/><attr format="reference" name="handle"/><attr format="reference" name="content"/></declare-styleable></configuration></mergedItems></merger>

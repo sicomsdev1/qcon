@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp"
+    android:background="@color/transparent">
+    <TextView android:id="@+id/request_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="블루투스 비밀번호를 변경해 주세요."
+        android:textSize="17sp"
+        android:textColor="@color/color01"/>
+
+    <RelativeLayout android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/request_edit_text"
+        android:layout_marginBottom="20dp">
+        <EditText android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:hint="비밀번호"
+            android:textSize="19sp"
+            android:textColor="@color/color01"
+            android:background="@drawable/box_input2"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_x"
+            android:layout_alignRight="@id/et_password"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <ImageView android:id="@+id/network_assocoiation_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/selector_confirm_btn"/>
+
+</RelativeLayout>

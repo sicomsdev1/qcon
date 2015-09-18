@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color04">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="19dp"
+        android:background="@color/color04">
+        <TextView
+            android:layout_width="217dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/color06"
+            android:textSize="13sp"
+            android:text="@string/set_group"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="0.5dp"
+        android:background="@color/color01">
+        <EditText android:id="@+id/etv_plug_group_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/color06"
+            android:layout_marginLeft="22dp"
+            android:gravity="center_vertical"
+            android:textSize="21sp"
+            android:hint="그룹명">
+         </EditText>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rel_plug_group_set_edit_plug"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="0.5dp"
+        android:background="@color/color01">
+        <TextView android:id="@+id/tv_plug_group_set_edit_plug"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/color02"
+            android:layout_marginLeft="22dp"
+            android:gravity="center_vertical"
+            android:textSize="21sp"
+            android:text="플러그">
+        </TextView>
+        <ImageView android:id="@+id/iv_plug_group_set_arrow_icon"
+            android:layout_width="43dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="11dp"
+            android:layout_height="match_parent"/>
+        <TextView android:id="@+id/tv_plug_group_set_edit_count"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:textColor="#3b9de7"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/iv_plug_group_set_arrow_icon"
+            android:text="플러그">
+        </TextView>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_weight="1"/>
+        <Button android:id="@+id/ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>
