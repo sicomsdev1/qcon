@@ -2,4 +2,5 @@
 <resources>
     <integer name="actionbar_height_weight">14</integer>
     <integer name="sliding_drawer_height_weight">31</integer>
+    <integer name="test">31</integer>
 </resources>
