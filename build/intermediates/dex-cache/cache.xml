@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_fab/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d650d7f180c4fce8226e29c0a0c659420ac38adf">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-9aa1786ab0554ef9971c7bac84e8c408ec1e1cb5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.github.shell-software/uitools/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="841420e749b01799d17bf0a83cc6eb64dd8fa136">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-6d1f333bb7c643ceca3e1225758cf1d96f087e91.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_spinnerwheel/unspecified/libs/nineoldandroids-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2be6181ab09464c2a1550585557a19481faaa8ec">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.2.0-0d8579fb43f2c4c3a42702b86fdb9471693857ab.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-721f6256fbfb5dcf2a19a75b1f84b3b04fdde1f0.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aba9317bc403d69d8a571c0a72acfe95698a5db0">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-a5a92334daf8161ea5340204458246c88a668fd6.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_MaterialNavigationDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9899d9f37aa15690c1c3ee64d10a21087a03727d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-101344669cdc7ab5f46722bd1883fddae6847446.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-ef5093fbc592baf972edcf491f388ada192873fe.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_slidingDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4d2a317259618fc491a8051781a92bc822e6fc48">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-f833cd22af4f8e0c25dd5a8c5403c641a1b80d96.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-9a82281e076305ab93c59974c97d22538564f8d0.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_pulltorefresh/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5f79a24ed2f11e3a3311d8386418d47bf94d800e">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-75e37e776934f28159227b8737ab16301b81c8fd.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-d09a5ebe137b0d6f6385ac20cf35f6afd960067b.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.github.shell-software/uitools/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="841420e749b01799d17bf0a83cc6eb64dd8fa136">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-9200d9d86b2be41e69f8e99489a0839dd5d6d2cb.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_pulltorefresh/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84e1376c1eac6587890df5de70f5cdab7fc4a99">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-6dc9c73b32af8c7da117ded790bed074cc584f8f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/libs/sc-light-jdk15on-1.47.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ee5043d8e50e46b0daca4e798f52d7532c27b0c4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/sc-light-jdk15on-1.47.0.3-2ac1a437123711fbf617aadf5023e6d375b98180.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_CropImage/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e86defcb61ddb29e65e00f4a2dac4cca3ffb9e6f">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-beab05344d02ae1e019e53c5f6d37091875d961a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.github.shell-software/uitools/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="841420e749b01799d17bf0a83cc6eb64dd8fa136">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-41c8cfd0e190284a056525dde206706c78f96f36.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-1b99314a44247a05d707c9539409ebe1b21ebc62.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/.gradle/caches/modules-2/files-2.1/de.greenrobot/greendao/1.3.7/dda08161d004c4df96938da6909f1c2b96cd33c8/greendao-1.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dda08161d004c4df96938da6909f1c2b96cd33c8">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/greendao-1.3.7-2eecc3ae8a7e08e3537e1161a120441e55fc5a99.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_bluetoothLE/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="84bce648d9d7acc8c5a776bb0f88bd95a47cb025">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-617620ca9b48637607097dd1bceb561339775c27.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_spinnerwheel/unspecified/libs/nineoldandroids-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2be6181ab09464c2a1550585557a19481faaa8ec">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.2.0-50645fb65ce2526ceac3fac23caa8978b8ecf61a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-4ad378add1c7ad31ea633a30484106390152324f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/libs/scpkix-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6bed9af945c158e1e02dfbdf030179dd18e60d83">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/scpkix-jdk15on-1.47.0.2-26e36a97152345742bb8c4abd7524d10115f9d16.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-9f8fe2109d67d65d2d75ab794c1512f076f15d35.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_CropImage/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c46aada49db5a7b08f6d88b0c4b5cac5248b95b7">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-403e6572caf5bb339f43b31f11b7611f9db977b4.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_spinnerwheel/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4ed00a1386c49c84e56b7311d1b904707008fece">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-ad32c549d477608f462f920582ed629bf09c353b.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/libs/meshlibrary.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b3c624af256b91cb7c0cef58ff5b6227c8d1092e">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/meshlibrary-cc4cc7c08f3670dcbcfe40252d643de103f49106.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_asynchttp/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aef52ea7e77ba9fbb5b61f3a2f543f53211d213b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-3c1bdeda8f8a61dd6715df26a0bc3d144ac23134.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/libs/scprov-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1e2f52dbf7402b12b792282078b9f895512ae5af">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/scprov-jdk15on-1.47.0.2-43d5af5b09d147123cbe017f05c985d26c0e7bc7.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-47885fedf4aceccac66cc7b80389c61581e2222b.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_pulltorefresh/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="91f4b01f2a1016b88a71a52bb803df6461acf230">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-24276b46b012c3470fe5588ef8a67295225d5e26.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-63030e9f94169a695eace083ba51f23fdd422505.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_MaterialNavigationDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="13af915147a142a2a14c0e2d1102be13145fe5e2">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-dd9cf2e26cdbee460249cfcc101b310c8e144da3.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-3d893980948185f4c361da550a847520bd10408c.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_asynchttp/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ec30f18acd7c9092794a7ee10a4961ff52bd7bcd">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-ed3ee240d4a61b7e433d211eac70b303bf41eec5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/libs/scpkix-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6bed9af945c158e1e02dfbdf030179dd18e60d83">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/scpkix-jdk15on-1.47.0.2-4bdc5fac44608629aed47fdd04276900a154280a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_CropImage/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="99db2fc3239e8dd5423817fbdbd869ba111d1e03">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-d114a85ecd08a2b52d15591d14ece1f498685a8d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-f0665f1833ef873b761c04a9ad0e24d8083d112a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/libs/sc-light-jdk15on-1.47.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ee5043d8e50e46b0daca4e798f52d7532c27b0c4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/sc-light-jdk15on-1.47.0.3-5019e2af81a39070981c26223cef3de38dfaf772.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_MaterialNavigationDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="bdfa22e5cbf180a9565a7747ff8d93adc0587f0b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-cd856daf76ff06963590c67b871e6527bac1bd9a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_pulltorefresh/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="634301c8f44a4a64d224e2dd8b58b211a35bd91d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-3eb1cc2a3bc312b40ae1f57cd718546f3072cad7.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/libs/scpkix-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6bed9af945c158e1e02dfbdf030179dd18e60d83">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/scpkix-jdk15on-1.47.0.2-28af9a76abfa8eda601a43492e41ac03daa693ef.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_asynchttp/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="941c706b26886cc10b6c3fc625ea693b3642776d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-e59b55668b52cab8b6bf7c967ce3a8dc54ee400a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/libs/scprov-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1e2f52dbf7402b12b792282078b9f895512ae5af">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/scprov-jdk15on-1.47.0.2-bb8f2d55e48208e2aaca33cefb4fffb16212da43.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.github.shell-software/viewmover/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d065ab6e064a1398750b52b1108e52c6d5e77807">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-aa4f3f29683c76f84eb02362caaca5e52eee2762.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-1d5a1464d18afe5cce942ece4f2a5befa3e0c584.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/gson-2.3.1-6eeef645366bbdfb8ea29ab37c9278cb11c8f62c.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_spinnerwheel/unspecified/libs/nineoldandroids-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2be6181ab09464c2a1550585557a19481faaa8ec">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.2.0-209bd7c08b29b6ef69e3907d2fcc97993a0bd409.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_fab/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f7c43e53fa391e5794db7a1a228290d484011bb9">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-00a23e6ddd564e7b2a09e87cf164b86987b832d2.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-bdf782537ba31e9fce1ccc9f0813b0b329d37a77.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-088b321faced5da8cec686e80edfc2b0b43ec66d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-1451eb8642eea11b91212ce38c6dc9f7dfaa4b00.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-446e316a0e82bf7b247a15ba9b97824008ad14c1.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_spinnerwheel/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cd82b3877f1c1fe5707ff04fc502be123b6dd116">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-cb0806501a4c5585f8112f93535fc73570f79bb9.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_slidingDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="72521b28d89edd283a5b77b178ab08d4446938a4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-61b7cb8c0c878bdee32d81f6d8ccd07b5927e5f0.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-013a955283411f54a4e66a861f7a4f0f286fb974.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-df1056c0dea9b25d85e4025908be664d8b23e220.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-fd85a8b7c4888e73bc64d67a3568181853b8469c.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aba9317bc403d69d8a571c0a72acfe95698a5db0">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-3306366ade8b6e9bcf810b20da94da0e2a4bd81d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-5ea4b5628689e98f9a1871a4c97fa5c104ec9fd4.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-74541b7b52015a1a44cda074c4ab319b70360b26.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-1f1452300bd5c49b1f767b6999eb4a0536884aa6.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aba9317bc403d69d8a571c0a72acfe95698a5db0">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-3790481a7a3f0879ae6907d333afb322d23929e0.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-2bbbeba82919825b39ab2f2668aa4828c725c308.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.github.shell-software/uitools/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="841420e749b01799d17bf0a83cc6eb64dd8fa136">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-df47879f2e2b264c47feb8bdcaf5463bb2d316f2.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-9f961124744b757ec4ade8dd523cd1359943470d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_spinnerwheel/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b687d83456d0ba4692d38168d1b4c788f515ff85">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-05cdfc842c84dbac12a9b2e9af7370fbde105b28.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_spinnerwheel/unspecified/libs/nineoldandroids-2.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2be6181ab09464c2a1550585557a19481faaa8ec">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/nineoldandroids-2.2.0-a1304bf552ca9e7373b7f2c3fb5b4dfb336cc6b5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-0574687397e433332ca331cf30370327e76c152f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/libs/sc-light-jdk15on-1.47.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ee5043d8e50e46b0daca4e798f52d7532c27b0c4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/sc-light-jdk15on-1.47.0.3-ee14c4d5ffb9011b1dc18a0e646b41c83e601a87.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_bluetoothLE/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b29bb7ea94f51451dd98037e2266f146cd34c2a8">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-00b4c0c710931171a4e75efa2445380f3985dbe2.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_asynchttp/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a971d0438f07cb560e1f1884f86d86be911340fd">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-6c9ffbbc0cbcd1eaa1c3bc289cc4b0cdc87be1d2.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/libs/scprov-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1e2f52dbf7402b12b792282078b9f895512ae5af">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/scprov-jdk15on-1.47.0.2-82fc293851403a2fe11568643a489c59fe558fd5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-2e58029c5e8b6afab1b8af0fe10fb8da50d63a9f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_MaterialNavigationDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aea4c93630fe11a591e5f568b31a005ff6a85cbb">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-a8649c9d14460d5170066f6e76f77f5e6e4f153c.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-7b6d8a5bd5bf45564aa17fe7998cb828ead54c53.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/SmartPlug_dashboard/library_bluetoothLE/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77146ee820c614f715b2f5cd11d4050a56edca0a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-9e9fa417215d6cd2f88865023455762946cf8e39.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-e149d1d27d2744b5f6e4348d9c75e37d8fbee004.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/libs/meshlibrary.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b3c624af256b91cb7c0cef58ff5b6227c8d1092e">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/meshlibrary-46d6639893ef0205900f85c23d9e1514a8af0d0f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_slidingDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="707c24ea7ee360332f0c2b22072e3239f75b72ed">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-7dcf9e304ad5f44fca1ca063b1c400d626689c9f.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-2282cf12e0143cfcc09de3da6ffd7dc45d1d2aea.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-7894e4e3851bc206df10f455581296ac0e47af73.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-904578cb0e4841eedfd9aca358c49ca5345e54b8.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_bluetoothLE/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f78a9c98e4b9573330b355b566ffaf0d146882b5">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-aa7730602a87b971dd6fe492bb1a3d53e545b067.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-910d239c100fc514a77f58cc26ec98763fd1d2b7.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/libs/scpkix-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6bed9af945c158e1e02dfbdf030179dd18e60d83">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/scpkix-jdk15on-1.47.0.2-a5f2f5637781e7333ed6667975b6ace6d8a4663b.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/libs/sc-light-jdk15on-1.47.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ee5043d8e50e46b0daca4e798f52d7532c27b0c4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/sc-light-jdk15on-1.47.0.3-7233d80a658b1e11def204054af0a2f83f4f0d05.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-0896ac151cad9af3cff58593d935cd2821fd7ad7.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_CropImage/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f296f21adc67048106639db8822a9be95b395e46">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-1a8dfb2d6460ab974a28f5fa17625f32ad05eeee.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_spinnerwheel/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="959db75cb8acd0066bf9f741e19b0b68d75cc5d6">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-09f32d5fac796edf106c50cf3b0b74eb863affc9.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="aba9317bc403d69d8a571c0a72acfe95698a5db0">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-665fc71321a7f44866b9eb070816f68e3e9f95de.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.github.shell-software/viewmover/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d065ab6e064a1398750b52b1108e52c6d5e77807">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-f847bbe55061bdcde63369b6f936a66f380301bf.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.github.shell-software/viewmover/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d065ab6e064a1398750b52b1108e52c6d5e77807">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-b0adb391e83f6d27638f15f863526225e679553d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-1d74c4c145ad67a92fd9a2ddcf68f746bf1a1cc2.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/SmartPlug/library_fab/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2d595be929b98cb7f750f5df29640ffa915394a4">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-67507657b3f924f30be737b45986f74596f9f2a7.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/exploded-aar/SmartPlug_dashboard3/library_fab/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="500abf8eb49532df23df3cd4b8dbcada9c2c746f">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/classes-e60d8febb480d1e9cf3dd15b9bab69110e6778a5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/libs/meshlibrary.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b3c624af256b91cb7c0cef58ff5b6227c8d1092e">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/meshlibrary-73a532e9905481cb87cbbb75960c25055ce58c95.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-04bed9d3a954dc69bab9749467c4561d6c9812b5.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/libs/meshlibrary.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b3c624af256b91cb7c0cef58ff5b6227c8d1092e">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/meshlibrary-8e6fb67eedaf73d59501a5ddb1e794f5ba76e390.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/exploded-aar/com.github.shell-software/viewmover/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d065ab6e064a1398750b52b1108e52c6d5e77807">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug/app/build/intermediates/pre-dexed/debug/classes-5537d15257ce47bfbcf44a2dbd3a74908295a63c.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-3be6c17e76bc4108edd844b48007b3a4d5abda94.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard/app/build/intermediates/pre-dexed/debug/classes-eacce71f03eb500dc6088f54d58d276cf3803e5d.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-3be263a1ea878246e21482a1534ef0ced5fb054a.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/libs/scprov-jdk15on-1.47.0.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1e2f52dbf7402b12b792282078b9f895512ae5af">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard3/app/build/intermediates/pre-dexed/debug/scprov-jdk15on-1.47.0.2-b1b998a4ac4e40d581d48da413ff4a55cdfa4ac0.jar" />
+    </item>
+    <item
+        jar="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/exploded-aar/SmartPlug_dashboard4/library_slidingDrawer/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="114a0d5b6d12045b1bbdf5c355d1cabb32bd5fea">
+        <dex dex="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/app/build/intermediates/pre-dexed/debug/classes-6a0ba5558fe2a19c04a4855113f56dd2a1806bf2.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#65000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:gravity="center">
+        <com.sicoms.smartplug.util.profile.CircleImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="114dp"
+            android:layout_height="114dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/bg_black"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/profile_default"
+            app:border_width="3dp"
+            app:border_color="#10000000"
+            app:border_overlay="true"/>
+        <ImageView android:id="@+id/iv_member_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_alignTop="@id/iv_profile"
+            android:layout_alignLeft="@id/iv_profile"
+            android:src="@drawable/icon_member_master"/>
+        <ImageView android:id="@+id/iv_camera_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_profile"
+            android:layout_alignRight="@id/iv_profile"
+            android:src="@drawable/btn_icon_camera_point"/>
+        <TextView android:id="@+id/tv_nickname"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_profile"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/color01"
+            android:maxLines="1"/>
+        <ImageView android:id="@+id/iv_nickname_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_nickname"
+            android:layout_alignRight="@id/tv_nickname"
+            android:src="@drawable/icon_pen_w"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:orientation="vertical">
+        <RelativeLayout android:id="@+id/rl_change_password_btn"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#80000000">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="비밀번호 변경"
+                android:textSize="20sp"
+                android:textColor="@color/color01"/>
+            <ImageView android:id="@+id/iv_arrow_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/selector_open_close_arrow_btn"/>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/rl_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:visibility="gone">
+            <EditText android:id="@+id/et_current_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="7.5dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/box_input2"
+                android:hint="현재 비밀번호"
+                android:textColorHint="@color/color04"
+                android:textColor="@color/color01"
+                android:textSize="19sp"
+                android:password="true"/>
+            <EditText android:id="@+id/et_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_current_password"
+                android:paddingLeft="7.5dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/box_input2"
+                android:hint="새 비밀번호"
+                android:textColorHint="@color/color04"
+                android:textColor="@color/color01"
+                android:textSize="19sp"
+                android:password="true"/>
+            <EditText android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_new_password"
+                android:paddingLeft="7.5dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/box_input2"
+                android:hint="새 비밀번호 확인"
+                android:textColorHint="@color/color04"
+                android:textColor="@color/color01"
+                android:textSize="19sp"
+                android:password="true"/>
+            <ImageView android:id="@+id/iv_finish_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_confirm_password"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/selector_finish_btn"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/line_division2"/>
+        <RelativeLayout android:id="@+id/rl_logout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#80000000">
+            <TextView android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"
+                android:text="로그아웃"
+                android:textSize="20sp"
+                android:textColor="@color/color01"/>
+            <TextView android:id="@+id/tv_login_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/logout"
+                android:maxLines="21"
+                android:text=""
+                android:textSize="23sp"
+                android:textColor="@color/color06"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="80"/>
+    </LinearLayout>
+</LinearLayout>

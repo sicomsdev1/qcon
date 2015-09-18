@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/main/res"><file name="wheel_bg_hor" path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/main/res/drawable/wheel_bg_hor.xml" qualifiers="" type="drawable"/><file name="wheel_bg_ver" path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/main/res/drawable/wheel_bg_ver.xml" qualifiers="" type="drawable"/><file name="wheel_val" path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/main/res/drawable/wheel_val.xml" qualifiers="" type="drawable"/><file path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/main/res/values/wheel__attrs.xml" qualifiers=""><attr format="reference" name="abstractWheelViewStyle"/><declare-styleable name="WheelVerticalView">
+        <attr format="dimension" name="selectionDividerHeight"/>
+    </declare-styleable><declare-styleable name="AbstractWheelView">
+        <attr format="integer" name="visibleItems"/>
+        <attr format="boolean" name="isAllVisible"/>
+        <attr format="integer" name="itemOffsetPercent"/>
+        <attr format="dimension" name="itemsPadding"/>
+        <attr format="integer" name="selectionDividerDimmedAlpha"/>
+        <attr format="integer" name="selectionDividerActiveAlpha"/>
+        <attr format="reference" name="selectionDivider"/>
+        <attr format="integer" name="itemsDimmedAlpha"/>
+        <attr format="boolean" name="isCyclic"/>
+    </declare-styleable><declare-styleable name="WheelHorizontalView">
+        <attr format="dimension" name="selectionDividerWidth"/>
+    </declare-styleable></file></source><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/build/generated/res/rs/release"/><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/build/generated/res/generated/release"/></dataSet><dataSet config="release"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_spinnerwheel/src/release/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AbstractWheelView"><attr format="integer" name="visibleItems"/><attr format="boolean" name="isAllVisible"/><attr format="integer" name="itemOffsetPercent"/><attr format="dimension" name="itemsPadding"/><attr format="integer" name="selectionDividerDimmedAlpha"/><attr format="integer" name="selectionDividerActiveAlpha"/><attr format="reference" name="selectionDivider"/><attr format="integer" name="itemsDimmedAlpha"/><attr format="boolean" name="isCyclic"/></declare-styleable><declare-styleable name="WheelHorizontalView"><attr format="dimension" name="selectionDividerWidth"/></declare-styleable><declare-styleable name="WheelVerticalView"><attr format="dimension" name="selectionDividerHeight"/></declare-styleable></configuration></mergedItems></merger>

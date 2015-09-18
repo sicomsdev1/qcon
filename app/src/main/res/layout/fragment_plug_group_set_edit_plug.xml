@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color04">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="41dp"-->
+        <!--android:layout_marginBottom="0.5dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:paddingLeft="19dp"-->
+        <!--android:background="@color/color04">-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:textColor="@color/color06"-->
+            <!--android:textSize="13sp"-->
+            <!--android:text="@string/group_text"/>-->
+    <!--</RelativeLayout>-->
+   <RelativeLayout android:id="@+id/rel_plug_group_my"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color04">
+        <TextView android:id="@+id/tv_my_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="19dp"
+            android:textColor="@color/color06"
+            android:textSize="13sp"
+            android:text="@string/mygoup"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <android.support.v7.widget.RecyclerView android:id="@+id/recycler_myplug_set"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rel_plug_group_none"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="19dp"
+        android:background="@color/color04">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/color06"
+            android:textSize="13sp"
+            android:text="@string/plug_group_none"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="176dp">
+            <android.support.v7.widget.RecyclerView android:id="@+id/recycler_plug_set"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_weight="1"/>
+        <Button android:id="@+id/group_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

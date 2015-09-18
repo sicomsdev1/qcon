@@ -1,0 +1,11 @@
+<resources>
+
+    <string-array name="screen_names">
+        <item>Light Control</item>        
+        <item>Device Association</item>
+        <item>Configuration</item>
+        <item>Security Settings</item>
+        <item>About</item>
+    </string-array>
+
+</resources>

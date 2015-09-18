@@ -1,0 +1,17 @@
+int attr allowSingleTap 0x7f010002
+int attr animateOnClick 0x7f010001
+int attr bottomOffset 0x7f010004
+int attr content 0x7f010006
+int attr handle 0x7f010005
+int attr orientation 0x7f010000
+int attr topOffset 0x7f010003
+int id horizontal 0x7f020000
+int id vertical 0x7f020001
+int[] styleable SlidingDrawer { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006 }
+int styleable SlidingDrawer_allowSingleTap 2
+int styleable SlidingDrawer_animateOnClick 1
+int styleable SlidingDrawer_bottomOffset 4
+int styleable SlidingDrawer_content 6
+int styleable SlidingDrawer_handle 5
+int styleable SlidingDrawer_orientation 0
+int styleable SlidingDrawer_topOffset 3
