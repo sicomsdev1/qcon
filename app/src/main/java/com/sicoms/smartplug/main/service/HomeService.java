@@ -8,6 +8,9 @@ import com.google.gson.Gson;
 import com.loopj.android.http.RequestParams;
 import com.sicoms.smartplug.dao.DBHelper;
 import com.sicoms.smartplug.dao.DaoSession;
+import com.sicoms.smartplug.dao.DbLastDataVo;
+import com.sicoms.smartplug.dao.DbLastDataVoDao;
+import com.sicoms.smartplug.dao.DbPlugVoDao;
 import com.sicoms.smartplug.dao.DbUserVo;
 import com.sicoms.smartplug.dao.DbUserVoDao;
 import com.sicoms.smartplug.domain.PlaceVo;
@@ -105,5 +108,20 @@ public class HomeService {
         }
         mDBHelper.closeSession();
         return false;
+    }
+
+    public DbLastDataVo selectDbLastData(String plugId){
+        try {
+            DaoSession daoSession = mDBHelper.getSession(true);
+            final DbLastDataVoDao theDao = daoSession.getDbLastDataVoDao();
+            DbLastDataVo dbLastDataVo = theDao.queryBuilder().where(DbPlugVoDao.Properties.PlugId.eq(plugId)).unique();
+
+            return dbLastDataVo;
+        } catch (SQLiteConstraintException se){
+            se.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

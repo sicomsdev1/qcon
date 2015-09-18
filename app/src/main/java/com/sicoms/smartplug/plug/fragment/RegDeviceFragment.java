@@ -438,8 +438,6 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
     @Override
     public void onBLAssociationCompleteResult(final int deviceId, int uuidHash) {
         SPUtil.dismissDialog();
-        SPUtil.dismissDialog();
-        SPUtil.dismissDialog();
         if( deviceId == 0 && uuidHash == 0) { // Association Fail
             //SPFragment.intentBLSecurityFragmentDialog(mActivity, PlugAllFragment.stBluetoothManager);
         } else {
@@ -459,7 +457,6 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
 
     @Override
     public void onRegCompleteResult(RegDeviceVo regDeviceVo) {
-        SPUtil.dismissDialog();
         SPUtil.showDialog(mActivity);
         mNonRegAdapter.removeItem(regDeviceVo);
         mNonRegAdapter.notifyDataSetChanged();

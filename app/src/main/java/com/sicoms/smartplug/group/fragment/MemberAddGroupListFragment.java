@@ -1,10 +1,14 @@
 package com.sicoms.smartplug.group.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,7 +47,10 @@ public class MemberAddGroupListFragment extends Fragment implements MemberCheckR
 
     private static final String TAG = MemberAddGroupListFragment.class.getSimpleName();
 
-    private Activity mActivity;
+    private CharSequence mTitle = "사용자 추가";
+
+    private Context mContext;
+    private View mView;
     private static CreateGroupResultCallbacks mCallbacks;
 
     private MemberService mService;
@@ -64,6 +71,13 @@ public class MemberAddGroupListFragment extends Fragment implements MemberCheckR
         return fragment;
     }
 
+    private void initialize(){
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
+        if( bitmap != null) {
+            mView.setBackground(new BitmapDrawable(getResources(), bitmap));
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,13 +92,17 @@ public class MemberAddGroupListFragment extends Fragment implements MemberCheckR
         }
 
         View view = inflater.inflate(R.layout.fragment_member_add_group_list, container, false);
+        mView = view;
 
-        mActivity = getActivity();
+        mContext = getActivity();
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
+        initialize();
+
         mSelectedVoList = new ArrayList<>();
-        mService = new MemberService(mActivity);
+        mService = new MemberService(mContext);
         mService.setOnHttpResponseCallbacks(this);
 
-        SPUtil.hideKeyboard(mActivity, view);
+        SPUtil.hideKeyboard(mContext, view);
 
         mTvMemberCount = (TextView) view.findViewById(R.id.tv_member_count);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_member);
@@ -200,10 +218,10 @@ public class MemberAddGroupListFragment extends Fragment implements MemberCheckR
                     if (mService.insertDbMemberList(voList)) {
                         fillAdapterData();
                     } else {
-                        Toast.makeText(mActivity, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(mActivity, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
             } catch (JsonParseException jpe){
                 jpe.printStackTrace();
@@ -211,7 +229,7 @@ public class MemberAddGroupListFragment extends Fragment implements MemberCheckR
                 nfe.printStackTrace();
             }
         } else {
-            Toast.makeText(mActivity, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 

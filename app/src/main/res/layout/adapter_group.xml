@@ -5,59 +5,62 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="15dp">
-        <com.sicoms.smartplug.util.profile.CircleImageView
-            android:id="@+id/iv_group_icon_btn"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/dgpbg_00"
-            app:border_width="3dp"
-            app:border_color="#10000000"
-            app:border_overlay="true"/>
-        <TextView android:id="@+id/tv_group_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/iv_group_icon_btn"
-            android:text="연구실"
-            android:textColor="@color/color01"
-            android:textSize="23sp"
-            android:maxLength="15"
-            android:maxLines="1"/>
-        <RelativeLayout android:id="@+id/rl_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="15dp">
-            <ImageView android:id="@+id/arrow"
+        android:layout_height="80dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+            <com.sicoms.smartplug.util.profile.CircleImageView
+                android:id="@+id/iv_group_icon_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/dgpbg_00"
+                app:border_width="3dp"
+                app:border_color="#10000000"
+                app:border_overlay="true"/>
+            <TextView android:id="@+id/tv_group_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_group_icon_btn"
+                android:text="연구실"
+                android:textColor="@color/color01"
+                android:textSize="23sp"
+                android:maxLength="15"
+                android:maxLines="1"/>
+            <RelativeLayout android:id="@+id/rl_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/icon_list_arrow_b"/>
-            <CheckBox android:id="@+id/cb_group"
+                android:layout_marginLeft="15dp">
+                <ImageView android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_list_arrow_b"/>
+            </RelativeLayout>
+            <TextView android:id="@+id/tv_group_usage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:button="@drawable/selector_checkbox"
-                android:visibility="invisible" />
+                android:layout_toLeftOf="@id/rl_right"
+                android:textSize="23sp"
+                android:textColor="@color/color01"
+                android:text="120W"/>
         </RelativeLayout>
-        <TextView android:id="@+id/tv_group_usage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/rl_right"
-            android:textSize="23sp"
-            android:textColor="@color/color01"
-            android:text="120W"/>
 
         <RelativeLayout android:id="@+id/rl_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <RelativeLayout android:id="@+id/rl_is_checked"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/trans02"
+            android:visibility="invisible"/>
     </RelativeLayout>
 </RelativeLayout>

@@ -1,6 +1,6 @@
 package com.sicoms.smartplug.group.adapter;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -31,16 +31,16 @@ import java.util.List;
  */
 public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdapter.ViewHolder> implements HttpBitmapResponseCallbacks {
 
-    private Activity mActivity;
+    private Context mContext;
     private CreateGroupService mService;
     private ArrayList<PlugVo> mVoList;
     private OnItemClickListener mItemClickListener;
     private PlugCheckResultCallbacks mCallbacks;
     private String mGroupType;
 
-    public PlugEditGroupAdapter(Activity activity, PlugCheckResultCallbacks callbacks) {
-        mActivity = activity;
-        mService = new CreateGroupService(mActivity);
+    public PlugEditGroupAdapter(Context context, PlugCheckResultCallbacks callbacks) {
+        mContext = context;
+        mService = new CreateGroupService(mContext);
         mVoList = new ArrayList<>();
         mCallbacks = callbacks;
         mGroupType = "";
@@ -60,7 +60,7 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
@@ -70,8 +70,8 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
             viewHolder.iv_plug_icon.setImageBitmap(bitmap);
         } else {
             viewHolder.iv_plug_icon.setImageResource(R.drawable.dgpbg_00);
-            if( SPUtil.isNetwork(mActivity)) {
-                CommonService service = new CommonService(mActivity);
+            if( SPUtil.isNetwork(mContext)) {
+                CommonService service = new CommonService(mContext);
                 service.setOnHttpBitmapResponseCallbacks(this);
                 service.requestDownloadImage(new ImgFileVo(mVoList.get(position).getPlugIconImg()));
             }
@@ -80,11 +80,13 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
         if( type.equalsIgnoreCase(SPConfig.PLUG_TYPE_WIFI_AP)){
             return;
         }
-        viewHolder.cb_plug.setChecked(false);
+
+        viewHolder.iv_checkbox.setVisibility(View.INVISIBLE);
+        viewHolder.rl_is_checked.setVisibility(View.INVISIBLE);
         if( mVoList.get(position).isCheck()){
-            viewHolder.cb_plug.setChecked(true);
             mGroupType = type;
-            viewHolder.rl_is_onoff.setVisibility(View.VISIBLE);
+            viewHolder.rl_is_checked.setVisibility(View.VISIBLE);
+            viewHolder.iv_checkbox.setVisibility(View.VISIBLE);
             return;
         }
 
@@ -92,22 +94,17 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
         viewHolder.rl_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if( mGroupType != "" && !type.equalsIgnoreCase(mGroupType)){
-//                    SPUtil.showToast(mActivity, "같은 타입의 플러그끼리만 그룹을 생성할 수 있습니다.");
-//                    return;
-//                }
 
                 mGroupType = type;
                 v.setSelected(!v.isSelected());
-                View parentView = (ViewGroup) v.getParent();
-                CheckBox cb = (CheckBox) parentView.findViewById(R.id.cb_plug);
-                cb.setChecked(v.isSelected());
                 mVoList.get(position).setIsCheck(v.isSelected());
 
                 if( mCallbacks != null) {
                     if (mVoList.get(position).isCheck()) {
+                        viewHolder.iv_checkbox.setVisibility(View.VISIBLE);
                         mCallbacks.onCheckedPlug(mVoList.get(position));
                     } else {
+                        viewHolder.iv_checkbox.setVisibility(View.INVISIBLE);
                         mCallbacks.onUnCheckedPlug(mVoList.get(position));
                     }
                     mGroupType = "";
@@ -162,8 +159,8 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
         private RelativeLayout rl_btn;
         private TextView tv_plug_name;
         private ImageView iv_plug_icon;
-        private CheckBox cb_plug;
-        private RelativeLayout rl_is_onoff;
+        public ImageView iv_checkbox;
+        private RelativeLayout rl_is_checked;
 
         public ViewHolder(View view) {
             super(view);
@@ -172,8 +169,8 @@ public class PlugEditGroupAdapter extends RecyclerView.Adapter<PlugEditGroupAdap
             rl_btn = (RelativeLayout) view.findViewById(R.id.rl_btn);
             tv_plug_name = (TextView) view.findViewById(R.id.tv_plug_name);
             iv_plug_icon = (ImageView) view.findViewById(R.id.iv_plug_icon);
-            cb_plug = (CheckBox) view.findViewById(R.id.cb_plug);
-            rl_is_onoff = (RelativeLayout) view.findViewById(R.id.rl_is_onoff);
+            rl_is_checked = (RelativeLayout) view.findViewById(R.id.rl_is_checked);
+            iv_checkbox = (ImageView) view.findViewById(R.id.iv_checkbox);
         }
 
         @Override

@@ -18,6 +18,7 @@ import com.sicoms.smartplug.common.CommonService;
 import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.domain.GroupVo;
 import com.sicoms.smartplug.domain.ImgFileVo;
+import com.sicoms.smartplug.domain.PlugVo;
 import com.sicoms.smartplug.network.http.HttpBitmapResponseCallbacks;
 import com.sicoms.smartplug.network.http.HttpConfig;
 import com.sicoms.smartplug.util.SPUtil;
@@ -57,29 +58,29 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
+        final GroupVo plugVo = mVoList.get(position);
         if( mMode == SPConfig.MODE_NORMAL){
-            viewHolder.cb_group.setVisibility(View.INVISIBLE);
+            viewHolder.rl_is_checked.setVisibility(View.INVISIBLE);
             viewHolder.arrow.setVisibility(View.VISIBLE);
-            viewHolder.cb_group.setChecked(false);
-            mVoList.get(position).setIsCheck(false);
+            plugVo.setIsCheck(false);
             viewHolder.rl_btn.setVisibility(View.INVISIBLE);
         } else {
             viewHolder.arrow.setVisibility(View.INVISIBLE);
-            viewHolder.cb_group.setVisibility(View.VISIBLE);
             viewHolder.rl_btn.setVisibility(View.VISIBLE);
             viewHolder.rl_btn.setSelected(mVoList.get(position).isCheck());
-            viewHolder.cb_group.setChecked(mVoList.get(position).isCheck());
             viewHolder.rl_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    View parentView = (ViewGroup) v.getParent();
-                    CheckBox cb = (CheckBox) parentView.findViewById(R.id.cb_group);
-                    cb.setChecked(!cb.isChecked());
-                    mVoList.get(position).setIsCheck(cb.isChecked());
+                    plugVo.setIsCheck(!plugVo.isCheck());
+                    if( plugVo.isCheck()){
+                        viewHolder.rl_is_checked.setVisibility(View.VISIBLE);
+                    } else {
+                        viewHolder.rl_is_checked.setVisibility(View.INVISIBLE);
+                    }
                 }
             });
         }
@@ -191,8 +192,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
         private CircleImageView iv_group_icon;
         private TextView tv_group_name;
         private TextView tv_group_usage;
-        private CheckBox cb_group;
         private ImageView arrow; // Visible, Invisible 용으로만 사용
+        private RelativeLayout rl_is_checked;
 
         public ViewHolder(View view) {
             super(view);
@@ -203,8 +204,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             iv_group_icon = (CircleImageView) view.findViewById(R.id.iv_group_icon_btn);
             tv_group_name = (TextView) view.findViewById(R.id.tv_group_name);
             tv_group_usage = (TextView) view.findViewById(R.id.tv_group_usage);
-            cb_group = (CheckBox) view.findViewById(R.id.cb_group);
             arrow = (ImageView) view.findViewById(R.id.arrow);
+            rl_is_checked = (RelativeLayout) view.findViewById(R.id.rl_is_checked);
         }
 
         @Override

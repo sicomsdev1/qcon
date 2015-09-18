@@ -49,9 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"/>
 
-    <RelativeLayout android:id="@+id/rl_is_onoff"
+    <RelativeLayout android:id="@+id/rl_is_checked"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="#80000000"
+        android:background="@color/trans02"
         android:visibility="invisible"/>
 </RelativeLayout>

@@ -262,7 +262,7 @@ public class PlugAdapter extends RecyclerView.Adapter<PlugAdapter.ViewHolder> im
             tv_plug_name = (TextView) view.findViewById(R.id.tv_plug_name);
             iv_plug_icon = (ImageView) view.findViewById(R.id.iv_plug_icon);
             iv_plug_setting = (ImageView) view.findViewById(R.id.iv_plug_setting);
-            rl_is_onoff = (RelativeLayout) view.findViewById(R.id.rl_is_onoff);
+            rl_is_onoff = (RelativeLayout) view.findViewById(R.id.rl_is_checked);
             cb_plug = (CheckBox) view.findViewById(R.id.cb_plug);
             iv_network_type = (ImageView) view.findViewById(R.id.iv_network_type);
         }

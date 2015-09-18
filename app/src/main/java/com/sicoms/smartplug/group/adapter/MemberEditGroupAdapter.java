@@ -204,7 +204,7 @@ public class MemberEditGroupAdapter extends RecyclerView.Adapter<MemberEditGroup
             tv_member_name = (TextView) view.findViewById(R.id.tv_member_email);
             iv_member_icon = (ImageView) view.findViewById(R.id.iv_member_icon);
             iv_member_auth = (ImageView) view.findViewById(R.id.iv_member_rank);
-            rl_is_onoff = (RelativeLayout) view.findViewById(R.id.rl_is_onoff);
+            rl_is_onoff = (RelativeLayout) view.findViewById(R.id.rl_is_checked);
             cb_member = (CheckBox) view.findViewById(R.id.cb_member);
         }
 

@@ -11,8 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#b7b7b7"/>
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"
-            android:background="#dadada">
+            android:background="@color/color09">
             <TextView android:id="@+id/plug_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_alignParentBottom="true"
-            android:background="#b7b7b7"/>
+            android:background="@drawable/line_division2"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_group"
             android:layout_width="match_parent"

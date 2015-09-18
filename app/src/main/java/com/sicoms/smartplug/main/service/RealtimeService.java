@@ -96,7 +96,8 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
             }
             DaoSession daoSession = mDBHelper.getSession(true);
             final DbPlugVoDao theDao = daoSession.getDbPlugVoDao();
-            List<DbPlugVo> dataList = theDao.queryBuilder().listLazy();
+            PlaceVo placeVo = PlaceService.loadLastPlace(mContext);
+            List<DbPlugVo> dataList = theDao.queryBuilder().where(DbPlugVoDao.Properties.PlaceId.eq(placeVo.getPlaceId())).listLazy();
             List<PlugVo> plugVoList = new ArrayList<>();
 
             int offset = 0;
@@ -209,6 +210,9 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
     }
 
     private void setRealtimeBluetoothData(List<PlugVo> plugVoList){
+        if( plugVoList == null){
+            return;
+        }
         for( int cnt=0; cnt<plugVoList.size(); cnt++) {
             PlugVo plugVo = plugVoList.get(cnt);
             int deviceId = Integer.parseInt(plugVo.getUuid());
@@ -313,21 +317,6 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
         }
 
         return false;
-    }
-
-    public DbLastDataVo selectDbLastData(String plugId){
-        try {
-            DaoSession daoSession = mDBHelper.getSession(true);
-            final DbLastDataVoDao theDao = daoSession.getDbLastDataVoDao();
-            DbLastDataVo dbLastDataVo = theDao.queryBuilder().where(DbPlugVoDao.Properties.PlugId.eq(plugId)).unique();
-
-            return dbLastDataVo;
-        } catch (SQLiteConstraintException se){
-            se.printStackTrace();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private void connectBluetooth() {

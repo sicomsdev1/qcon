@@ -92,9 +92,6 @@ public class PlugAllFragment extends Fragment implements BluetoothManager.BLResu
     private RecyclerView mRecyclerView;
     private PlugAdapter mAdapter;
 
-    private ViewPager mViewPager;
-    private SPPagerAdapter mPagerAdapter;
-
     private BackgroundThread mBThread;
     private final PlugHandler mPHandler = new PlugHandler(this);
 
@@ -196,22 +193,6 @@ public class PlugAllFragment extends Fragment implements BluetoothManager.BLResu
             mFabAddDeviceBtn.setVisibility(View.GONE);
         }
         mRecyclerView.setAdapter(mAdapter);
-
-        Fragment targetFragment[] = new Fragment[6];
-//        targetFragment[0] = DashboardPageFragment.newInstance(SPConfig.PLUG_EDIT_PAGE01);
-//        targetFragment[1] = DashboardPageFragment.newInstance(SPConfig.PLUG_EDIT_PAGE02);
-//        targetFragment[2] = DashboardPageFragment.newInstance(SPConfig.PLUG_EDIT_PAGE03);
-
-        int resId[] = new int[6];
-        for(int cnt=0; cnt<targetFragment.length; cnt++){
-            resId[cnt] = R.drawable.plug_edit_navi_off;
-        }
-        resId[0] = R.drawable.plug_edit_navi_on;
-
-//        mViewPager = (ViewPager)view.findViewById(R.id.pager);
-//        mPagerAdapter = new SPPagerAdapter(getFragmentManager(), view, targetFragment, resId);
-//        mViewPager.setAdapter(mPagerAdapter);
-//        mViewPager.setOnPageChangeListener(mPagerAdapter);
 
         long lastSyncSec = CommonService.loadLastPlugSyncTime(mContext);
         long currentSec = System.currentTimeMillis() / 1000;
@@ -414,7 +395,7 @@ public class PlugAllFragment extends Fragment implements BluetoothManager.BLResu
                         PlugAllDataVo plugAllDataVo = new Gson().fromJson(responseVo.getJsonStr(), PlugAllDataVo.class);
                         List<PlugVo> plugVoList = plugAllDataVo.getPlugVoList();
                         List<DbBluetoothVo> dbBluetoothVoList = plugAllDataVo.getBluetoothVoList();
-                        if (plugVoList == null || plugVoList.size() < 1) {
+                        if (plugVoList == null) {
                             return;
                         }
                         mService.deleteDbPlugAllInPlace();

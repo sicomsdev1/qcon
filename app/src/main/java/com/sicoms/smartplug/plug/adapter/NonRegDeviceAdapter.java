@@ -92,10 +92,10 @@ public class NonRegDeviceAdapter extends BaseAdapter {
                     if (regDeviceVo == null) {
                         return;
                     }
-                    SPUtil.showDialog(mContext);
                     String type = regDeviceVo.getNetworkType();
                     if (type.equalsIgnoreCase(SPConfig.PLUG_TYPE_BLUETOOTH)) {
-                        if( MainActivity.stBluetoothManager.getNetworkKeyPhrase().equalsIgnoreCase(BLConfig.BL_DEFAULT_SECURITY_PASSWORD)){
+                        String blNetworkKey = MainActivity.stBluetoothManager.getNetworkKeyPhrase();
+                        if( blNetworkKey.equalsIgnoreCase(BLConfig.BL_DEFAULT_SECURITY_PASSWORD)){
                             SPFragment.intentBLSecurityFragmentDialog((Activity)mContext, regDeviceVo, mDialogCallbacks);
                         } else {
                             int hash = regDeviceVo.getUuidHash();
