@@ -9,6 +9,7 @@
     <color name="color06">#0092a9</color>
     <color name="color07">#00b2ce</color>
     <color name="color08">#D1D1D1</color>
+    <color name="trans01">#20000000</color>
     <color name="off">#959595</color>
     <color name="dashboard_on">#F361A6</color>
 

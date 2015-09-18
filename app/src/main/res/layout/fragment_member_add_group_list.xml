@@ -6,13 +6,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14">
+        android:layout_weight="@integer/actionbar_height_weight">
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="86"
+        android:layout_weight="88"
         android:orientation="vertical"
         android:background="@color/color04">
         <RelativeLayout

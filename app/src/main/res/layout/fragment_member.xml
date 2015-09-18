@@ -6,7 +6,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="31">
+        android:layout_weight="@integer/actionbar_height_weight"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="17">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +102,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="61"
+        android:layout_weight="63"
         android:background="@color/color04">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_member"

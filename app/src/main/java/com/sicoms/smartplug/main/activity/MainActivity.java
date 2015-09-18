@@ -21,6 +21,7 @@ import com.sicoms.smartplug.common.SPActivity;
 import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.SPEvent;
 import com.sicoms.smartplug.domain.ImgFileVo;
+import com.sicoms.smartplug.domain.PlaceVo;
 import com.sicoms.smartplug.domain.UserVo;
 import com.sicoms.smartplug.login.service.LoginService;
 import com.sicoms.smartplug.main.fragment.HomeFragment;
@@ -29,6 +30,7 @@ import com.sicoms.smartplug.main.service.RealtimeService;
 import com.sicoms.smartplug.menu.activity.MypageActivity;
 import com.sicoms.smartplug.menu.activity.PlaceActivity;
 import com.sicoms.smartplug.menu.activity.PlaceSettingActivity;
+import com.sicoms.smartplug.menu.service.PlaceService;
 import com.sicoms.smartplug.network.bluetooth.BluetoothManager;
 import com.sicoms.smartplug.network.http.HttpBitmapResponseCallbacks;
 import com.sicoms.smartplug.network.http.HttpConfig;
@@ -38,6 +40,7 @@ import com.sicoms.smartplug.util.profile.CircleImageView;
 import java.util.List;
 
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
+import it.neokree.materialnavigationdrawer.elements.MaterialSection;
 
 
 public class MainActivity extends MaterialNavigationDrawer implements HttpBitmapResponseCallbacks {
@@ -62,30 +65,23 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
         // set header data
         SPActivity.actList.add(this);
         mActivity = this;
-        mSPEvent = new SPEvent();
+
         mService = new MainService();
 
         stBluetoothManager = new BluetoothManager(mActivity);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), 0x80000000);
         setDrawerBackgroundBitmap(bitmap);
-
-        mUserVo = LoginService.loadLastLoginUser(this);
-        setProfileImage();
-        setUsername(mUserVo.getUserName());
-        setUserEmail(mUserVo.getUserId());
-        String userImagePath = SPConfig.FILE_PATH + "_" + mUserVo.getUserId() + "_" + SPConfig.USER_IMAGE_NAME;
-        Bitmap userBitmap = BitmapFactory.decodeFile(userImagePath);
         //setFirstAccountPhoto(new BitmapDrawable(getResources(), userBitmap));
 
         getSupportActionBar().setIcon(R.drawable.logo_sicoms_s);
         // create sections
-        this.addSection(newSection("Home", R.drawable.icon_menu_home, HomeFragment.newInstance()));
-        this.addSection(newSection("Shop", R.drawable.icon_menu_shop, intentShopBrowser()));
-        this.addSection(newSection("My Page", R.drawable.icon_menu_mypage, new Intent(this, MypageActivity.class)));
-        this.addSection(newSection("Place", R.drawable.icon_menu_location, new Intent(this, PlaceActivity.class)));
+        addSection(newSection("Home", R.drawable.icon_menu_home, HomeFragment.newInstance()));
+        addSection(newSection("Shop", R.drawable.icon_menu_shop, intentShopBrowser()));
+        addSection(newSection("My Page", R.drawable.icon_menu_mypage, new Intent(this, MypageActivity.class)));
+        addSection(newSection("Place", R.drawable.icon_menu_location, new Intent(this, PlaceActivity.class)));
         // create bottom section
-        this.addBottomSection(newSection("Place Setting", R.drawable.ic_settings_black_24dp, new Intent(this, PlaceSettingActivity.class)));
+        addBottomSection(newSection("Place Setting", R.drawable.ic_settings_black_24dp, new Intent(this, PlaceSettingActivity.class)));
 
         mRealtimeService = new RealtimeService(mActivity);
         mRealTimeThread = new Thread(new Runnable() {
@@ -158,6 +154,11 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
     @Override
     protected void onResume() {
         super.onResume();
+
+        mUserVo = LoginService.loadLastLoginUser(this);
+        setProfileImage();
+        setUserEmail(mUserVo.getUserId());
+        setUsername(mUserVo.getUserName());
 
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);

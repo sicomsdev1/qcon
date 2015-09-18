@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"/>
+        android:layout_weight="@integer/actionbar_height_weight"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="88"
-        android:orientation="vertical"
-        android:background="#65000000">
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -101,6 +100,7 @@
             android:id="@+id/recycler_group"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="92"/>
+            android:layout_weight="92"
+            android:background="@color/trans01"/>
     </LinearLayout>
 </LinearLayout>

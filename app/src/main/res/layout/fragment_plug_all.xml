@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"/>
+        android:layout_weight="@integer/actionbar_height_weight"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +23,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
+            android:layout_weight="8"
+            android:background="#dadada">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -131,7 +132,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_plug"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/trans01"/>
             <com.software.shell.fab.ActionButton
                 android:id="@+id/fab_add_device_btn"
                 style="@style/fab_action_button_style"

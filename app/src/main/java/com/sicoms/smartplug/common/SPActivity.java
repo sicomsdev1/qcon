@@ -48,11 +48,6 @@ public class SPActivity extends ActionBarActivity {
         activity.finish();
     }
     public static void intentMainActivity(Activity activity) {
-        for(int cnt=0; cnt<actList.size(); cnt++) {
-            Activity act = actList.get(cnt);
-            act.finish();
-            actList.remove(act);
-        }
         Intent intent = new Intent(activity, MainActivity.class);
         activity.startActivity(intent);
         activity.finish();
