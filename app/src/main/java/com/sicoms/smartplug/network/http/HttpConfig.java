@@ -5,12 +5,12 @@ package com.sicoms.smartplug.network.http;
  */
 public class HttpConfig {
 
-//    public static final String PROTOCOL = "https://";
-//    public static final String CLOUD_HTTP_IP = "sicoms.co.kr"; // Cloud Server
-//    public static final String CLOUD_HTTP_PORT = "8543"; // HTTPS
-    public static final String PROTOCOL = "http://";
-    public static final String CLOUD_HTTP_IP = "61.74.63.132"; // 사내 Server
-    public static final String CLOUD_HTTP_PORT = "8180"; // HTTP
+    public static final String PROTOCOL = "https://";
+    public static final String CLOUD_HTTP_IP = "sicoms.co.kr"; // Cloud Server
+    public static final String CLOUD_HTTP_PORT = "8543"; // HTTPS
+//    public static final String PROTOCOL = "http://";
+//    public static final String CLOUD_HTTP_IP = "61.74.63.132"; // 사내 Server
+//    public static final String CLOUD_HTTP_PORT = "8180"; // HTTP
 
     public static final int HTTP_TIMEOUT = 30 * 1000;
     public static final String HTTP_CONTEXT_PATH = "/szc/index.szc/open";

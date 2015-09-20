@@ -171,11 +171,10 @@ public class ScheduleService implements UDPClient.UDPResponseCallbacks {
             int uuid = Integer.parseInt(plugVo.getUuid());
             String requestMessage = BLMessage.getGetScheduleRequestMessage(MainActivity.stBluetoothManager, uuid, 1);
 
-            if( !MainActivity.stBluetoothManager.isConnected()){
-                return;
+            if( MainActivity.stBluetoothManager.isConnected()){
+                MainActivity.stBluetoothManager.setOnScheduleResultCallbcks(mCallbacks);
+                MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);
             }
-            MainActivity.stBluetoothManager.setOnScheduleResultCallbcks(mCallbacks);
-            MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);
         }
     }
 

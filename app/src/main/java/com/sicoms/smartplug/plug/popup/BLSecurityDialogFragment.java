@@ -77,7 +77,7 @@ public class BLSecurityDialogFragment extends DialogFragment implements HttpResp
         ImageView okBtn = (ImageView) view.findViewById(R.id.network_assocoiation_ok);
         final EditText passPhraseView = (EditText) view.findViewById(R.id.et_password);
         if (phrase != null) {
-            passPhraseView.setText(phrase);
+            passPhraseView.setText(SPConfig.CURRENT_PLACE_BL_PASSWORD);
         }
         okBtn.setClickable(true);
 

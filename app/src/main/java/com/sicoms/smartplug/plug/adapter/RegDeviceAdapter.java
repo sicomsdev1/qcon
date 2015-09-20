@@ -23,14 +23,12 @@ import java.util.List;
  */
 public class RegDeviceAdapter extends BaseAdapter {
 
-    private Activity mActivity = null;
     private LayoutInflater mInflater = null;
 
     private ArrayList<RegDeviceVo> mVoList;
 
-    public RegDeviceAdapter(Activity activity){
-        mActivity = activity;
-        mInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public RegDeviceAdapter(Context context){
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mVoList = new ArrayList<>();
     }
 

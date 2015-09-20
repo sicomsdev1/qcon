@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.common;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -11,12 +12,7 @@ import com.sicoms.smartplug.R;
 
 public class SPEvent implements OnClickListener {
 
-	Activity activity;
-
     public SPEvent(){}
-	public SPEvent(Activity activity) {
-		this.activity = activity;
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -38,12 +34,12 @@ public class SPEvent implements OnClickListener {
 			m_close_flag = false;
 		}
 	};
-	public void backButtonPressed(Activity activity, Activity superActivity){
+	public void backButtonPressed(Context context, Activity superActivity){
 		// m_close_flag 가 false 이면 첫번째로 키가 눌린 것이다.
 		if (m_close_flag == false) { // Back 키가 첫번째로 눌린 경우
 
 			// 안내 메세지를 토스트로 출력한다.
-			Toast.makeText(activity, activity.getString(R.string.app_finish), Toast.LENGTH_LONG)
+			Toast.makeText(context, context.getString(R.string.app_finish), Toast.LENGTH_LONG)
 					.show();
 
 			// 상태값 변경
@@ -56,7 +52,7 @@ public class SPEvent implements OnClickListener {
 
 			// 액티비티를 종료하는 상위 클래스의 onBackPressed 메소드를 호출한다.
 			superActivity.finish();
-			activity.finish();
+			((Activity)context).finish();
             android.os.Process.killProcess(android.os.Process.myPid());
 
 			try {

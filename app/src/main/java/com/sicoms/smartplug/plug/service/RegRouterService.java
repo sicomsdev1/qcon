@@ -1,9 +1,7 @@
 package com.sicoms.smartplug.plug.service;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -13,14 +11,11 @@ import com.sicoms.smartplug.domain.NodeListRequestVo;
 import com.sicoms.smartplug.domain.PlugVo;
 import com.sicoms.smartplug.domain.WifiModeData;
 import com.sicoms.smartplug.domain.WifiModeRequestVo;
-import com.sicoms.smartplug.domain.WifiModeResponseVo;
 import com.sicoms.smartplug.domain.WifiVo;
 import com.sicoms.smartplug.network.http.HttpConfig;
-import com.sicoms.smartplug.network.udp.UDPClient;
 import com.sicoms.smartplug.network.udp.UDPConfig;
 import com.sicoms.smartplug.network.wifi.WifiConfig;
 import com.sicoms.smartplug.network.wifi.WifiConnectionManager;
-import com.sicoms.smartplug.util.SPUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,7 +26,7 @@ import java.util.Date;
 public class RegRouterService {
     private static final String TAG = RegRouterService.class.getSimpleName();
 
-    private Activity mActivity;
+    private Context mContext;
 
     private int mResult;
     private Handler mHandler;
@@ -40,15 +35,15 @@ public class RegRouterService {
     private String mPlugName;
     private String mPlugId;
 
-    public RegRouterService(Activity activity){
-        mActivity = activity;
+    public RegRouterService(Context context){
+        mContext = context;
     }
 
     public boolean connectPlugWifi(PlugVo plugVo){
 
         mPlugName = plugVo.getPlugName();
         mPlugId = plugVo.getPlugId();
-        mWifiConnectionManager = new WifiConnectionManager(mActivity);
+        mWifiConnectionManager = new WifiConnectionManager(mContext);
 
         // 1. Plug AP 에 접속
         String ssid = plugVo.getPlugId().split("/")[0];
@@ -60,7 +55,7 @@ public class RegRouterService {
 
         if( !mWifiConnectionManager.connectWifi(wifiVo)){
             // retry 5
-            Toast.makeText(mActivity, "AP 접속에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "AP 접속에 실패하였습니다.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -114,11 +109,11 @@ public class RegRouterService {
         @Override
         public void run() {
             if( mResult == UDPConfig.UDP_CONNECT_FAIL){
-                Toast.makeText(mActivity, "AP 연결에 실패하였습니다", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "AP 연결에 실패하였습니다", Toast.LENGTH_SHORT).show();
             } else if( mResult == UDPConfig.UDP_REQUEST_FAIL){
-                Toast.makeText(mActivity, "AP 요청에 실패하였습니다 (요청 실패)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "AP 요청에 실패하였습니다 (요청 실패)", Toast.LENGTH_SHORT).show();
             } else if( mResult == UDPConfig.UDP_RESPONSE_FAIL){
-                Toast.makeText(mActivity, "AP 요청에 실패하였습니다 (응답 실패)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "AP 요청에 실패하였습니다 (응답 실패)", Toast.LENGTH_SHORT).show();
             }
         }
     };

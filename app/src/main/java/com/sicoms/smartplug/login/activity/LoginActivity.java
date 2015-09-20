@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.login.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -40,7 +41,7 @@ public class LoginActivity extends ActionBarActivity implements LoginResultCallb
     private static final String TAG = LoginActivity.class.getSimpleName();
     private final String PENDING_ACTION_BUNDLE_KEY = TAG + ":PendingAction";
 
-    private Activity mActivity;
+    private Context mContext;
 
     private LoginEvent mEvent = null;
     private SPEvent mSPEvent = null;
@@ -62,9 +63,9 @@ public class LoginActivity extends ActionBarActivity implements LoginResultCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mActivity = this;
+        mContext = this;
         mEvent = new LoginEvent(this, this);
-        mSPEvent = new SPEvent(mActivity);
+        mSPEvent = new SPEvent();
         mService = new LoginService(this);
         mService.setOnHttpResponseCallbacks(this);
         mPlaceService = new PlaceService(this);
@@ -86,26 +87,26 @@ public class LoginActivity extends ActionBarActivity implements LoginResultCallb
                 String userId = mEtEmail.getText().toString();
                 String userPassword = mEtPassword.getText().toString();
                 if (userId.equalsIgnoreCase("")) {
-                    Toast.makeText(mActivity, "이메일을 입력해 주세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "이메일을 입력해 주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (userPassword.equalsIgnoreCase("")) {
-                    Toast.makeText(mActivity, "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // Cloud Server 에 로그인 정보 요청 (이름, 이미지 받아옴)
                 mUserVo = new UserVo(userId, SHA256Util.encryptSha256(userPassword));
                 mUserVo.setIsOnOff(true);
-                String gcmId = mService.getGCMId(mActivity);
+                String gcmId = mService.getGCMId(mContext);
                 if (gcmId == null) {
-                    Toast.makeText(mActivity, "알림기능이 작동하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "알림기능이 작동하지 않습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mUserVo.setGcmId(gcmId);
 
                 mService.requestLoginMessage(mUserVo);
-                SPUtil.showDialog(mActivity);
+                SPUtil.showDialog(mContext);
             }
         });
         mIvMembershipBtn.setOnClickListener(mEvent);
@@ -125,7 +126,7 @@ public class LoginActivity extends ActionBarActivity implements LoginResultCallb
         // Place List 가져옴
         mPlaceService.requestSelectPlaceList(userVo);
 
-        SPActivity.intentMainActivity(mActivity);
+        SPActivity.intentMainActivity((Activity)mContext);
     }
 
     @Override

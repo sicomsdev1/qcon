@@ -38,6 +38,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -173,8 +175,14 @@ public class SPUtil {
             int resId = SPUtil.getDrawableResourceId(context, placeImage);
             bg.setBackgroundResource(resId);
         } else {
+            Bitmap bitmap = null;
             String imagePath = SPConfig.FILE_PATH + placeImage;
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+            try {
+                InputStream is = new URL(imagePath).openStream();
+                bitmap = BitmapFactory.decodeStream(is);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (bitmap != null) {
                 bg.setBackground(new BitmapDrawable(context.getResources(), bitmap));
             } else {
@@ -188,14 +196,19 @@ public class SPUtil {
         if( placeVo == null){
             return null;
         }
-        Bitmap bitmap;
+        Bitmap bitmap = null;
         String imageName = placeVo.getPlaceImg();
         if( imageName.contains(SPConfig.PLACE_DEFAULT_IMAGE_NAME)){
             int resId = SPUtil.getDrawableResourceId(context, imageName);
             bitmap = BitmapFactory.decodeResource(context.getResources(), resId);
         } else {
             String imagePath = SPConfig.FILE_PATH + imageName;
-            bitmap = BitmapFactory.decodeFile(imagePath);
+            try {
+                InputStream is = new URL(imagePath).openStream();
+                bitmap = BitmapFactory.decodeStream(is);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (bitmap == null) {
                 bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dpbg_01);
             }
@@ -359,6 +372,11 @@ public class SPUtil {
     }
     public static float getForecastPower(float wh){
         float forecastWatt = 0.0f;
+
+        return forecastWatt;
+    }
+    public static int getForecastPower(int wh){
+        int forecastWatt = 0;
 
         return forecastWatt;
     }

@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.menu.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import com.sicoms.smartplug.R;
 import com.sicoms.smartplug.common.CommonService;
 import com.sicoms.smartplug.common.SPConfig;
+import com.sicoms.smartplug.common.SPEvent;
+import com.sicoms.smartplug.common.SPFragment;
+import com.sicoms.smartplug.common.interfaces.OutCallbacks;
 import com.sicoms.smartplug.domain.HttpResponseVo;
 import com.sicoms.smartplug.domain.ImgFileVo;
 import com.sicoms.smartplug.domain.PlaceVo;
-import com.sicoms.smartplug.domain.PlugVo;
 import com.sicoms.smartplug.domain.UserVo;
 import com.sicoms.smartplug.login.service.LoginService;
 import com.sicoms.smartplug.menu.adapter.PlaceAdapter;
@@ -55,15 +59,16 @@ import java.util.List;
 /**
  * Created by gudnam on 2015. 5. 19..
  */
-public class PlaceListFragment extends Fragment implements PlaceResultCallbacks, HttpResponseCallbacks, HttpBitmapResponseCallbacks {
+public class PlaceListFragment extends Fragment implements PlaceResultCallbacks, HttpResponseCallbacks, HttpBitmapResponseCallbacks, View.OnKeyListener, OutCallbacks {
 
     private static final String TAG = PlaceListFragment.class.getSimpleName();
 
-    private Activity mActivity;
+    private Context mContext;
     private View mView;
 
     private UserVo mUserVo;
     private PlaceEvent mEvent;
+    private SPEvent mSPEvent;
     private PlaceService mService;
     private CommonService mCommonService;
 
@@ -79,12 +84,12 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
     }
 
     private void initialize() {
-        Bitmap bitmap = SPUtil.getBackgroundImage(mActivity);
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
         if (bitmap != null) {
             mView.setBackground(new BitmapDrawable(getResources(), bitmap));
         } else {
             // 이미지 다운로드
-            PlaceVo placeVo = PlaceService.loadLastPlace(mActivity);
+            PlaceVo placeVo = PlaceService.loadLastPlace(mContext);
             if( placeVo == null){
                 return;
             }
@@ -98,13 +103,14 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mActivity = getActivity();
+        mContext = getActivity();
 
-        mUserVo = LoginService.loadLastLoginUser(mActivity);
-        mEvent = new PlaceEvent(mActivity, this);
-        mService = new PlaceService(mActivity);
+        mUserVo = LoginService.loadLastLoginUser(mContext);
+        mEvent = new PlaceEvent(mContext, this);
+        mSPEvent = new SPEvent();
+        mService = new PlaceService(mContext);
         mService.setOnHttpResponseCallbacks(this);
-        mCommonService = new CommonService(mActivity);
+        mCommonService = new CommonService(mContext);
         mCommonService.setOnHttpBitmapResponseCallbacks(this);
     }
 
@@ -115,20 +121,23 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
 
         View view = inflater.inflate(R.layout.fragment_place_list, container, false);
         mView = view;
+        mView.setFocusableInTouchMode(true);
+        mView.requestFocus();
+        mView.setOnKeyListener(this);
 
         initialize();
         mIvAddPlaceBtn = (ImageView) view.findViewById(R.id.iv_add_place_btn);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_place);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.HORIZONTAL_LIST));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
         mRecyclerView.getItemAnimator().setAddDuration(1000);
         mRecyclerView.getItemAnimator().setChangeDuration(1000);
         mRecyclerView.getItemAnimator().setMoveDuration(1000);
         mRecyclerView.getItemAnimator().setRemoveDuration(1000);
 
-        mAdapter = new PlaceAdapter(mActivity);
+        mAdapter = new PlaceAdapter(mContext);
         mAdapter.setPlaceResultCallbacks(this);
 
         mRecyclerView.setAdapter(mAdapter);
@@ -137,7 +146,7 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
         mIvAddPlaceBtn.setOnClickListener(mEvent);
         mAdapter.SetOnItemClickListener(mEvent);
 
-        SPUtil.showDialog(mActivity);
+        SPUtil.showDialog(mContext);
 
         mService.requestSelectPlaceList(mUserVo);
 
@@ -175,15 +184,20 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (((ActionBarActivity) mActivity).getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                    ((ActionBarActivity) mActivity).getSupportFragmentManager().popBackStack();
+                PlaceVo placeVo = PlaceService.loadLastPlace(mContext);
+                if( placeVo != null) {
+                    if (((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                        ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
+                    } else {
+                        ((Activity) mContext).finish();
+                    }
                 } else {
-                    mActivity.finish();
+                    SPFragment.intentOutFragmentDialog((Activity) mContext, this, "어플을 종료하시겠습니까?", "종료");
                 }
                 break;
             case R.id.action_sync:
                 mService.requestSelectPlaceList(mUserVo);
-                SPUtil.showDialog(mActivity);
+                SPUtil.showDialog(mContext);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -197,9 +211,9 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
             public void run() {
                 if (!mService.updateDbPlace(placeVo)) {
                     // 저장 실패
-                    Toast.makeText(mActivity, "장소를 저장하지 못했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "장소를 저장하지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
-                SPUtil.showToast(mActivity, placeVo.getPlaceName() + "장소를 저장하였습니다.");
+                SPUtil.showToast(mContext, placeVo.getPlaceName() + "장소를 저장하였습니다.");
                 mAdapter.addItem(placeVo);
                 mAdapter.notifyDataSetChanged();
             }
@@ -214,9 +228,9 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
             public void run() {
                 if (!mService.updateDbPlace(placeVo)) {
                     // 저장 실패
-                    Toast.makeText(mActivity, "장소를 저장하지 못했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "장소를 저장하지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
-                SPUtil.showToast(mActivity, placeVo.getPlaceName() + "장소를 수정하였습니다.");
+                SPUtil.showToast(mContext, placeVo.getPlaceName() + "장소를 수정하였습니다.");
                 mAdapter.updateItem(placeVo);
                 mAdapter.notifyDataSetChanged();
             }
@@ -229,16 +243,16 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
         handler.post(new Runnable() {
             @Override
             public void run() {
-                PlaceVo lastPlaceVo = PlaceService.loadLastPlace(mActivity);
+                PlaceVo lastPlaceVo = PlaceService.loadLastPlace(mContext);
                 if (lastPlaceVo != null) {
                     if (lastPlaceVo.getPlaceId().equalsIgnoreCase(placeVo.getPlaceId())) {
-                        PlaceService.removeLastPlace(mActivity);
+                        PlaceService.removeLastPlace(mContext);
                     }
                 }
                 if (!mService.removeDbPlace(placeVo)) {
-                    SPUtil.showToast(mActivity, placeVo.getPlaceName() + "장소에서 나가지 못했습니다.");
+                    SPUtil.showToast(mContext, placeVo.getPlaceName() + "장소에서 나가지 못했습니다.");
                 }
-                SPUtil.showToast(mActivity, placeVo.getPlaceName() + "장소를 나갔습니다.");
+                SPUtil.showToast(mContext, placeVo.getPlaceName() + "장소를 나갔습니다.");
                 mAdapter.removeItem(placeVo);
                 mAdapter.notifyDataSetChanged();
             }
@@ -247,7 +261,7 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
 
     @Override
     public void onSelecteComplete(PlaceVo placeVo) {
-        PlaceService.saveLastPlace(mActivity, placeVo);
+        PlaceService.saveLastPlace(mContext, placeVo);
         SPConfig.IS_FIRST = true;
         initialize();
     }
@@ -269,7 +283,7 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
                         }
                         fillAdapterData();
                     } else {
-                        Toast.makeText(mActivity, "플레이스 요청에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "플레이스 요청에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 }
             } catch (JsonParseException jpe) {
@@ -280,7 +294,7 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
                 e.printStackTrace();
             }
         } else {
-            Toast.makeText(mActivity, "서버와의 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "서버와의 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
         SPUtil.dismissDialog();
     }
@@ -320,4 +334,31 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
             return collator.compare(object1.getPlaceName(), object2.getPlaceName());
         }
     };
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if( keyCode == KeyEvent.KEYCODE_BACK){
+            if( mSPEvent.isBack()) {
+                PlaceVo placeVo = PlaceService.loadLastPlace(mContext);
+                if( placeVo != null) {
+                    if (((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                        ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
+                    } else {
+                        ((Activity) mContext).finish();
+                    }
+                } else {
+                    SPFragment.intentOutFragmentDialog((Activity) mContext, this, "어플을 종료하시겠습니까?", "종료");
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void outOutResult() {
+        ((Activity)mContext).finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
 }

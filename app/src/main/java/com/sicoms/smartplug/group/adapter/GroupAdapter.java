@@ -62,11 +62,11 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
-        final GroupVo plugVo = mVoList.get(position);
+        final GroupVo groupV = mVoList.get(position);
         if( mMode == SPConfig.MODE_NORMAL){
             viewHolder.rl_is_checked.setVisibility(View.INVISIBLE);
             viewHolder.arrow.setVisibility(View.VISIBLE);
-            plugVo.setIsCheck(false);
+            groupV.setIsCheck(false);
             viewHolder.rl_btn.setVisibility(View.INVISIBLE);
         } else {
             viewHolder.arrow.setVisibility(View.INVISIBLE);
@@ -75,8 +75,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             viewHolder.rl_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    plugVo.setIsCheck(!plugVo.isCheck());
-                    if( plugVo.isCheck()){
+                    groupV.setIsCheck(!groupV.isCheck());
+                    if( groupV.isCheck()){
                         viewHolder.rl_is_checked.setVisibility(View.VISIBLE);
                     } else {
                         viewHolder.rl_is_checked.setVisibility(View.INVISIBLE);
@@ -106,14 +106,22 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
 
         viewHolder.tv_group_name.setText(mVoList.get(position).getGroupName());
         viewHolder.tv_group_usage.setText(mVoList.get(position).getUsage());
+        viewHolder.tv_plug_count.setText(String.valueOf(groupV.getPlugVoList().size()));
+        viewHolder.tv_member_count.setText(String.valueOf(groupV.getUserVoList().size()));
         if( mVoList.get(position).isOn()) {
             // 사진 흑백 효과
             viewHolder.tv_group_name.setTextColor(mContext.getResources().getColor(R.color.color01));
             viewHolder.tv_group_usage.setTextColor(mContext.getResources().getColor(R.color.color01));
+            viewHolder.tv_group_usage_w.setTextColor(mContext.getResources().getColor(R.color.color01));
+            viewHolder.tv_plug_count.setTextColor(mContext.getResources().getColor(R.color.color01));
+            viewHolder.tv_member_count.setTextColor(mContext.getResources().getColor(R.color.color01));
         } else {
             // 사진 흑백 효과
             viewHolder.tv_group_name.setTextColor(mContext.getResources().getColor(R.color.off));
             viewHolder.tv_group_usage.setTextColor(mContext.getResources().getColor(R.color.off));
+            viewHolder.tv_group_usage_w.setTextColor(mContext.getResources().getColor(R.color.off));
+            viewHolder.tv_plug_count.setTextColor(mContext.getResources().getColor(R.color.off));
+            viewHolder.tv_member_count.setTextColor(mContext.getResources().getColor(R.color.off));
         }
     }
 
@@ -194,6 +202,9 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
         private TextView tv_group_usage;
         private ImageView arrow; // Visible, Invisible 용으로만 사용
         private RelativeLayout rl_is_checked;
+        private TextView tv_plug_count;
+        private TextView tv_member_count;
+        private TextView tv_group_usage_w;
 
         public ViewHolder(View view) {
             super(view);
@@ -206,6 +217,9 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
             tv_group_usage = (TextView) view.findViewById(R.id.tv_group_usage);
             arrow = (ImageView) view.findViewById(R.id.arrow);
             rl_is_checked = (RelativeLayout) view.findViewById(R.id.rl_is_checked);
+            tv_plug_count = (TextView) view.findViewById(R.id.tv_plug_count);
+            tv_member_count = (TextView) view.findViewById(R.id.tv_member_count);
+            tv_group_usage_w = (TextView) view.findViewById(R.id.tv_group_usage_w);
         }
 
         @Override

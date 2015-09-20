@@ -23,10 +23,7 @@ public class PlugMainActivity extends ActionBarActivity {
 
     private static final String TAG = PlugMainActivity.class.getSimpleName();
 
-    private CharSequence mTitle = "전체 플러그";
     private Activity mActivity;
-
-    private Thread mRealtimeThread;
 
     private Menu mMenu;
 
@@ -44,8 +41,6 @@ public class PlugMainActivity extends ActionBarActivity {
 
         initialize();
 
-        getSupportActionBar().setTitle(mTitle);
-
         String menuName = CommonService.loadLastMenu(mActivity);
         if( menuName.equalsIgnoreCase(PlugAllFragment.class.getSimpleName())) {
             SPFragment.intentPlugAllFragment(this);
@@ -54,20 +49,6 @@ public class PlugMainActivity extends ActionBarActivity {
         } else {
             SPFragment.intentPlugAllFragment(this);
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-//        if( mRealtimeThread != null){
-//            mRealtimeThread.interrupt();
-//        }
     }
 
     @Override

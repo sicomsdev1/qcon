@@ -289,4 +289,9 @@ public class SPFragment extends Fragment {
         OutDialogFragment dialog = OutDialogFragment.newInstance(callbacks);
         dialog.show(fm, null);
     }
+    public static void intentOutFragmentDialog(Activity activity, OutCallbacks callbacks, String topicName, String btnName){
+        FragmentManager fm = ((ActionBarActivity) activity).getSupportFragmentManager();
+        OutDialogFragment dialog = OutDialogFragment.newInstance(callbacks, topicName, btnName);
+        dialog.show(fm, null);
+    }
 }

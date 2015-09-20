@@ -235,12 +235,13 @@ public class PlugAllFragment extends Fragment implements BluetoothManager.BLResu
         if (plugVoList == null) {
             return;
         }
+        mAdapter.removeAll();
         if (plugVoList.size() > 0) {
             Collections.sort(plugVoList, plugComparator);
-            mAdapter.removeAll();
             mAdapter.addAll(plugVoList);
-            mAdapter.notifyDataSetChanged();
         }
+        mAdapter.notifyDataSetChanged();
+
         for (PlugVo vo : plugVoList) {
             DbLastDataVo dbLastDataVo = mService.selectDbLastData(vo);
             if (dbLastDataVo != null) {

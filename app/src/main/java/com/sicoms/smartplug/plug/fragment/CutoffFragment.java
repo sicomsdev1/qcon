@@ -81,10 +81,10 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
         if (savedInstanceState != null)
             mPlugVo = new Gson().fromJson(savedInstanceState.getString(TAG), PlugVo.class);
 
+        mCutoffVo = new CutoffVo("5", "00", false);
         mEvent = new CutoffEvent(mContext, this, mPlugVo);
         mService = new CutoffService(mContext);
         mService.setOnCutoffResultCallbacks(this);
-        mCutoffVo = new CutoffVo("5", "00", false);
 
         mWvPower = (AbstractWheel) view.findViewById(R.id.wv_power);
         mWvMin = (AbstractWheel) view.findViewById(R.id.wv_min);
@@ -207,6 +207,7 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
         if( cutoffVo != null) {
             if( mCutoffVo.getPower().equalsIgnoreCase(SPConfig.NO_CUTOFF)){
                 cutoffVo.setPower("3");
+                cutoffVo.setIsOn(false);
             }
             if( mService.updateDbCutoff(mPlugVo, cutoffVo)) {
                 SPUtil.showToast(mContext, "전원 차단 설정을 저장하였습니다.");

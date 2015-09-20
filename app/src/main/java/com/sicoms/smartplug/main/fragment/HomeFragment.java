@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -48,6 +50,7 @@ import com.sicoms.smartplug.plug.service.PlugAllService;
 import com.sicoms.smartplug.util.BlurEffect;
 import com.sicoms.smartplug.util.SPUtil;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements HttpResponseCallbacks {
@@ -87,8 +90,10 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
     private TextView mTvForecastUsage;
     private TextView mTvForecastPrice;
 
-
     private int mMenuStatus = 0;
+
+    private BackgroundThread mBThread;
+    private final PlugHandler mPHandler = new PlugHandler(this);
 
 
     public static HomeFragment newInstance() {
@@ -113,6 +118,15 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
             String placeImgPath = placeVo.getPlaceImg();
             ImgFileVo imgFileVo = new ImgFileVo(placeImgPath);
             mCommonService.requestDownloadImage(imgFileVo);
+        }
+
+        long lastSyncSec = CommonService.loadLastMemberSyncTime(mContext);
+        if( lastSyncSec != -1){ // 플레이스가 없으면 -1
+            long currentSec = System.currentTimeMillis() / 1000;
+            if( currentSec - lastSyncSec > SPConfig.SYNC_INTERVAL){
+                mMemberService.requestSelectMemberList(); // 동기화
+                CommonService.saveLastMemberSyncTime(mContext, currentSec);
+            }
         }
 
         PlaceSettingVo settingVo = mPlaceSettingService.selectDbBLPassword();
@@ -172,7 +186,7 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
         mTvPlugOnCount = (TextView) view.findViewById(R.id.tv_plug_on_count);
         mTvPlugAllCount = (TextView) view.findViewById(R.id.tv_plug_all_count);
         mTvCurrentUsage = (TextView) view.findViewById(R.id.tv_current_usage);
-        mTvCurrentUsage = (TextView) view.findViewById(R.id.tv_current_usage);
+        mTvCurrentPrice = (TextView) view.findViewById(R.id.tv_current_price);
         mTvForecastUsage = (TextView) view.findViewById(R.id.tv_forecast_usage);
         mTvForecastPrice = (TextView) view.findViewById(R.id.tv_forecast_price);
 
@@ -206,18 +220,25 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
             mLlDashBottom.setVisibility(View.VISIBLE);
         }
 
-        long lastSyncSec = CommonService.loadLastMemberSyncTime(mContext);
-        if( lastSyncSec != -1){ // 플레이스가 없으면 -1
-            long currentSec = System.currentTimeMillis() / 1000;
-            if( currentSec - lastSyncSec > SPConfig.SYNC_INTERVAL){
-                mMemberService.requestSelectMemberList(); // 동기화
-                CommonService.saveLastMemberSyncTime(mContext, currentSec);
-            }
-        }
-
         setDashboardData();
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        mBThread = new BackgroundThread();
+        mBThread.setRunning(true);
+        mBThread.start();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mBThread.setRunning(false);
     }
 
     private void setDashboardData(){
@@ -227,19 +248,23 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
         }
         int plugAllCount = plugVoList.size();
         int plugOnCount = 0;
-        float mainW = 0;
-        float currentWh = 0;
+        int mainW = 0;
+        int currentWh = 0;
         for(int cnt=0; cnt<plugAllCount; cnt++) {
             PlugVo plugVo = plugVoList.get(cnt);
+            DbLastDataVo dbLastDataVo = mService.selectDbLastData(plugVo.getPlugId());
+            if( dbLastDataVo == null){
+                continue;
+            }
+            plugVo.setIsOn(dbLastDataVo.getOnOff().equalsIgnoreCase(SPConfig.STATUS_ON) ? true : false);
             if( plugVo.isOn()){
                 plugOnCount++;
             }
-            DbLastDataVo dbLastDataVo = mService.selectDbLastData(plugVo.getPlugId());
             mainW += dbLastDataVo.getW();
             currentWh += dbLastDataVo.getWh();
         }
         String currentPrice = SPUtil.getConvertPowerToCharge(currentWh, 200);
-        float forecastWh = SPUtil.getForecastPower(currentWh);
+        int forecastWh = SPUtil.getForecastPower(currentWh);
         String forecastPrice = SPUtil.getConvertPowerToCharge(forecastWh, 200);
         mTvMainW.setText(String.format("%,d", mainW));
         mTvPlugAllCount.setText(String.valueOf(plugAllCount));
@@ -321,6 +346,41 @@ public class HomeFragment extends Fragment implements HttpResponseCallbacks {
             }
         } else {
             SPUtil.showToast(mContext, "서버 연결에 실패하였습니다.");
+        }
+    }
+
+    private void handleMessage(Message msg){
+        setDashboardData();
+    }
+
+    private class BackgroundThread extends Thread {
+        boolean running = false;
+
+        void setRunning(boolean b){
+            running = b;
+        }
+
+        @Override
+        public void run() {
+            while(running){
+                SPUtil.sleep(3000);
+                mPHandler.sendMessage(mPHandler.obtainMessage());
+            }
+        }
+    }
+
+    private static class PlugHandler extends Handler {
+        private final WeakReference<HomeFragment> mFragment;
+        public PlugHandler(HomeFragment fragment){
+            mFragment = new WeakReference<HomeFragment>(fragment);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            HomeFragment fragment = mFragment.get();
+            if( fragment != null){
+                fragment.handleMessage(msg);
+            }
         }
     }
 }

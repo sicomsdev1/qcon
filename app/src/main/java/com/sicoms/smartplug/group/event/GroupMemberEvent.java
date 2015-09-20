@@ -1,7 +1,7 @@
 package com.sicoms.smartplug.group.event;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,7 +11,6 @@ import com.sicoms.smartplug.R;
 import com.sicoms.smartplug.common.SPFragment;
 import com.sicoms.smartplug.domain.GroupVo;
 import com.sicoms.smartplug.domain.UserVo;
-import com.sicoms.smartplug.group.interfaces.CreateGroupResultCallbacks;
 import com.sicoms.smartplug.group.service.GroupService;
 import com.sicoms.smartplug.member.adapter.MemberAdapter;
 import com.sicoms.smartplug.network.http.HttpResponseCallbacks;
@@ -25,16 +24,16 @@ import antistatic.spinnerwheel.AbstractWheel;
  */
 public class GroupMemberEvent implements View.OnClickListener, MemberAdapter.OnItemClickListener {
 
-    private Activity mActivity;
+    private Context mContext;
     private UserVo mUserVo;
     private GroupService mService;
     private HttpResponseCallbacks mHttpCallbacks;
     private AbstractWheel mWvAuth;
 
-    public GroupMemberEvent(Activity activity, UserVo userVo){
-        mActivity = activity;
+    public GroupMemberEvent(Context context, UserVo userVo){
+        mContext = context;
         mUserVo = userVo;
-        mService = new GroupService(mActivity);
+        mService = new GroupService(mContext);
     }
     public void setOnHttpResponseCallbacks(HttpResponseCallbacks callbacks){
         mHttpCallbacks = callbacks;
@@ -49,7 +48,7 @@ public class GroupMemberEvent implements View.OnClickListener, MemberAdapter.OnI
         switch(v.getId()){
             // Member
             case R.id.iv_add_member_btn :
-                SPFragment.intentAddMemberFragment(mActivity);
+                SPFragment.intentAddMemberFragment((Activity) mContext);
                 break;
 
             // Add Member
@@ -71,7 +70,7 @@ public class GroupMemberEvent implements View.OnClickListener, MemberAdapter.OnI
             case R.id.iv_finish_btn :
                 int auth = mWvAuth.getCurrentItem();
                 mUserVo.setAuth(auth);
-                GroupService service = new GroupService(mActivity);
+                GroupService service = new GroupService(mContext);
                 GroupVo groupVo = service.loadLastGroup();
                 List<UserVo> userVoList = groupVo.getUserVoList();
                 for(int cnt=0; cnt<userVoList.size(); cnt++){
@@ -88,6 +87,6 @@ public class GroupMemberEvent implements View.OnClickListener, MemberAdapter.OnI
 
     @Override
     public void onItemClick(View view, UserVo theVo) {
-        SPFragment.intentEditMemberFragment(mActivity, theVo);
+        SPFragment.intentEditMemberFragment((Activity)mContext, theVo);
     }
 }

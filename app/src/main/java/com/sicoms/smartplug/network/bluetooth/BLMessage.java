@@ -19,7 +19,7 @@ public class BLMessage {
     // Set Schedule
     public static String getScheduleRequestMessage(DeviceController controller, int deviceId, long scheduleNum, int startTime, int endTime, String status){
         controller.setSelectedDeviceId(deviceId);
-        scheduleNum = 1; // 일단 한개만 저장 될 수 있음
+        scheduleNum = 0; // 일단 한개만 저장 될 수 있음
         String requestMessage = BLConfig.SCHEDULE_REQUEST_NUM + String.format("%02d", scheduleNum) + String.format("%04x", startTime) + String.format("%04x", endTime) + status;
         return requestMessage;
     }
@@ -27,7 +27,7 @@ public class BLMessage {
     // Get Schedule
     public static String getGetScheduleRequestMessage(DeviceController controller, int deviceId, long scheduleNum){
         controller.setSelectedDeviceId(deviceId);
-        scheduleNum = 1;
+        scheduleNum = 0;
         String unixTime = String.format("%x", System.currentTimeMillis() / 1000);
         String requestMessage = BLConfig.GET_SCHEDULE_REQUEST_NUM + String.format("%02d", scheduleNum) + unixTime;
         return requestMessage;

@@ -55,8 +55,6 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
     private TextView mTvEndTime;
     private RelativeLayout mRlStart;
     private RelativeLayout mRlEnd;
-    private LinearLayout mLlStartWv;
-    private LinearLayout mLlEndWv;
     private AbstractWheel mWvStartAmPm;
     private AbstractWheel mWvStartHour;
     private AbstractWheel mWvStartMin;
@@ -124,8 +122,6 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
         mTvEndTime = (TextView) view.findViewById(R.id.tv_end_time);
         mRlStart = (RelativeLayout) view.findViewById(R.id.rl_start);
         mRlEnd = (RelativeLayout) view.findViewById(R.id.rl_end);
-        mLlStartWv = (LinearLayout) view.findViewById(R.id.ll_start_wv);
-        mLlEndWv = (LinearLayout) view.findViewById(R.id.ll_end_wv);
         mWvStartAmPm = (AbstractWheel) view.findViewById(R.id.wv_start_ampm);
         mWvStartHour = (AbstractWheel) view.findViewById(R.id.wv_start_hour);
         mWvStartMin = (AbstractWheel) view.findViewById(R.id.wv_start_min);
@@ -135,8 +131,6 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
 
         mRlStartBg.setVisibility(View.VISIBLE);
         mRlEndBg.setVisibility(View.VISIBLE);
-        mLlStartWv.setVisibility(View.INVISIBLE);
-        mLlEndWv.setVisibility(View.INVISIBLE);
 
         mRlStart.setOnClickListener(mEvent);
         mRlEnd.setOnClickListener(mEvent);
@@ -180,10 +174,8 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
                 mIvStartSwitch.setSelected(isStartOn);
                 if (isStartOn){
                     mRlStartBg.setVisibility(View.INVISIBLE);
-                    mLlStartWv.setVisibility(View.VISIBLE);
                 } else {
                     mRlStartBg.setVisibility(View.VISIBLE);
-                    mLlStartWv.setVisibility(View.INVISIBLE);
                 }
 
                 mStartAmPm = mScheduleVo.getStartAmPm();
@@ -202,10 +194,8 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
                 mIvEndSwitch.setSelected(isEndOn);
                 if (isEndOn){
                     mRlEndBg.setVisibility(View.GONE);
-                    mLlEndWv.setVisibility(View.VISIBLE);
                 } else {
                     mRlEndBg.setVisibility(View.VISIBLE);
-                    mLlEndWv.setVisibility(View.INVISIBLE);
                 }
 
                 mEndAmPm = mScheduleVo.getEndAmPm();
@@ -221,6 +211,10 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
                 mWvEndMin.setCurrentItem(Integer.parseInt(mEndMin));
             } catch (NumberFormatException ne){
                 ne.printStackTrace();
+            } catch (IndexOutOfBoundsException ioobe){
+                ioobe.printStackTrace();
+            } catch (Exception e){
+                e.printStackTrace();
             }
         }
         mEvent.setScheduleVo(mScheduleVo);

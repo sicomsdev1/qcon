@@ -1,7 +1,7 @@
 package com.sicoms.smartplug.main.activity;
 
-import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -21,16 +21,13 @@ import com.sicoms.smartplug.common.SPActivity;
 import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.SPEvent;
 import com.sicoms.smartplug.domain.ImgFileVo;
-import com.sicoms.smartplug.domain.PlaceVo;
 import com.sicoms.smartplug.domain.UserVo;
 import com.sicoms.smartplug.login.service.LoginService;
 import com.sicoms.smartplug.main.fragment.HomeFragment;
-import com.sicoms.smartplug.main.service.MainService;
 import com.sicoms.smartplug.main.service.RealtimeService;
 import com.sicoms.smartplug.menu.activity.MypageActivity;
 import com.sicoms.smartplug.menu.activity.PlaceActivity;
 import com.sicoms.smartplug.menu.activity.PlaceSettingActivity;
-import com.sicoms.smartplug.menu.service.PlaceService;
 import com.sicoms.smartplug.network.bluetooth.BluetoothManager;
 import com.sicoms.smartplug.network.http.HttpBitmapResponseCallbacks;
 import com.sicoms.smartplug.network.http.HttpConfig;
@@ -40,7 +37,6 @@ import com.sicoms.smartplug.util.profile.CircleImageView;
 import java.util.List;
 
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
-import it.neokree.materialnavigationdrawer.elements.MaterialSection;
 
 
 public class MainActivity extends MaterialNavigationDrawer implements HttpBitmapResponseCallbacks {
@@ -51,9 +47,8 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
 
     //private GroupNavigationDrawerFragment mNavigationDrawerFragment;
 
-    private Activity mActivity;
+    private Context mContext;
     private SPEvent mSPEvent;
-    private MainService mService;
     private Thread mRealTimeThread;
     private UserVo mUserVo;
     private boolean isInit = false;
@@ -64,11 +59,10 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
     public void init(Bundle savedInstanceState) {
         // set header data
         SPActivity.actList.add(this);
-        mActivity = this;
+        mContext = this;
 
-        mService = new MainService();
-
-        stBluetoothManager = new BluetoothManager(mActivity);
+        mSPEvent = new SPEvent();
+        stBluetoothManager = new BluetoothManager(mContext);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), 0x80000000);
         setDrawerBackgroundBitmap(bitmap);
@@ -83,12 +77,12 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
         // create bottom section
         addBottomSection(newSection("Place Setting", R.drawable.ic_settings_black_24dp, new Intent(this, PlaceSettingActivity.class)));
 
-        mRealtimeService = new RealtimeService(mActivity);
+        mRealtimeService = new RealtimeService(mContext);
         mRealTimeThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
-                    Log.d(TAG, "Schedule Realtime Service Run");
+                    Log.d(TAG, "Realtime Service Run");
                     mRealtimeService.runService();
                     SPUtil.sleep(5 * 1000);
                 }

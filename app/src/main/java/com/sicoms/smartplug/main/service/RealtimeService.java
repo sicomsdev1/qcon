@@ -97,6 +97,9 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
             DaoSession daoSession = mDBHelper.getSession(true);
             final DbPlugVoDao theDao = daoSession.getDbPlugVoDao();
             PlaceVo placeVo = PlaceService.loadLastPlace(mContext);
+            if( placeVo == null){
+                return;
+            }
             List<DbPlugVo> dataList = theDao.queryBuilder().where(DbPlugVoDao.Properties.PlaceId.eq(placeVo.getPlaceId())).listLazy();
             List<PlugVo> plugVoList = new ArrayList<>();
 
@@ -113,7 +116,6 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
         } catch ( SQLiteException se){
             se.printStackTrace();
         }
-        mDBHelper.closeSession();
     }
 
     private void setData(List<PlugVo> plugVoList) {
@@ -284,12 +286,14 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
             DbBluetoothVoDao dbBluetoothVoDao = daoSession.getDbBluetoothVoDao();
             DbBluetoothVo dbBluetoothVo = dbBluetoothVoDao.queryBuilder().where(DbBluetoothVoDao.Properties.Uuid.eq(Integer.parseInt(plugVo.getUuid()))).unique();
 
+            mDBHelper.closeSession();
             return dbBluetoothVo;
         } catch (SQLiteConstraintException se){
             se.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
+        mDBHelper.closeSession();
 
         return null;
     }
@@ -309,12 +313,14 @@ public class RealtimeService implements LastDataResultCallbacks, UDPClient.UDPRe
             dbLastDataVo.setW(w);
             theDao.insertOrReplaceInTx(dbLastDataVo);
 
+            mDBHelper.closeSession();
             return true;
         } catch (SQLiteConstraintException se){
             se.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
+        mDBHelper.closeSession();
 
         return false;
     }

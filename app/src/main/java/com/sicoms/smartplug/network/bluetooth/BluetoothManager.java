@@ -51,6 +51,7 @@ import com.csr.mesh.MeshService;
 import com.csr.mesh.PowerModelApi;
 import com.csr.mesh.SwitchModelApi;
 import com.sicoms.smartplug.R;
+import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.dao.DbLastDataVo;
 import com.sicoms.smartplug.domain.BluetoothVo;
 import com.sicoms.smartplug.domain.CutoffVo;
@@ -164,7 +165,6 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
     private static CutoffResultCallbacks mCutoffResultCallbacks;
 
     private static Context stContext;
-    private static Activity stActivity;
 
     // A list of model ids that are waiting on a query being sent to find out how many groups are supported.
     private Queue<Integer> mModelsToQueryForGroups = new LinkedList<Integer>();
@@ -181,11 +181,10 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
     byte[] pid;
     byte[] version;
 
-    public BluetoothManager(Activity activity) {
-        stContext = activity;
-        stActivity = activity;
+    public BluetoothManager(Context context) {
+        stContext = context;
 
-        mDeviceStore = new DeviceStore(stActivity);
+        mDeviceStore = new DeviceStore(stContext);
     }
 
     public void setDevices(ArrayList<BluetoothDevice> devices){
@@ -219,7 +218,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
             if (mService != null) {
                 mService.setContinuousLeScanEnabled(true);
                 // try to get the last setting ID used.
-                SharedPreferences activityPrefs = stActivity.getPreferences(Activity.MODE_PRIVATE);
+                SharedPreferences activityPrefs = ((Activity)stContext).getPreferences(Activity.MODE_PRIVATE);
                 int lastIdUsed = activityPrefs.getInt(SETTING_LAST_ID, Setting.UKNOWN_ID);
                 restoreSettings(lastIdUsed);
 
@@ -297,7 +296,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         mConnectTime = SystemClock.elapsedRealtime();
         mConnected = true;
 
-        mNavListener = new SimpleNavigationListener(stActivity.getFragmentManager(), stActivity);
+        mNavListener = new SimpleNavigationListener(((Activity)stContext).getFragmentManager(), ((Activity)stContext));
         if (mDeviceStore.getSetting() == null || mDeviceStore.getSetting().getNetworkKey() == null) {
             Log.d("TEST", "TEST");
         }
@@ -315,7 +314,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         if( !isConnected()){
             return;
         }
-        mAssociationService = new AssociationService(stActivity, this);
+        mAssociationService = new AssociationService(((Activity)stContext), this);
         mAssociationService.setOnBLAssociationResultCallbacks(this);
         mAssociationService.serviceAssociation();
     }
@@ -357,7 +356,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
             switch (msg.what) {
                 case MeshService.MESSAGE_LE_CONNECTED: {
                     parentActivity.onConnected();
-                    //Toast.makeText(BluetoothManager.stActivity, "블루투스 장비에 연결되었습니다. \n(address:" + mBridgeAddress + ")", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(BluetoothManager.stContext, "블루투스 장비에 연결되었습니다. \n(address:" + mBridgeAddress + ")", Toast.LENGTH_SHORT).show();
                     if (mBLResultCallbacks != null) {
                         mBLResultCallbacks.onBLConnectedResult(true);
                     }
@@ -373,15 +372,15 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                     if (mBLResultCallbacks != null) {
                         mBLResultCallbacks.onBLConnectedResult(false);
                     } else {
-                        //Toast.makeText(BluetoothManager.stActivity, "블루투스와의 연결을 해제하였습니다.", Toast.LENGTH_SHORT).show();
-                        //BluetoothManager.stActivity.finish();
+                        //Toast.makeText(BluetoothManager.stContext, "블루투스와의 연결을 해제하였습니다.", Toast.LENGTH_SHORT).show();
+                        //BluetoothManager.stContext.finish();
                     }
                     break;
                 }
                 case MeshService.MESSAGE_TIMEOUT:
                     int expectedMsg = msg.getData().getInt(MeshService.EXTRA_EXPECTED_MESSAGE);
                     parentActivity.onMessageTimeout(expectedMsg);
-                    //SPUtil.showToast(stActivity, "블루투스 요청에 실패하였습니다.");
+                    //SPUtil.showToast(stContext, "블루투스 요청에 실패하였습니다.");
                     SPUtil.dismissDialog();
                     break;
                 case MeshService.MESSAGE_DEVICE_DISCOVERED: {
@@ -500,7 +499,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                                     GroupModelApi.getNumModelGroupIds(parentActivity.mSendDeviceId, parentActivity.mModelsToQueryForGroups.peek());
                                 }
                             } else {
-                                parentActivity.mGroupAckListener.groupsUpdated(parentActivity.mSendDeviceId, false, stActivity.getString(R.string.group_query_fail));
+                                parentActivity.mGroupAckListener.groupsUpdated(parentActivity.mSendDeviceId, false, stContext.getString(R.string.group_query_fail));
                             }
                         }
                     }
@@ -527,7 +526,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                             // Tell the listener that the update was OK.
                             parentActivity.mGroupAckListener.groupsUpdated(
                                     parentActivity.mSendDeviceId, true,
-                                    parentActivity.mGroupSuccess ? stActivity.getString(R.string.group_update_ok) : stActivity.getString(R.string.group_update_with_problems));
+                                    parentActivity.mGroupSuccess ? stContext.getString(R.string.group_update_ok) : stContext.getString(R.string.group_update_with_problems));
                         }
                     }
                     break;
@@ -546,7 +545,11 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                         System.arraycopy(data, 0, parentActivity.mData, sqn, data.length);
                     }
                     // String receiveData  = new String(data, 0, data.length);
-                    final String hexString = "0" + new java.math.BigInteger(data).toString(16);
+
+                    String hexString = new java.math.BigInteger(data).toString(16);
+                    if( hexString.length() % 2 != 0){
+                        hexString = "0" + hexString;
+                    }
                     try {
                         final String num = hexString.substring(0, 2);
                         final String plugId = String.format("%x", deviceId);
@@ -594,32 +597,102 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                             if (mAssociatedCallbacks != null) {
                                 mAssociatedCallbacks.onGetAssociatedDevice(plugId, groupIdList);
                             }
-                        } else if(num.equalsIgnoreCase(BLConfig.GET_SCHEDULE_RESPONSE_NUM)){
+                        } else if(num.equalsIgnoreCase(BLConfig.GET_SCHEDULE_RESPONSE_NUM)){ // Get Schedule Response
                             final int result = Integer.parseInt(hexString.substring(12, 14));
                             if (result == BLConfig.RESULT_SUCCESS) {
                                 String startTime = hexString.substring(4, 8);
                                 String endTime = hexString.substring(8, 12);
 
-                                // TODO : AM, PM 구해서 넣기
-                                ScheduleVo scheduleVo = new ScheduleVo();
-                                mScheduleResultCallbacks.onScheduleResult(scheduleVo);
-                            }
-                        } else if(num.equalsIgnoreCase(BLConfig.GET_CUTOFF_RESPONSE_NUM)){
-                            final int result = Integer.parseInt(hexString.substring(10, 12));
-                            if (result == BLConfig.RESULT_SUCCESS) {
-                                String power = hexString.substring(2, 6);
-                                String min = "";
-                                try{
-                                    min = String.valueOf(Integer.parseInt(hexString.substring(6, 10)) / 60);
+                                try {
+                                    int nStartTime = Integer.parseInt(startTime, 16);
+                                    int nEndTime = Integer.parseInt(endTime, 16);
+
+                                    if( nStartTime == 0){
+                                        return;
+                                    }
+                                    startTime = String.valueOf(nStartTime);
+                                    if( startTime.length() % 2 != 0){
+                                        startTime = "0" + startTime;
+                                    }
+                                    endTime = String.valueOf(nEndTime);
+                                    if( endTime.length() % 2 != 0){
+                                        endTime = "0" + endTime;
+                                    }
+                                    int nStartHour = Integer.parseInt(startTime.substring(0, 2));
+                                    int nStartMin = Integer.parseInt(startTime.substring(2, 4));
+                                    int nEndHour = Integer.parseInt(endTime.substring(0, 2));
+                                    int nEndMin = Integer.parseInt(endTime.substring(2, 4));
+
+                                    String startAmPm = SPConfig.AM;
+                                    String endAmPm = SPConfig.AM;
+                                    String startHour = String.valueOf(nStartHour);
+                                    String startMin  = String.valueOf(nStartMin);
+                                    String endHour = String.valueOf(nEndHour);
+                                    String endMin = String.valueOf(nEndMin);
+
+                                    if( nStartHour >= 12){
+                                        startAmPm = SPConfig.PM;
+                                        nStartHour = nStartHour - 12;
+                                        startHour = String.valueOf(nStartHour);
+                                    }
+                                    if( nStartHour < 10){
+                                        startHour = "0" + startHour;
+                                    }
+                                    if( nStartMin < 10){
+                                        startMin = "0" + String.valueOf(nStartMin);
+                                    }
+                                    if( nEndHour >= 12){
+                                        endAmPm = SPConfig.PM;
+                                        nEndHour = nEndHour - 12;
+                                        endHour = String.valueOf(nEndHour);
+                                    }
+                                    if( nEndHour < 10){
+                                        endHour = "0" + endHour;
+                                    }
+                                    if( nEndMin < 10){
+                                        endMin = "0" + String.valueOf(nEndMin);
+                                    }
+
+                                    ScheduleVo scheduleVo = new ScheduleVo(0, startAmPm, endAmPm, startHour + ":" + startMin, endHour + ":" + endMin, false, false); // isOn 은 콜백 메소드에서 변환
+                                    if( !scheduleVo.getStartTime().equalsIgnoreCase(SPConfig.NO_SCHEDULE)){
+                                        scheduleVo.setIsStartOn(true);
+                                    }
+                                    if( !scheduleVo.getEndTime().equalsIgnoreCase(SPConfig.NO_SCHEDULE)){
+                                        scheduleVo.setIsEndOn(true);
+                                    }
+
+                                    mScheduleResultCallbacks.onScheduleResult(scheduleVo);
                                 } catch (NumberFormatException nfe){
                                     nfe.printStackTrace();
                                 }
-                                CutoffVo cutoffVo = new CutoffVo(power, min, true);
-                                mCutoffResultCallbacks.onCutoffResult(cutoffVo);
+                            }
+                        } else if(num.equalsIgnoreCase(BLConfig.GET_CUTOFF_RESPONSE_NUM)){ // Get Cutoff Response
+                            final int result = Integer.parseInt(hexString.substring(10, 12));
+                            if (result == BLConfig.RESULT_SUCCESS) {
+                                String power = hexString.substring(2, 6);
+                                String sec = hexString.substring(6, 10);
+
+                                try{
+                                    int nPower = 0;
+                                    int nSec = 0;
+
+                                    nPower = Integer.parseInt(power, 16);
+                                    nSec = Integer.parseInt(sec, 16);
+
+                                    power = String.valueOf(nPower);
+                                    if( nSec < 10){
+                                        sec = "0" + sec;
+                                    }
+
+                                    CutoffVo cutoffVo = new CutoffVo(power, sec, true);
+                                    mCutoffResultCallbacks.onCutoffResult(cutoffVo);
+                                } catch (NumberFormatException nfe){
+                                    nfe.printStackTrace();
+                                }
                             }
                         }
 
-                        SharedPreferences preference = stActivity.getSharedPreferences("last_device", 0);
+                        SharedPreferences preference = stContext.getSharedPreferences("last_device", 0);
                         SharedPreferences.Editor edit = preference.edit();
                         edit.putString("name", plugId);
                         edit.commit();
@@ -684,7 +757,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                     if (mGroupAckListener != null) {
                         // Timed out waiting for group update ACK.
                         mGroupAckListener.groupsUpdated(mSendDeviceId, false,
-                                stActivity.getString(R.string.group_timeout));
+                                stContext.getString(R.string.group_timeout));
                     }
                     mGroupAcksWaiting = 0;
                 }
@@ -707,7 +780,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                 break;
             case MeshService.MESSAGE_GROUP_NUM_GROUPIDS:
                 if (mGroupAckListener != null) {
-                    mGroupAckListener.groupsUpdated(mSendDeviceId, false, stActivity.getString(R.string.group_query_fail));
+                    mGroupAckListener.groupsUpdated(mSendDeviceId, false, stContext.getString(R.string.group_query_fail));
                 }
                 break;
             case MeshService.MESSAGE_CONFIG_DEVICE_INFO:
@@ -719,7 +792,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                     Device device =mDeviceStore.getDevice(mDeviceIdtoUuidHash.keyAt(0));
                     mDeviceIdtoUuidHash.removeAt(0);
                     if (device != null) {
-                        //Toast.makeText(stActivity, device.getName() + " " + stActivity.getString(R.string.added),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(stContext, device.getName() + " " + stContext.getString(R.string.added),Toast.LENGTH_SHORT).show();
                     }
                     if (mAssListener != null) {
                         mAssListener.deviceAssociated(true);
@@ -788,7 +861,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                 // There were no changes to the groups so no updates were sent. Just tell the listener
                 // that the operation is complete.
                 if (mGroupAckListener != null) {
-                    mGroupAckListener.groupsUpdated(mSendDeviceId, true, stActivity.getString(R.string.group_no_changes));
+                    mGroupAckListener.groupsUpdated(mSendDeviceId, true, stContext.getString(R.string.group_no_changes));
                 }
             }
         }
@@ -796,7 +869,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
             // Not enough groups supported on device.
             if (mGroupAckListener != null) {
                 mGroupAckListener.groupsUpdated(mSendDeviceId, false,
-                        stActivity.getString(R.string.group_max_fail) + " " + numSupportedGroups + " " + stActivity.getString(R.string.groups));
+                        stContext.getString(R.string.group_max_fail) + " " + numSupportedGroups + " " + stContext.getString(R.string.groups));
             }
         }
     }
@@ -887,7 +960,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         	}
         	else {
 	        	hideProgress();
-	        	Toast.makeText(stActivity, stActivity.getString(R.string.connect_faiL), Toast.LENGTH_SHORT).show();
+	        	Toast.makeText(stContext, stContext.getString(R.string.connect_faiL), Toast.LENGTH_SHORT).show();
                 if( mBLResultCallbacks != null) {
                     mBLResultCallbacks.onBLConnectedResult(false);
                 }
@@ -904,7 +977,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
 //            }
 //            else {
 //                hideProgress();
-//                Toast.makeText(stActivity, stActivity.getString(R.string.connect_faiL), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(stContext, stContext.getString(R.string.connect_faiL), Toast.LENGTH_SHORT).show();
 //                if( mBLResultCallbacks != null) {
 //                    mBLResultCallbacks.onBLConnectedResult(false);
 //                }
@@ -939,7 +1012,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
      */
     private void showProgress(String message) {
     	if(mProgress==null){
-    		mProgress = new ProgressDialog(stActivity);
+    		mProgress = new ProgressDialog(stContext);
 	        mProgress.setMessage(message);
 	        mProgress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 	        mProgress.setIndeterminate(true);
@@ -970,7 +1043,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
 //    	addDevice(device);
 //
 //    	if(showToast){
-//    		//Toast.makeText(stActivity, device.getName() + " " + stActivity.getString(R.string.added), Toast.LENGTH_SHORT).show();
+//    		//Toast.makeText(stContext, device.getName() + " " + stContext.getString(R.string.added), Toast.LENGTH_SHORT).show();
 //    	}
 //
 //    }
@@ -985,7 +1058,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         mDeviceStore.addDevice(device);
 
         if (showToast) {
-            //Toast.makeText(stActivity, device.getName() + " " + stActivity.getString(R.string.added), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(stContext, device.getName() + " " + stContext.getString(R.string.added), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -1029,7 +1102,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
             mDeviceStore.loadSetting(settingsID);
         }
         // save in sharePreferences the last settings used.
-        SharedPreferences activityPrefs = stActivity.getPreferences(Activity.MODE_PRIVATE);
+        SharedPreferences activityPrefs = ((Activity)stContext).getPreferences(Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = activityPrefs.edit();
 
         if (mDeviceStore.getSetting() != null) {
@@ -1058,10 +1131,10 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
             for (int i=0; i < 5 ; i++) {
                 GroupDevice group;
                 if (i==0) {
-                    group = new GroupDevice(Device.GROUP_ADDR_BASE, stActivity.getString(R.string.all_lights));
+                    group = new GroupDevice(Device.GROUP_ADDR_BASE, stContext.getString(R.string.all_lights));
                 }
                 else {
-                    group = new GroupDevice(Device.GROUP_ADDR_BASE + i, stActivity.getString(R.string.group) + " " + i);
+                    group = new GroupDevice(Device.GROUP_ADDR_BASE + i, stContext.getString(R.string.group) + " " + i);
                 }
 
                 // store the group in the database.
@@ -1095,7 +1168,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         try {
             mService.associateDevice(uuidHash, 0);
         } catch (AssociationFailedException afe){
-            SPUtil.showToast(stActivity, "Bluetooth 플러그를 추가하지 못했습니다.");
+            SPUtil.showToast(stContext, "Bluetooth 플러그를 추가하지 못했습니다.");
         }
     }
 
@@ -1239,7 +1312,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
 
         // There isn't any operation to do, so the dialog should be dismissed.
         if (!inProgress) {
-            mGroupAckListener.groupsUpdated(mSendDeviceId, false, stActivity.getString(R.string.group_query_fail));
+            mGroupAckListener.groupsUpdated(mSendDeviceId, false, stContext.getString(R.string.group_query_fail));
         }
     }
 
@@ -1289,12 +1362,12 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
         try {
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-            stActivity.startActivityForResult(intent, 0);
+            ((Activity)stContext).startActivityForResult(intent, 0);
         }
         catch (Exception e) {
             Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
             Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-            stActivity.startActivity(marketIntent);
+            stContext.startActivity(marketIntent);
         }
     }
 

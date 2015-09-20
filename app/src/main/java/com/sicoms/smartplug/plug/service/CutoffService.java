@@ -56,7 +56,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
             if (theDbVoList != null) {
                 List<CutoffVo> scheduleVoList = new ArrayList<>();
                 for (DbCutOffVo vo : theDbVoList) {
-                    boolean isOn = vo.getUseYn() == SPConfig.STATUS_ON;
+                    boolean isOn = vo.getUseYn().equalsIgnoreCase(SPConfig.STATUS_ON);
                     String setMin = vo.getSetMin();
                     String setWatt = vo.getSetWatt();
                     CutoffVo cutoffVo = new CutoffVo(setWatt, setMin, isOn);
@@ -81,10 +81,11 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
             DbCutOffVoDao theDao = daoSession.getDbCutOffVoDao();
             DbCutOffVo theDbVo = new DbCutOffVo();
 
+            theDbVo.setCutSeq((long) 0);
             theDbVo.setPlugId(plugVo.getPlugId());
             theDbVo.setSetWatt(cutoffVo.getPower());
             theDbVo.setSetMin(cutoffVo.getMin());
-            theDbVo.setUseYn(SPConfig.STATUS_ON);
+            theDbVo.setUseYn(cutoffVo.isOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF);
 
             theDao.insertOrReplace(theDbVo);
 
@@ -213,6 +214,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
                 String status = cutoffVo.isOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF;
                 String requestMessage = BLMessage.getSetCutoffRequestMessage(MainActivity.stBluetoothManager, uuid, power, min, status);
 
+                MainActivity.stBluetoothManager.setCutoffVo(cutoffVo);
                 MainActivity.stBluetoothManager.setOnCutoffResultCallbacks(mCallbacks);
                 if (MainActivity.stBluetoothManager.isConnected()) {
                     MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);

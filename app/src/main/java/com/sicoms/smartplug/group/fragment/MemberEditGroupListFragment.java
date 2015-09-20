@@ -108,7 +108,7 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
         ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
         initialize();
 
-        mSPEvent = new SPEvent((Activity)mContext);
+        mSPEvent = new SPEvent();
         mSelectedVoList = new ArrayList<>();
         mMemberService = new MemberService(mContext);
         mGroupService = new GroupService(mContext);
