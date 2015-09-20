@@ -12,7 +12,7 @@
         android:padding="12dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp">
-        <TextView
+        <TextView android:id="@+id/tv_topic_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="나가시겠습니까?"

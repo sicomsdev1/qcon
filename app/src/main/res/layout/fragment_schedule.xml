@@ -69,19 +69,20 @@
                         android:text="켜는 시간"
                         android:textSize="20sp"
                         android:textColor="@color/color01"/>
-                    <ImageView android:id="@+id/iv_start_arrow_btn"
-                        android:layout_width="30dp"
+                    android:src="@drawable/selector_open_close_arrow_btn"/>
+                    <ImageView android:id="@+id/iv_start_switch"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
-                        android:src="@drawable/selector_open_close_arrow_btn"/>
+                        android:src="@drawable/selector_schedule_switch"/>
                     <TextView android:id="@+id/tv_start_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@id/iv_start_arrow_btn"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@id/iv_start_switch"
                         android:text="오전 12:00"
                         android:textSize="20sp"
                         android:textColor="@color/color06"/>
@@ -125,13 +126,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
             </LinearLayout>
-            <ImageView android:id="@+id/iv_start_switch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:src="@drawable/selector_schedule_switch"/>
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -157,19 +153,19 @@
                         android:text="끄는 시간"
                         android:textSize="20sp"
                         android:textColor="@color/color01"/>
-                    <ImageView android:id="@+id/iv_end_arrow_btn"
-                        android:layout_width="30dp"
+                    <ImageView android:id="@+id/iv_end_switch"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
-                        android:src="@drawable/selector_open_close_arrow_btn"/>
+                        android:src="@drawable/selector_schedule_switch"/>
                     <TextView android:id="@+id/tv_end_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/iv_end_arrow_btn"
-                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/iv_end_switch"
+                        android:layout_marginRight="20dp"
                         android:text="오전 12:00"
                         android:textSize="20sp"
                         android:textColor="@color/color06"/>
@@ -213,12 +209,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
             </LinearLayout>
-            <ImageView android:id="@+id/iv_end_switch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:src="@drawable/selector_schedule_switch"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

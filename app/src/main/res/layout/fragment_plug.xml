@@ -247,22 +247,26 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:background="@color/color05">
-            <ImageView android:id="@+id/iv_set_schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/btn_icon_plug_schedule"/>
-            <TextView android:id="@+id/tv_set_schedule_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:text="스케쥴 설정"
-                android:textSize="17sp"
-                android:textColor="@color/color02"/>
+                android:orientation="vertical">
+                <ImageView android:id="@+id/iv_set_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/btn_icon_plug_schedule"/>
+                <TextView android:id="@+id/tv_set_schedule_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="스케쥴 설정"
+                    android:textSize="17sp"
+                    android:textColor="@color/color02"/>
+            </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="2dp"
@@ -272,22 +276,26 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:background="@color/color05">
-            <ImageView android:id="@+id/iv_set_cutoff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/btn_icon_plug_cutoff"/>
-            <TextView android:id="@+id/iv_set_cutoff_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:text="전원 차단 설정"
-                android:textSize="17sp"
-                android:textColor="@color/color02"/>
+                android:orientation="vertical">
+                <ImageView android:id="@+id/iv_set_cutoff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/btn_icon_plug_cutoff"/>
+                <TextView android:id="@+id/iv_set_cutoff_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="전원 차단 설정"
+                    android:textSize="17sp"
+                    android:textColor="@color/color02"/>
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

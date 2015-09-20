@@ -24,7 +24,8 @@
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/color01"
                 android:textSize="15sp"
-                android:text="실시간 전력량"/>
+                android:text="실시간 전력량"
+                android:textStyle="bold"/>
             <TextView android:id="@+id/tv_main_w"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,7 +34,8 @@
                 android:layout_alignTop="@id/realtime_usage_text"
                 android:paddingTop="3dp"
                 android:textColor="#CF3682"
-                android:textSize="100sp"/>
+                android:textSize="100sp"
+                android:text="0"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +77,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/color01"
                 android:textSize="15sp"
-                android:text="Plug ON"/>
+                android:text="Plug ON"
+                android:textStyle="bold"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:textColor="@color/dashboard_on"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:text="0"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +104,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color01"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:text="0"/>
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -127,7 +132,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/color01"
                 android:textSize="15sp"
-                android:text="사용한 전력량"/>
+                android:text="사용한 전력량"
+                android:textStyle="bold"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,7 +153,8 @@
                     android:layout_toLeftOf="@id/wh_text"
                     android:maxLines="1"
                     android:textColor="@color/dashboard_on"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:text="0"/>
             </RelativeLayout>
         </RelativeLayout>
         <RelativeLayout
@@ -168,7 +175,8 @@
                 android:layout_marginBottom="3dp"
                 android:textColor="@color/color01"
                 android:textSize="15sp"
-                android:text="사용한 금액"/>
+                android:text="사용한 금액"
+                android:textStyle="bold"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -188,7 +196,8 @@
                     android:layout_toLeftOf="@id/won_text"
                     android:maxLines="1"
                     android:textColor="@color/dashboard_on"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:text="0"/>
             </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
@@ -222,15 +231,16 @@
                     android:layout_marginBottom="10dp"
                     android:layout_toRightOf="@id/sub1_img"
                     android:textColor="@color/color01"
-                    android:textSize="16sp"
-                    android:text="한달 예상 사용량"/>
+                    android:textSize="15sp"
+                    android:text="한달 예상 사용량"
+                    android:textStyle="bold"/>
                 <TextView android:id="@+id/forecast_elec_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/sub1_text"
                     android:layout_alignRight="@id/sub1_text"
                     android:textColor="@color/color01"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="Wh"/>
                 <TextView android:id="@+id/tv_forecast_usage"
                     android:layout_width="wrap_content"
@@ -239,7 +249,8 @@
                     android:layout_alignBottom="@id/forecast_elec_text"
                     android:layout_toLeftOf="@id/forecast_elec_text"
                     android:textColor="@color/dashboard_on"
-                    android:textSize="18sp"/>
+                    android:textSize="15sp"
+                    android:text="0"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="1dp"
@@ -262,8 +273,9 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/color01"
-                        android:textSize="16sp"
-                        android:text="한달 예상 금액"/>
+                        android:textSize="15sp"
+                        android:text="한달 예상 금액"
+                        android:textStyle="bold"/>
                     <ImageView android:id="@+id/sub2_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -275,7 +287,7 @@
                         android:layout_alignRight="@id/sub2_text"
                         android:layout_below="@id/sub2_text"
                         android:textColor="@color/color01"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:text="원"/>
                     <TextView android:id="@+id/tv_forecast_price"
                         android:layout_width="wrap_content"
@@ -285,7 +297,8 @@
                         android:layout_alignBottom="@id/forecast_price_text"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/dashboard_on"
-                        android:textSize="18sp"/>
+                        android:textSize="15sp"
+                        android:text="0"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

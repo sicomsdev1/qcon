@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="90dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,37 +20,83 @@
                 app:border_width="3dp"
                 app:border_color="#10000000"
                 app:border_overlay="true"/>
-            <TextView android:id="@+id/tv_group_name"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_height="match_parent"
                 android:layout_toRightOf="@id/iv_group_icon_btn"
-                android:text="연구실"
-                android:textColor="@color/color01"
-                android:textSize="23sp"
-                android:maxLength="15"
-                android:maxLines="1"/>
-            <RelativeLayout android:id="@+id/rl_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="15dp">
-                <ImageView android:id="@+id/arrow"
+                android:gravity="center">
+                <TextView android:id="@+id/tv_group_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:text="연구실"
+                    android:textColor="@color/color01"
+                    android:textSize="23sp"
+                    android:maxLines="1"/>
+                <RelativeLayout android:id="@+id/rl_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_list_arrow_b"/>
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true">
+                    <ImageView android:id="@+id/arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/icon_list_arrow_b"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_group_name"
+                    android:layout_alignLeft="@id/tv_group_name"
+                    android:layout_marginTop="10dp">
+                    <ImageView android:id="@+id/plug_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/icon_place_plug"/>
+                    <TextView android:id="@+id/tv_plug_count"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/plug_icon"
+                        android:textSize="15sp"
+                        android:textColor="@color/color04"/>
+                    <ImageView android:id="@+id/member_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_plug_count"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/icon_place_member"/>
+                    <TextView android:id="@+id/tv_member_count"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/member_icon"
+                        android:textSize="15sp"
+                        android:textColor="@color/color04"/>
+                    <TextView android:id="@+id/tv_group_usage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_member_count"
+                        android:layout_marginRight="3dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/color01"
+                        android:text="120"/>
+                    <TextView android:id="@+id/tv_group_usage_w"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_group_usage"
+                        android:textSize="20sp"
+                        android:textColor="@color/color01"
+                        android:text="W"/>
+                </RelativeLayout>
             </RelativeLayout>
-            <TextView android:id="@+id/tv_group_usage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/rl_right"
-                android:textSize="23sp"
-                android:textColor="@color/color01"
-                android:text="120W"/>
         </RelativeLayout>
 
         <RelativeLayout android:id="@+id/rl_btn"
