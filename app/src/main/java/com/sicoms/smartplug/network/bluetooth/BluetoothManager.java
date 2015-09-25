@@ -623,6 +623,8 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                                     int nEndHour = Integer.parseInt(endTime.substring(0, 2));
                                     int nEndMin = Integer.parseInt(endTime.substring(2, 4));
 
+                                    boolean isStartOn = true;
+                                    boolean isEndOn = true;
                                     String startAmPm = SPConfig.AM;
                                     String endAmPm = SPConfig.AM;
                                     String startHour = String.valueOf(nStartHour);
@@ -632,6 +634,9 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
 
                                     if( nStartHour >= 12){
                                         startAmPm = SPConfig.PM;
+                                        if( nStartHour > 24){
+                                            isStartOn = false;
+                                        }
                                         nStartHour = nStartHour - 12;
                                         startHour = String.valueOf(nStartHour);
                                     }
@@ -643,6 +648,9 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                                     }
                                     if( nEndHour >= 12){
                                         endAmPm = SPConfig.PM;
+                                        if( nEndHour > 24){
+                                            isEndOn = false;
+                                        }
                                         nEndHour = nEndHour - 12;
                                         endHour = String.valueOf(nEndHour);
                                     }
@@ -653,13 +661,7 @@ public class BluetoothManager implements DeviceController, AssociationService.BL
                                         endMin = "0" + String.valueOf(nEndMin);
                                     }
 
-                                    ScheduleVo scheduleVo = new ScheduleVo(0, startAmPm, endAmPm, startHour + ":" + startMin, endHour + ":" + endMin, false, false); // isOn 은 콜백 메소드에서 변환
-                                    if( !scheduleVo.getStartTime().equalsIgnoreCase(SPConfig.NO_SCHEDULE)){
-                                        scheduleVo.setIsStartOn(true);
-                                    }
-                                    if( !scheduleVo.getEndTime().equalsIgnoreCase(SPConfig.NO_SCHEDULE)){
-                                        scheduleVo.setIsEndOn(true);
-                                    }
+                                    ScheduleVo scheduleVo = new ScheduleVo(0, startAmPm, endAmPm, startHour + ":" + startMin, endHour + ":" + endMin, isStartOn, isEndOn); // isOn 은 콜백 메소드에서 변환
 
                                     mScheduleResultCallbacks.onScheduleResult(scheduleVo);
                                 } catch (NumberFormatException nfe){

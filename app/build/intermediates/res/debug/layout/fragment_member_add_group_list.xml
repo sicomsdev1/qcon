@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="@integer/actionbar_height_weight">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="88"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:background="@color/color09">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+                <TextView android:id="@+id/user_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="User"
+                    android:textSize="20sp"
+                    android:textColor="@color/color02"/>
+                <TextView android:id="@+id/tv_member_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/user_text"
+                    android:layout_marginRight="5dp"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textColor="@color/color07"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_member_count"
+                    android:text="선택"
+                    android:textSize="20sp"
+                    android:textColor="@color/color02"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+                <ImageView android:id="@+id/iv_member_add_finish_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/all_on_off_text"
+                    android:src="@drawable/selector_finish_btn"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#b7b7b7"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="92">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:choiceMode= "multipleChoice"
+                android:background="@color/trans01"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/fragment_member_add_group_list.xml -->

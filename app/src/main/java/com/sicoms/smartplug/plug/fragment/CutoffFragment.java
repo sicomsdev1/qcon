@@ -1,10 +1,7 @@
 package com.sicoms.smartplug.plug.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -14,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -52,8 +48,6 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
     private AbstractWheel mWvMin;
     private ImageView mIvCutoffSwitch;
     private RelativeLayout mRlCutoffBg;
-    private LinearLayout mLlPowerWv;
-    private LinearLayout mLlMinWv;
 
     private ConditionAdapter mPowerdapter;
     private ConditionAdapter mMinAdapter;
@@ -87,13 +81,9 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
         mService.setOnCutoffResultCallbacks(this);
 
         mWvPower = (AbstractWheel) view.findViewById(R.id.wv_power);
-        mWvMin = (AbstractWheel) view.findViewById(R.id.wv_min);
+        mWvMin = (AbstractWheel) view.findViewById(R.id.wv_time);
         mRlCutoffBg = (RelativeLayout) view.findViewById(R.id.rl_cutoff_bg);
-        mLlPowerWv= (LinearLayout) view.findViewById(R.id.ll_power_wv);
-        mLlMinWv = (LinearLayout) view.findViewById(R.id.ll_min_wv);
         mRlCutoffBg.setVisibility(View.VISIBLE);
-        mLlMinWv.setVisibility(View.INVISIBLE);
-        mLlPowerWv.setVisibility(View.INVISIBLE);
 
         mIvCutoffSwitch = (ImageView) view.findViewById(R.id.iv_curoff_switch);
         mIvCutoffSwitch.setOnClickListener(mEvent);
@@ -127,17 +117,13 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
             mIvCutoffSwitch.setSelected(isOn);
             if( isOn){
                 mRlCutoffBg.setVisibility(View.INVISIBLE);
-                mLlMinWv.setVisibility(View.VISIBLE);
-                mLlPowerWv.setVisibility(View.VISIBLE);
             } else {
                 mRlCutoffBg.setVisibility(View.VISIBLE);
-                mLlMinWv.setVisibility(View.INVISIBLE);
-                mLlPowerWv.setVisibility(View.INVISIBLE);
             }
 
             try {
                 String power = mCutoffVo.getPower();
-                String min = mCutoffVo.getMin();
+                String min = mCutoffVo.getTime();
 
                 mWvPower.setCurrentItem(Integer.parseInt(power) - 1);
                 mWvMin.setCurrentItem(Integer.parseInt(min));
@@ -191,8 +177,9 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
                 String power = mPowerdapter.get(powerNum);
                 int minNum = mWvMin.getCurrentItem();
                 String min = mMinAdapter.get(minNum);
+                boolean isOn = mIvCutoffSwitch.isSelected();
 
-                CutoffVo cutoffVo = new CutoffVo(power, min, true);
+                CutoffVo cutoffVo = new CutoffVo(power, min, isOn);
                 mService.setCutoffDeviceInDevice(mPlugVo, cutoffVo);
 
                 SPUtil.showDialog(mContext);
@@ -210,7 +197,7 @@ public class CutoffFragment extends Fragment implements CutoffResultCallbacks {
                 cutoffVo.setIsOn(false);
             }
             if( mService.updateDbCutoff(mPlugVo, cutoffVo)) {
-                SPUtil.showToast(mContext, "전원 차단 설정을 저장하였습니다.");
+                SPUtil.showToast(mContext, "전원 차단 설정을 동기화 하였습니다.");
             } else {
                 SPUtil.showToast(mContext, "전원 차단 설정을 저장하지 못했습니다.");
             }

@@ -29,7 +29,7 @@ public class DbCutOffVoDao extends AbstractDao<DbCutOffVo, Long> {
         public final static Property PlugId = new Property(0, String.class, "plugId", false, "PLUG_ID");
         public final static Property CutSeq = new Property(1, Long.class, "cutSeq", true, "CUT_SEQ");
         public final static Property SetWatt = new Property(2, String.class, "setWatt", false, "SET_WATT");
-        public final static Property SetMin = new Property(3, String.class, "setMin", false, "SET_MIN");
+        public final static Property SetMin = new Property(3, String.class, "setTime", false, "SET_MIN");
         public final static Property UseYn = new Property(4, String.class, "useYn", false, "USE_YN");
     }
 
@@ -53,7 +53,7 @@ public class DbCutOffVoDao extends AbstractDao<DbCutOffVo, Long> {
                 "'PLUG_ID' TEXT NOT NULL ," + // 0: plugId
                 "'CUT_SEQ' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 1: cutSeq
                 "'SET_WATT' TEXT NOT NULL ," + // 2: setWatt
-                "'SET_MIN' TEXT NOT NULL ," + // 3: setMin
+                "'SET_MIN' TEXT NOT NULL ," + // 3: setTime
                 "'USE_YN' TEXT NOT NULL );"); // 4: useYn
         // Add Indexes
         db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_tb_cutoff_PLUG_ID_CUT_SEQ ON tb_cutoff" +
@@ -100,7 +100,7 @@ public class DbCutOffVoDao extends AbstractDao<DbCutOffVo, Long> {
             cursor.getString(offset + 0), // plugId
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // cutSeq
             cursor.getString(offset + 2), // setWatt
-            cursor.getString(offset + 3), // setMin
+            cursor.getString(offset + 3), // setTime
             cursor.getString(offset + 4) // useYn
         );
         return entity;

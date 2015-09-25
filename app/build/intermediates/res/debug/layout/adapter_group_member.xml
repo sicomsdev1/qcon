@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="15dp">
+    <com.sicoms.smartplug.util.profile.CircleImageView
+        android:id="@+id/iv_member_icon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/profile_default"
+        app:border_width="3dp"
+        app:border_color="#10000000"
+        app:border_overlay="true"/>
+    <TextView android:id="@+id/tv_member_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/iv_member_icon"
+        android:textColor="@color/color01"
+        android:textSize="23sp"/>
+</RelativeLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/adapter_group_member.xml -->

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+            android:startColor="#FFeeeeee"
+            android:centerColor="#FF111111"
+            android:endColor="#FFeeeeee"/>
+</shape>
+<!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/drawable/divider_dark_gradient_horizontal.xml -->

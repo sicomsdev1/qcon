@@ -80,7 +80,7 @@
                 android:layout_weight="5"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <antistatic.spinnerwheel.WheelVerticalView android:id="@+id/wv_min"
+                <antistatic.spinnerwheel.WheelVerticalView android:id="@+id/wv_time"
                     app:visibleItems="5"
                     app:isCyclic="true"
                     android:layout_width="30dp"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:paddingLeft="5dp"
-                    android:text="분 지속"
+                    android:text="초 지속"
                     android:textSize="20sp"
                     android:textColor="@color/color01"/>
             </LinearLayout>

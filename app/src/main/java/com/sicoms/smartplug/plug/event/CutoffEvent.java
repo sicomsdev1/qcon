@@ -42,18 +42,12 @@ public class CutoffEvent implements View.OnClickListener {
                 boolean isStartSelect = !v.isSelected();
                 mCutoffVo.setIsOn(isStartSelect);
                 RelativeLayout rl_cutoff_bg = (RelativeLayout) root.findViewById(R.id.rl_cutoff_bg);
-                LinearLayout ll_power_wv = (LinearLayout) root.findViewById(R.id.ll_power_wv);
-                LinearLayout ll_min_wv = (LinearLayout) root.findViewById(R.id.ll_min_wv);
                 ImageView iv_curoff_switch = (ImageView) root.findViewById(R.id.iv_curoff_switch);
                 iv_curoff_switch.setSelected(isStartSelect);
                 if(isStartSelect){
                     rl_cutoff_bg.setVisibility(View.INVISIBLE);
-                    ll_power_wv.setVisibility(View.VISIBLE);
-                    ll_min_wv.setVisibility(View.VISIBLE);
                 } else {
                     rl_cutoff_bg.setVisibility(View.VISIBLE);
-                    ll_power_wv.setVisibility(View.INVISIBLE);
-                    ll_min_wv.setVisibility(View.INVISIBLE);
                 }
                 v.setSelected(isStartSelect);
                 break;

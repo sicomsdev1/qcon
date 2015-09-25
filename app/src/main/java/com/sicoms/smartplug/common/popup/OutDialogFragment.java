@@ -12,12 +12,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.sicoms.smartplug.R;
-import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.interfaces.OutCallbacks;
-import com.sicoms.smartplug.common.interfaces.PictureMenuCallbacks;
-import com.sicoms.smartplug.domain.PlaceVo;
 
 /**
  * Created by gudnam on 2015. 5. 28..
@@ -84,7 +80,7 @@ public class OutDialogFragment extends DialogFragment {
         mBtnOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.outOutResult();
+                mCallbacks.onOutResult();
                 dismiss();
             }
         });

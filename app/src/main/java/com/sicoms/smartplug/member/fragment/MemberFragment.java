@@ -147,7 +147,8 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
 
         mRecyclerView.setAdapter(mAdapter);
 
-        fillAdapterData();
+        mService.requestSelectMemberList();
+        //fillAdapterData();
 
         return view;
     }
@@ -183,6 +184,7 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
     @Override
     public void onResume() {
         super.onResume();
+        fillAdapterData();
 
         if( mActionMode != null){
             mActionMode.finish();
@@ -228,6 +230,7 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.action_delete:
+                    SPUtil.showDialog(mContext);
                     mService.requestDeleteMember(mAdapter.getCheckedItems());
                     mode.finish(); // Action picked, so close the CAB
                     return true;
@@ -247,6 +250,7 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
 
     @Override
     public void onHttpResponseResultStatus(int type, int result, String value) {
+        SPUtil.dismissDialog();
         if( result == HttpConfig.HTTP_SUCCESS) {
             try {
                 HttpResponseVo responseVo = new Gson().fromJson(value, HttpResponseVo.class);
@@ -256,7 +260,6 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
                         List<UserVo> userVoList = new Gson().fromJson(responseVo.getJsonStr(), new TypeToken<List<UserVo>>() {
                         }.getType());
                         if (userVoList == null) {
-                            SPUtil.dismissDialog();
                             SPUtil.showToast(mContext, "동기화에 실패하였습니다.");
                             return;
                         }
@@ -274,7 +277,6 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
                         List<UserVo> userVoList = new Gson().fromJson(responseVo.getJsonStr(), new TypeToken<List<UserVo>>() {
                         }.getType());
                         if (userVoList == null) {
-                            SPUtil.dismissDialog();
                             SPUtil.showToast(mContext, "사용자를 삭제하지 못했습니다.");
                             return;
                         }
@@ -296,7 +298,6 @@ public class MemberFragment extends Fragment implements HttpResponseCallbacks {
         } else {
             Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
-        SPUtil.dismissDialog();
     }
 
 

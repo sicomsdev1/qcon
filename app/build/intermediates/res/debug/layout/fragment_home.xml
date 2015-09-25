@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dpbg_01">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/trans01">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="88"
+            android:gravity="bottom">
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                layout="@layout/layout_dashboard"/>
+
+            <ImageView android:id="@+id/bg_black"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/gradation_bg_black"
+                android:visibility="invisible"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#b7b7b7"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="67"/>
+        <com.hollowsoft.library.slidingdrawer.SlidingDrawer
+            android:id="@+id/sliding_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="@integer/sliding_drawer_height_weight"
+            android:layout_alignParentBottom="true"
+            app:content="@+id/drawer_top"
+            app:handle="@+id/drawer_handle">
+            <RelativeLayout android:id="@+id/drawer_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradation_bg_black" >
+                <ImageView android:id="@+id/iv_drawer_handle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="8dp"
+                    android:src="@drawable/pull_up_arrow"/>
+            </RelativeLayout>
+            <LinearLayout android:id="@+id/drawer_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#b7b7b7"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <RelativeLayout android:id="@+id/rl_menu_group_member"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/trans01">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_home_groupmember"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="Place Member"
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout android:id="@+id/rl_menu_smart_plug"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/trans01">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_home_plug"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="QCON Plug"
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout android:id="@+id/rl_menu_smart_socket"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/trans01">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_home_socket"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="QCON Socket"
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <RelativeLayout android:id="@+id/rl_menu_smart_bulbs"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/trans01">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_home_bulb"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="QCON Bulbs"
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout android:id="@+id/rl_menu_smart_switch"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/trans01">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_home_switch"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"
+                            android:text="QCON Switch"
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.hollowsoft.library.slidingdrawer.SlidingDrawer>
+    </LinearLayout>
+</RelativeLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/fragment_home.xml -->

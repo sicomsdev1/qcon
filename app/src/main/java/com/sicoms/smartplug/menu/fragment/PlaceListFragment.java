@@ -357,7 +357,7 @@ public class PlaceListFragment extends Fragment implements PlaceResultCallbacks,
     }
 
     @Override
-    public void outOutResult() {
+    public void onOutResult() {
         ((Activity)mContext).finish();
         android.os.Process.killProcess(android.os.Process.myPid());
     }

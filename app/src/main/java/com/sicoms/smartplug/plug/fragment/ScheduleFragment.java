@@ -412,7 +412,8 @@ public class ScheduleFragment extends Fragment implements ScheduleResultCallback
             }
             Log.d(TAG, "Schedule Result Success (On/Off : " + scheduleVo.isStartOn() + ")");
             if( mService.updateDbSchedule(mPlugVo, scheduleVo)) {
-                SPUtil.showToast(mActivity, "스케쥴을 저장하였습니다.");
+                SPUtil.showToast(mActivity, "스케쥴을 동기화 하였습니다.");
+                setWheel();
             } else {
                 SPUtil.showToast(mActivity, "스케쥴을 저장하지 못했습니다.");
             }

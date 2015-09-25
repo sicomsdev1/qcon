@@ -78,7 +78,7 @@ public class EditCutoffFragment extends Fragment {
 
         mTvCompleteBtn = (TextView) view.findViewById(R.id.tv_complete_btn);
         mWvPower = (AbstractWheel) view.findViewById(R.id.wv_power);
-        mWvMin = (AbstractWheel) view.findViewById(R.id.wv_min);
+        mWvMin = (AbstractWheel) view.findViewById(R.id.wv_time);
 
         mTvCompleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class EditCutoffFragment extends Fragment {
 
         String power, min;
         power = mCutoffVo.getPower();
-        min = mCutoffVo.getMin();
+        min = mCutoffVo.getTime();
 
         try {
             mWvPower.setCurrentItem(Integer.parseInt(power)-1);

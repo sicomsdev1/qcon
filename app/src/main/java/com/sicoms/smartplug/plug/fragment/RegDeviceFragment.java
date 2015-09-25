@@ -400,7 +400,6 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                 }
 
                 mRegAdapter.notifyDataSetChanged();
-                SPUtil.dismissDialog();
             }
         });
     }
@@ -456,9 +455,15 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
         }
     }
 
+    Handler mHandler = new Handler(Looper.getMainLooper());
     @Override
     public void onRegCompleteResult(RegDeviceVo regDeviceVo) {
-        SPUtil.showDialog(mContext);
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                SPUtil.showDialog(mContext);
+            }
+        });
         mNonRegAdapter.removeItem(regDeviceVo);
         mNonRegAdapter.notifyDataSetChanged();
         if (mService.isAPMode()) {
@@ -611,7 +616,6 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                         if( !mService.updateDbBluetooth(dbBluetoothVo)){
                             SPUtil.showToast(mContext, "블루투스 정보를 저장하지 못했습니다.");
                         }
-
                     } else {
                         SPUtil.showToast(mContext, "블루투스 비밀번호를 동기화하지 못했습니다.");
                     }

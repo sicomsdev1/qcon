@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:gravity="center">
+        <RelativeLayout android:id="@+id/plug_w"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView android:id="@+id/realtime_usage_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/color01"
+                android:textSize="15sp"
+                android:text="실시간 전력량"
+                android:textStyle="bold"/>
+            <TextView android:id="@+id/tv_main_w"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignTop="@id/realtime_usage_text"
+                android:paddingTop="3dp"
+                android:textColor="#CF3682"
+                android:textSize="100sp"
+                android:text="0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@id/tv_main_w"
+                android:layout_alignBaseline="@id/tv_main_w"
+                android:textColor="@color/color01"
+                android:textSize="30sp"
+                android:text="W"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plug_w">
+            <LinearLayout android:id="@+id/line_division"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/color08"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <TextView android:id="@+id/plug_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line_division"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/color01"
+                android:textSize="15sp"
+                android:text="Plug ON"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/plug_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="center">
+                <TextView android:id="@+id/tv_plug_on_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/dashboard_on"
+                    android:textSize="15sp"
+                    android:text="0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="/"/>
+                <TextView android:id="@+id/tv_plug_all_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="0"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView android:id="@+id/elec_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/icon_dashboard_elec"/>
+            <TextView android:id="@+id/elec_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/elec_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/color01"
+                android:textSize="15sp"
+                android:text="사용한 전력량"
+                android:textStyle="bold"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/elec_text"
+                android:gravity="center">
+                <TextView android:id="@+id/wh_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="Wh"/>
+                <TextView android:id="@+id/tv_current_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/wh_text"
+                    android:maxLines="1"
+                    android:textColor="@color/dashboard_on"
+                    android:textSize="15sp"
+                    android:text="0"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView android:id="@+id/price_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/icon_dashboard_price"/>
+            <TextView android:id="@+id/price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/color01"
+                android:textSize="15sp"
+                android:text="사용한 금액"
+                android:textStyle="bold"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price_text"
+                android:gravity="center">
+                <TextView android:id="@+id/won_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="원"/>
+                <TextView android:id="@+id/tv_current_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/won_text"
+                    android:maxLines="1"
+                    android:textColor="@color/dashboard_on"
+                    android:textSize="15sp"
+                    android:text="0"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="33"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <LinearLayout android:id="@+id/ll_dash_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView android:id="@+id/sub1_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_dashboard_sub1"/>
+                <TextView android:id="@+id/sub1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toRightOf="@id/sub1_img"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="한달 예상 사용량"
+                    android:textStyle="bold"/>
+                <TextView android:id="@+id/forecast_elec_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sub1_text"
+                    android:layout_alignRight="@id/sub1_text"
+                    android:textColor="@color/color01"
+                    android:textSize="15sp"
+                    android:text="Wh"/>
+                <TextView android:id="@+id/tv_forecast_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_alignBottom="@id/forecast_elec_text"
+                    android:layout_toLeftOf="@id/forecast_elec_text"
+                    android:textColor="@color/dashboard_on"
+                    android:textSize="15sp"
+                    android:text="0"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/color08"
+                android:layout_centerHorizontal="true"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center">
+                    <TextView android:id="@+id/sub2_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/color01"
+                        android:textSize="15sp"
+                        android:text="한달 예상 금액"
+                        android:textStyle="bold"/>
+                    <ImageView android:id="@+id/sub2_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/sub2_text"
+                        android:src="@drawable/icon_dashboard_sub2"/>
+                    <TextView android:id="@+id/forecast_price_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@id/sub2_text"
+                        android:layout_below="@id/sub2_text"
+                        android:textColor="@color/color01"
+                        android:textSize="15sp"
+                        android:text="원"/>
+                    <TextView android:id="@+id/tv_forecast_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/forecast_price_text"
+                        android:layout_alignBottom="@id/forecast_price_text"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/dashboard_on"
+                        android:textSize="15sp"
+                        android:text="0"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/layout_dashboard.xml -->

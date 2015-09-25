@@ -575,7 +575,7 @@ public class PlaceMapFragment extends Fragment implements HttpResponseCallbacks,
     }
 
     @Override
-    public void outOutResult() {
+    public void onOutResult() {
         if (((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount() > 0) {
             ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
         } else {

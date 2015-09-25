@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color04">
+    <RelativeLayout android:id="@+id/rel_connected_plug"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="19dp"
+        android:background="@color/color04">
+        <TextView
+            android:layout_width="217dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/color06"
+            android:textSize="13sp"
+            android:text="@string/set_group"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rel_plug_group_add"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginBottom="0.5dp">
+        <ImageView android:id="@+id/iv_plug_group_set_add"
+            android:layout_width="61dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@id/iv_plug_group_set_add"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/color03"
+            android:textSize="21sp"
+            android:text="새로운 그룹"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="19dp"
+        android:background="@color/color04">
+        <TextView
+            android:layout_width="217dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/color06"
+            android:textSize="13sp"
+            android:text="@string/set_group_list"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@+id/recycler_group_set"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/fragment_plug_group_set.xml -->

@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#90000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="13"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <com.sicoms.smartplug.util.profile.CircleImageView
+            android:id="@+id/iv_group_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_above="@id/bg_black"
+            android:src="@drawable/profile_default"
+            app:border_width="3dp"
+            app:border_color="#10000000"
+            app:border_overlay="true"/>
+        <ImageView android:id="@+id/iv_camera_btn"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignBottom="@id/iv_group_icon"
+            android:layout_alignRight="@id/iv_group_icon"
+            android:src="@drawable/btn_icon_camera_point"/>
+        <TextView android:id="@+id/tv_group_name"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_group_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:textSize="17sp"
+            android:textColor="@color/color01"
+            android:maxLines="10"/>
+        <ImageView android:id="@+id/iv_edit_group_name_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_group_name"
+            android:layout_alignRight="@id/tv_group_name"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_pen_w"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color02"
+        android:layout_marginBottom="10dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70">
+        <RelativeLayout android:id="@+id/rl_add_member_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp">
+            <ImageView android:id="@+id/plus_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_add"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/plus_icon"
+                android:layout_centerVertical="true"
+                android:text="사용자 추가"
+                android:textColor="@color/color07"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_group_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_add_member_btn"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color02"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingRight="5dp"/>
+    <RelativeLayout android:id="@+id/rl_group_out_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView android:id="@+id/iv_out_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon_out_white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_out_img"
+            android:layout_centerVertical="true"
+            android:text="나가기"
+            android:textColor="@color/color01"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+ </LinearLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/fragment_navigation_drawer.xml -->

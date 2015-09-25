@@ -1,0 +1,373 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	android:versionCode
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+permission#com.sicoms.smartplug.permission.MAPS_RECEIVE
+ADDED from AndroidManifest.xml:5:5
+	android:protectionLevel
+		ADDED from AndroidManifest.xml:7:9
+	android:name
+		ADDED from AndroidManifest.xml:6:9
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:9:5
+MERGED from qcon:library_asynchttp:unspecified:9:5
+	android:name
+		ADDED from AndroidManifest.xml:9:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:10:5
+	android:name
+		ADDED from AndroidManifest.xml:10:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+uses-permission#android.permission.BLUETOOTH
+ADDED from AndroidManifest.xml:14:5
+	android:name
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from AndroidManifest.xml:15:5
+	android:name
+		ADDED from AndroidManifest.xml:15:22
+uses-permission#com.sicoms.smartplug.locationapi.maps.permission.MAPS_RECEIVE
+ADDED from AndroidManifest.xml:16:5
+	android:name
+		ADDED from AndroidManifest.xml:16:22
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from AndroidManifest.xml:17:5
+	android:name
+		ADDED from AndroidManifest.xml:17:22
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from AndroidManifest.xml:18:5
+	android:name
+		ADDED from AndroidManifest.xml:18:22
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:19:5
+	android:name
+		ADDED from AndroidManifest.xml:19:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:20:5
+	android:name
+		ADDED from AndroidManifest.xml:20:22
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from AndroidManifest.xml:21:5
+	android:name
+		ADDED from AndroidManifest.xml:21:22
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from AndroidManifest.xml:22:5
+	android:name
+		ADDED from AndroidManifest.xml:22:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:23:5
+	android:name
+		ADDED from AndroidManifest.xml:23:22
+permission#com.sicoms.smartplug.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:25:5
+	android:protectionLevel
+		ADDED from AndroidManifest.xml:27:9
+	android:name
+		ADDED from AndroidManifest.xml:26:9
+uses-permission#com.sicoms.smartplug.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:29:5
+	android:name
+		ADDED from AndroidManifest.xml:29:22
+uses-feature#0x00020000
+ADDED from AndroidManifest.xml:31:5
+	android:glEsVersion
+		ADDED from AndroidManifest.xml:31:19
+	android:required
+		ADDED from AndroidManifest.xml:31:52
+uses-feature#android.hardware.bluetooth_le
+ADDED from AndroidManifest.xml:32:5
+	android:required
+		ADDED from AndroidManifest.xml:32:64
+	android:name
+		ADDED from AndroidManifest.xml:32:19
+application
+ADDED from AndroidManifest.xml:34:5
+MERGED from com.android.support:appcompat-v7:21.0.3:16:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.android.support:recyclerview-v7:21.0.3:17:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.google.android.gms:play-services-maps:7.3.0:19:5
+MERGED from com.google.android.gms:play-services-base:7.3.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.google.android.gms:play-services-gcm:7.3.0:19:5
+MERGED from com.google.android.gms:play-services-base:7.3.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.facebook.android:facebook-android-sdk:4.0.0:28:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from qcon:library_pulltorefresh:unspecified:9:5
+MERGED from qcon:library_bluetoothLE:unspecified:11:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from qcon:library_MaterialNavigationDrawer:unspecified:14:5
+MERGED from com.android.support:appcompat-v7:21.0.3:16:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.balysv:material-ripple:1.0.1:12:5
+MERGED from qcon:library_asynchttp:unspecified:11:5
+	android:label
+		ADDED from AndroidManifest.xml:37:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:35:9
+	android:icon
+		ADDED from AndroidManifest.xml:36:9
+	android:largeHeap
+		ADDED from AndroidManifest.xml:40:9
+	android:theme
+		ADDED from AndroidManifest.xml:39:9
+	android:name
+		ADDED from AndroidManifest.xml:38:9
+activity#com.sicoms.smartplug.login.activity.IntroActivity
+ADDED from AndroidManifest.xml:42:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:44:13
+	android:name
+		ADDED from AndroidManifest.xml:43:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:45:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:46:17
+	android:name
+		ADDED from AndroidManifest.xml:46:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:47:17
+	android:name
+		ADDED from AndroidManifest.xml:47:27
+activity#com.sicoms.smartplug.login.activity.LoginActivity
+ADDED from AndroidManifest.xml:50:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:52:13
+	android:name
+		ADDED from AndroidManifest.xml:51:13
+activity#com.sicoms.smartplug.main.activity.MainActivity
+ADDED from AndroidManifest.xml:53:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:56:13
+	android:theme
+		ADDED from AndroidManifest.xml:55:13
+	android:name
+		ADDED from AndroidManifest.xml:54:13
+activity#com.sicoms.smartplug.member.activity.MemberActivity
+ADDED from AndroidManifest.xml:57:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:60:13
+	android:theme
+		ADDED from AndroidManifest.xml:59:13
+	android:name
+		ADDED from AndroidManifest.xml:58:13
+activity#com.sicoms.smartplug.plug.activity.PlugMainActivity
+ADDED from AndroidManifest.xml:61:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:64:13
+	android:theme
+		ADDED from AndroidManifest.xml:63:13
+	android:name
+		ADDED from AndroidManifest.xml:62:13
+activity#com.sicoms.smartplug.plug.activity.PlugActivity
+ADDED from AndroidManifest.xml:65:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:68:13
+	android:theme
+		ADDED from AndroidManifest.xml:67:13
+	android:name
+		ADDED from AndroidManifest.xml:66:13
+activity#com.sicoms.smartplug.plug.activity.RegDeviceActivity
+ADDED from AndroidManifest.xml:69:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:72:13
+	android:theme
+		ADDED from AndroidManifest.xml:71:13
+	android:name
+		ADDED from AndroidManifest.xml:70:13
+activity#com.sicoms.smartplug.group.activity.GroupActivity
+ADDED from AndroidManifest.xml:73:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:76:13
+	android:theme
+		ADDED from AndroidManifest.xml:75:13
+	android:name
+		ADDED from AndroidManifest.xml:74:13
+activity#com.sicoms.smartplug.group.activity.GroupCreatorActivity
+ADDED from AndroidManifest.xml:77:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:80:13
+	android:theme
+		ADDED from AndroidManifest.xml:79:13
+	android:name
+		ADDED from AndroidManifest.xml:78:13
+activity#com.sicoms.smartplug.group.activity.GroupMemberEditActivity
+ADDED from AndroidManifest.xml:81:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:84:13
+	android:theme
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:82:13
+activity#com.sicoms.smartplug.menu.activity.PlaceActivity
+ADDED from AndroidManifest.xml:85:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:88:13
+	android:theme
+		ADDED from AndroidManifest.xml:87:13
+	android:name
+		ADDED from AndroidManifest.xml:86:13
+activity#com.sicoms.smartplug.menu.activity.MypageActivity
+ADDED from AndroidManifest.xml:89:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:92:13
+	android:theme
+		ADDED from AndroidManifest.xml:91:13
+	android:name
+		ADDED from AndroidManifest.xml:90:13
+activity#com.sicoms.smartplug.menu.activity.PlaceSettingActivity
+ADDED from AndroidManifest.xml:93:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:96:13
+	android:theme
+		ADDED from AndroidManifest.xml:95:13
+	android:name
+		ADDED from AndroidManifest.xml:94:13
+activity#com.facebook.FacebookActivity
+ADDED from AndroidManifest.xml:97:9
+	android:label
+		ADDED from AndroidManifest.xml:100:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:98:13
+	android:theme
+		ADDED from AndroidManifest.xml:99:13
+	android:name
+		ADDED from AndroidManifest.xml:97:19
+activity#com.android.camera.CropImage
+ADDED from AndroidManifest.xml:101:9
+	android:name
+		ADDED from AndroidManifest.xml:101:19
+service#com.csr.mesh.MeshService
+ADDED from AndroidManifest.xml:103:9
+	android:enabled
+		ADDED from AndroidManifest.xml:105:13
+	android:exported
+		ADDED from AndroidManifest.xml:106:13
+	android:name
+		ADDED from AndroidManifest.xml:104:13
+service#com.sicoms.smartplug.network.bluetooth.BluetoothLeService
+ADDED from AndroidManifest.xml:107:9
+	android:enabled
+		ADDED from AndroidManifest.xml:109:13
+	android:exported
+		ADDED from AndroidManifest.xml:110:13
+	android:name
+		ADDED from AndroidManifest.xml:108:13
+service#com.sicoms.smartplug.gcm.GcmIntentService
+ADDED from AndroidManifest.xml:111:9
+	android:name
+		ADDED from AndroidManifest.xml:111:18
+provider#com.facebook.FacebookContentProvider
+ADDED from AndroidManifest.xml:113:9
+	android:authorities
+		ADDED from AndroidManifest.xml:113:19
+	android:exported
+		ADDED from AndroidManifest.xml:115:13
+	android:name
+		ADDED from AndroidManifest.xml:114:13
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from AndroidManifest.xml:117:9
+	android:value
+		ADDED from AndroidManifest.xml:119:13
+	android:name
+		ADDED from AndroidManifest.xml:118:13
+meta-data#com.google.android.gms.version
+ADDED from AndroidManifest.xml:120:9
+MERGED from com.google.android.gms:play-services-base:7.3.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.3.0:21:9
+	android:value
+		ADDED from AndroidManifest.xml:122:13
+	android:name
+		ADDED from AndroidManifest.xml:121:13
+meta-data#com.google.android.maps.v2.API_KEY
+ADDED from AndroidManifest.xml:123:9
+	android:value
+		ADDED from AndroidManifest.xml:125:13
+	android:name
+		ADDED from AndroidManifest.xml:124:13
+receiver#com.sicoms.smartplug.gcm.GcmBroadcastReceiver
+ADDED from AndroidManifest.xml:128:9
+	android:permission
+		ADDED from AndroidManifest.xml:130:13
+	android:name
+		ADDED from AndroidManifest.xml:129:13
+intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+com.sicoms.smartplug
+ADDED from AndroidManifest.xml:131:13
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from AndroidManifest.xml:132:17
+	android:name
+		ADDED from AndroidManifest.xml:132:25
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:133:17
+	android:name
+		ADDED from AndroidManifest.xml:133:25
+category#com.sicoms.smartplug
+ADDED from AndroidManifest.xml:134:17
+	android:name
+		ADDED from AndroidManifest.xml:134:27
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:appcompat-v7:21.0.3:15:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.android.support:recyclerview-v7:21.0.3:15:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.google.android.gms:play-services-maps:7.3.0:18:5
+MERGED from com.google.android.gms:play-services-base:7.3.0:18:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.google.android.gms:play-services-gcm:7.3.0:18:5
+MERGED from com.google.android.gms:play-services-base:7.3.0:18:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.facebook.android:facebook-android-sdk:4.0.0:24:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from qcon:library_pulltorefresh:unspecified:7:5
+MERGED from qcon:library_bluetoothLE:unspecified:7:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from qcon:library_MaterialNavigationDrawer:unspecified:8:5
+MERGED from com.android.support:appcompat-v7:21.0.3:15:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.balysv:material-ripple:1.0.1:8:5
+MERGED from qcon:library_slidingDrawer:unspecified:7:5
+MERGED from qcon:library_CropImage:unspecified:7:5
+MERGED from qcon:library_fab:unspecified:25:5
+MERGED from com.github.shell-software:viewmover:1.0.1:25:5
+MERGED from com.github.shell-software:uitools:1.0.0:25:5
+MERGED from qcon:library_asynchttp:unspecified:5:5
+	tools:overrideLibrary
+		ADDED from qcon:library_MaterialNavigationDrawer:unspecified:11:9
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+activity#android.support.v7.widget.TestActivity
+ADDED from com.android.support:recyclerview-v7:21.0.3:18:9
+	android:label
+		ADDED from com.android.support:recyclerview-v7:21.0.3:18:19
+	android:name
+		ADDED from com.android.support:recyclerview-v7:21.0.3:18:60
+android:uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from AndroidManifest.xml:2:1 reason: antistatic.spinnerwheel has a targetSdkVersion < 4

@@ -129,6 +129,7 @@ public class AddMemberFragment extends Fragment implements HttpResponseCallbacks
                     return;
                 }
 
+                SPUtil.showDialog(mContext);
                 mUserVo.setUserId(userId);
                 mUserVo.setAuth(auth);
                 mService.requestInsertMember(mUserVo);
@@ -185,6 +186,7 @@ public class AddMemberFragment extends Fragment implements HttpResponseCallbacks
 
     @Override
     public void onHttpResponseResultStatus(int type, int result, String value) {
+        SPUtil.dismissDialog();
         if( result == HttpConfig.HTTP_SUCCESS) {
             try {
                 if (CloudManager.CLOUD_REQUEST_NUM == ContextPathStore.REQUEST_INSERT_USER) {
@@ -193,6 +195,7 @@ public class AddMemberFragment extends Fragment implements HttpResponseCallbacks
                     if (resultNum == HttpConfig.HTTP_SUCCESS) {
                         UserVo userVo = new Gson().fromJson(response.getJsonStr(), UserVo.class);
                         mUserVo = userVo;
+
                         if (userVo != null) {
                             mService.insertDbMember(userVo); // TODO : GCM 버전일 경우 나중에 초대 응답 했을 때 저장
                             Toast.makeText(mContext, userVo.getUserName() + "님에게 초대 메시지를 보냈습니다.", Toast.LENGTH_SHORT).show();
@@ -217,12 +220,6 @@ public class AddMemberFragment extends Fragment implements HttpResponseCallbacks
             }
         } else {
             Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-        }
-        if( SPConfig.IS_TEST){
-            DBHelper dbHelper = new DBHelper(mContext);
-            mUserVo.setUserName("TEST User");
-            mService.insertDbMember(mUserVo);
-            ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
         }
     }
 }

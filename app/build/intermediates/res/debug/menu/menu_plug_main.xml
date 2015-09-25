@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <item android:id="@+id/action_individual"
+        android:icon="@drawable/icon_sort_individual_on"
+        android:title="플러그"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_whole"
+        android:icon="@drawable/icon_sort_whole_off"
+        android:title="그룹"
+       app:showAsAction="ifRoom" />
+</menu><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/menu/menu_plug_main.xml -->

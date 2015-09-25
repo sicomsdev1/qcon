@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/values-sw360dp-xhdpi/integers.xml -->
+    <eat-comment/>
+    <integer name="actionbar_height_weight">13</integer>
+    <integer name="sliding_drawer_height_weight">34</integer>
+</resources>

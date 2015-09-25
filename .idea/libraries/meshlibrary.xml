@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="meshlibrary">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/meshlibrary.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

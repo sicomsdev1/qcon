@@ -235,7 +235,7 @@ public class ScheduleService implements UDPClient.UDPResponseCallbacks {
                     endHour = String.valueOf(hour);
                 }
                 String endTime = endHour + endMin;
-                String status = scheduleVo.isStartOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF;
+                String status = SPConfig.STATUS_ON;
                 int nStartTime = Integer.parseInt(startTime);
                 int nEndTime = Integer.parseInt(endTime);
 

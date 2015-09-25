@@ -36,7 +36,7 @@ public class BLMessage {
     // Set Cutoff
     public static String getSetCutoffRequestMessage(DeviceController controller, int deviceId, int power, int min, String status){
         controller.setSelectedDeviceId(deviceId);
-        String requestMessage = BLConfig.CUTOFF_REQUEST_NUM + String.format("%02d", power) + String.format("%02d", min) + status;
+        String requestMessage = BLConfig.CUTOFF_REQUEST_NUM + String.format("%04d", power) + String.format("%04d", min) + status;
         return requestMessage;
     }
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:windowContentOverlay"
+    android:layout_below="@+id/toolbar"/><!-- From: file:/Users/gudnam/Develop/git/qcon/library_MaterialNavigationDrawer/src/main/res/layout/layout_toolbar_elevation.xml --><!-- From: file:/Users/gudnam/Develop/git/qcon/app/build/intermediates/exploded-aar/qcon/library_MaterialNavigationDrawer/unspecified/res/layout/layout_toolbar_elevation.xml -->

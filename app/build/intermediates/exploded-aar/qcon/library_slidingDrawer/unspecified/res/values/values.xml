@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/gudnam/Develop/git/qcon/library_slidingDrawer/src/main/res/values/styleables.xml -->
+    <eat-comment/>
+    <attr name="orientation">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+    <declare-styleable name="SlidingDrawer"><attr format="boolean" name="animateOnClick"/><attr format="boolean" name="allowSingleTap"/><attr format="dimension" name="topOffset"/><attr format="dimension" name="bottomOffset"/><attr name="orientation"/><attr format="reference" name="handle"/><attr format="reference" name="content"/></declare-styleable>
+</resources>

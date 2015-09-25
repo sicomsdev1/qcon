@@ -344,6 +344,7 @@ public class PlugAllFragment extends Fragment implements BluetoothManager.BLResu
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            SPUtil.showDialog(mContext);
                             List<PlugVo> checkedVoList = mAdapter.getCheckedItem();
                             List<PlugVo> apPlugVoList = new ArrayList<>();
                             for (int voCnt=0; voCnt<checkedVoList.size(); voCnt++) {

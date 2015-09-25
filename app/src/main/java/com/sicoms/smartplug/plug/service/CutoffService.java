@@ -17,7 +17,6 @@ import com.sicoms.smartplug.domain.CutoffVo;
 import com.sicoms.smartplug.domain.CutoffDataVo;
 import com.sicoms.smartplug.domain.CutoffRequestVo;
 import com.sicoms.smartplug.main.activity.MainActivity;
-import com.sicoms.smartplug.network.bluetooth.BLConfig;
 import com.sicoms.smartplug.network.bluetooth.BLMessage;
 import com.sicoms.smartplug.network.http.HttpConfig;
 import com.sicoms.smartplug.network.udp.UDPClient;
@@ -84,7 +83,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
             theDbVo.setCutSeq((long) 0);
             theDbVo.setPlugId(plugVo.getPlugId());
             theDbVo.setSetWatt(cutoffVo.getPower());
-            theDbVo.setSetMin(cutoffVo.getMin());
+            theDbVo.setSetMin(cutoffVo.getTime());
             theDbVo.setUseYn(cutoffVo.isOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF);
 
             theDao.insertOrReplace(theDbVo);
@@ -108,7 +107,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
 
             theDbVo.setPlugId(plugVo.getPlugId());
             theDbVo.setSetWatt(cutoffVo.getPower());
-            theDbVo.setSetMin(cutoffVo.getMin());
+            theDbVo.setSetMin(cutoffVo.getTime());
             theDbVo.setUseYn(SPConfig.STATUS_ON);
 
             theDao.delete(theDbVo);
@@ -181,7 +180,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
         // 비활성화시 0W로 설정하여 전원차단 안되게 값 저장
         if( !cutoffVo.isOn()){
             cutoffVo.setPower(SPConfig.NO_CUTOFF);
-            cutoffVo.setMin("00");
+            cutoffVo.setTime("00");
         }
 
         String type = plugVo.getNetworkType();
@@ -210,9 +209,9 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
             try {
                 int uuid = Integer.parseInt(plugVo.getUuid());
                 int power = Integer.parseInt(cutoffVo.getPower());
-                int min = Integer.parseInt(cutoffVo.getMin()) * 60;
+                int sec = Integer.parseInt(cutoffVo.getTime());
                 String status = cutoffVo.isOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF;
-                String requestMessage = BLMessage.getSetCutoffRequestMessage(MainActivity.stBluetoothManager, uuid, power, min, status);
+                String requestMessage = BLMessage.getSetCutoffRequestMessage(MainActivity.stBluetoothManager, uuid, power, sec, status);
 
                 MainActivity.stBluetoothManager.setCutoffVo(cutoffVo);
                 MainActivity.stBluetoothManager.setOnCutoffResultCallbacks(mCallbacks);
@@ -229,7 +228,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
         try {
             CommonDataVo commonDataVo = new CommonDataVo(HttpConfig.CUTOFF_MSG, HttpConfig.CUTOFF_CMD);
             int mA = Integer.parseInt(cutoffVo.getPower()) * 1000;
-            int second = Integer.parseInt(cutoffVo.getMin()) * 60;
+            int second = Integer.parseInt(cutoffVo.getTime()) * 60;
             String useYN = cutoffVo.isOn() ? "Y" : "N";
             CutoffDataVo cutoffDataVo = new CutoffDataVo(plugId, String.valueOf(mA), String.valueOf(second), useYN);
             CutoffRequestVo scheduleRequestVo = new CutoffRequestVo(commonDataVo, cutoffDataVo);
@@ -245,7 +244,7 @@ public class CutoffService implements UDPClient.UDPResponseCallbacks {
         try {
 //            CommonDataVo commonDataVo = new CommonDataVo(HttpConfig.CUTOFF_MSG, HttpConfig.CUTOFF_CMD);
 //            int mA = Integer.parseInt(cutoffVo.getPower()) * 1000;
-//            int second = Integer.parseInt(cutoffVo.getMin()) * 60;
+//            int second = Integer.parseInt(cutoffVo.getTime()) * 60;
 //            String useYN = cutoffVo.isOn() ? "Y" : "N";
 //            CutoffDataVo cutoffDataVo = new CutoffDataVo(plugId, String.valueOf(mA), String.valueOf(second), useYN);
 //            CutoffRequestVo scheduleRequestVo = new CutoffRequestVo(commonDataVo, cutoffDataVo);

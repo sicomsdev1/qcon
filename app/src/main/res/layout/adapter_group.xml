@@ -9,7 +9,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="15dp">
+            android:padding="10dp">
             <com.sicoms.smartplug.util.profile.CircleImageView
                 android:id="@+id/iv_group_icon_btn"
                 android:layout_width="45dp"

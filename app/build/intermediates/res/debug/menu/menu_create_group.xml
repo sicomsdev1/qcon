@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <item android:id="@+id/action_complete"
+        android:title="완료"
+        app:showAsAction="ifRoom" />
+</menu><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/menu/menu_create_group.xml -->

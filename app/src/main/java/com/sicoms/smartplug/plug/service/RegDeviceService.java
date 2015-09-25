@@ -119,10 +119,11 @@ public class RegDeviceService {
     }
 
     public void deleteAssociatedDevice(RegDeviceVo regDeviceVo){
-        String deviceStringId = String.format("%x", regDeviceVo.getDeviceId());
+        int deviceId = regDeviceVo.getDeviceId();
         String unixTime = String.format("%x", System.currentTimeMillis() / 1000);
 
-        String requestMessage = BLConfig.ASSOCIATION_REQUEST_NUM + deviceStringId + unixTime;
+        MainActivity.stBluetoothManager.setSelectedDeviceId(deviceId);
+        String requestMessage = BLConfig.ASSOCIATION_REQUEST_NUM + unixTime;
 
         MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);
     }
