@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_slidingDrawer/src/main/res/values/styleables.xml -->
+    <!-- From: file:/Users/gudnam/Develop/git/qcon/library_slidingDrawer/src/main/res/values/styleables.xml -->
     <eat-comment/>
     <attr name="orientation">
         <enum name="horizontal" value="0"/>

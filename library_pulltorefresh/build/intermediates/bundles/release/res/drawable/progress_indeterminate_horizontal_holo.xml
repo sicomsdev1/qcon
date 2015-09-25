@@ -27,4 +27,4 @@
     <item android:drawable="@drawable/progressbar_indeterminate_holo6" android:duration="50" />
     <item android:drawable="@drawable/progressbar_indeterminate_holo7" android:duration="50" />
     <item android:drawable="@drawable/progressbar_indeterminate_holo8" android:duration="50" />
-</animation-list><!-- From: file:/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_pulltorefresh/res/drawable/progress_indeterminate_horizontal_holo.xml -->
+</animation-list><!-- From: file:/Users/gudnam/Develop/git/qcon/library_pulltorefresh/res/drawable/progress_indeterminate_horizontal_holo.xml -->

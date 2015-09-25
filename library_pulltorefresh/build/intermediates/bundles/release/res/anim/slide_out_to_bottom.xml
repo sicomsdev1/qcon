@@ -19,4 +19,4 @@
     android:duration="@android:integer/config_longAnimTime"
     android:fromYDelta="0"
     android:toYDelta="100%p" />
-<!-- From: file:/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_pulltorefresh/res/anim/slide_out_to_bottom.xml -->
+<!-- From: file:/Users/gudnam/Develop/git/qcon/library_pulltorefresh/res/anim/slide_out_to_bottom.xml -->

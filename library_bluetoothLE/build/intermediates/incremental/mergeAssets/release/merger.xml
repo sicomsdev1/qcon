@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_bluetoothLE/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_bluetoothLE/src/release/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/gudnam/Develop/git/qcon/library_bluetoothLE/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/gudnam/Develop/git/qcon/library_bluetoothLE/src/release/assets"/></dataSet></merger>
