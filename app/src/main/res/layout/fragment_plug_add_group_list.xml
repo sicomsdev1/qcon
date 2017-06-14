@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
     style="@style/fab_layout_match_width_match_height_style"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -10,24 +8,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14">
+        android:layout_weight="@integer/actionbar_height_weight">
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="86"
-        android:orientation="vertical"
-        android:background="@color/color04">
+        android:layout_weight="88"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_alignParentTop="true"
-                android:background="#b7b7b7"/>
+            android:layout_weight="8"
+            android:background="@color/color09">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +75,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#b7b7b7"/>
+            android:layout_height="2dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -86,7 +83,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_plug"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/trans01"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/color01">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp">
+            <ImageView android:id="@+id/iv_plug_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/icon_list_setting"/>
+            <CheckBox android:id="@+id/cb_plug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"
+                android:button="@drawable/selector_checkbox"/>
+            <ImageView android:id="@+id/iv_network_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"/>
+            <com.sicoms.smartplug.util.profile.CircleImageView
+                android:id="@+id/iv_plug_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                app:border_width="3dp"
+                app:border_color="#10000000"
+                app:border_overlay="true"/>
+        </RelativeLayout>
+        <TextView android:id="@+id/tv_plug_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="TV"
+            android:textSize="17sp"
+            android:textColor="@color/color02"
+            android:maxLines="1"
+            android:maxLength="10"/>
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/rl_btn"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
+
+    <RelativeLayout android:id="@+id/rl_is_checked"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/trans02"
+        android:visibility="invisible"/>
+</RelativeLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/adapter_plug.xml -->

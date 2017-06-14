@@ -171,11 +171,10 @@ public class ScheduleService implements UDPClient.UDPResponseCallbacks {
             int uuid = Integer.parseInt(plugVo.getUuid());
             String requestMessage = BLMessage.getGetScheduleRequestMessage(MainActivity.stBluetoothManager, uuid, 1);
 
-            if( !MainActivity.stBluetoothManager.isConnected()){
-                return;
+            if( MainActivity.stBluetoothManager.isConnected()){
+                MainActivity.stBluetoothManager.setOnScheduleResultCallbcks(mCallbacks);
+                MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);
             }
-            MainActivity.stBluetoothManager.setOnScheduleResultCallbcks(mCallbacks);
-            MainActivity.stBluetoothManager.sendData(SPUtil.getByte(requestMessage), false);
         }
     }
 
@@ -236,7 +235,7 @@ public class ScheduleService implements UDPClient.UDPResponseCallbacks {
                     endHour = String.valueOf(hour);
                 }
                 String endTime = endHour + endMin;
-                String status = scheduleVo.isStartOn() ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF;
+                String status = SPConfig.STATUS_ON;
                 int nStartTime = Integer.parseInt(startTime);
                 int nEndTime = Integer.parseInt(endTime);
 

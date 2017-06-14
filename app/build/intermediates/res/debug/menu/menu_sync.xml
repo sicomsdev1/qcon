@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_sync"
+        android:title="동기화"
+        android:icon="@drawable/selector_sync_btn"
+        app:showAsAction="ifRoom"/>
+</menu><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/menu/menu_sync.xml -->

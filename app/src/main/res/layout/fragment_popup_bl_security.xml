@@ -25,6 +25,8 @@
             android:hint="비밀번호"
             android:textSize="19sp"
             android:textColor="@color/color01"
+            android:inputType="number"
+            android:digits="0123456789"
             android:background="@drawable/box_input2"/>
         <ImageView
             android:layout_width="wrap_content"

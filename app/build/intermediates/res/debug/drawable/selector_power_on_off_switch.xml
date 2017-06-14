@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/icon_power_on" />
+    <item
+        android:state_selected ="false"
+        android:drawable="@drawable/icon_power_off" />
+</selector><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/drawable/selector_power_on_off_switch.xml -->

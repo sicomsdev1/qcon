@@ -6,7 +6,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="31">
+        android:layout_weight="@integer/actionbar_height_weight"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +38,7 @@
         android:layout_weight="8"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:background="@color/color04">
+        android:background="@color/color09">
         <TextView android:id="@+id/member_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,8 +107,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="61"
-        android:background="@color/color04">
+        android:layout_weight="66"
+        android:background="@color/trans01">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_member"
             android:layout_width="match_parent"

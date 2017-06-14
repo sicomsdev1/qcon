@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.plug.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -69,7 +70,7 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
 
     private CharSequence mTitle = "새로운 플러그 추가";
 
-    private Activity mActivity;
+    private Context mContext;
     private RegDeviceEvent mEvent;
     private RegDeviceService mService;
 
@@ -104,18 +105,18 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mActivity = getActivity();
-        ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
+        mContext = getActivity();
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
 
-        mService = new RegDeviceService(mActivity);
+        mService = new RegDeviceService(mContext);
         mService.setOnHttpResponseCallbacks(this);
-        mEvent = new RegDeviceEvent(mActivity);
+        mEvent = new RegDeviceEvent(mContext);
 
-        mNonRegAdapter = new NonRegDeviceAdapter(mActivity, this, this);
-        mRegAdapter = new RegDeviceAdapter(mActivity);
+        mNonRegAdapter = new NonRegDeviceAdapter(mContext, this, this);
+        mRegAdapter = new RegDeviceAdapter(mContext);
         mEvent.setAdapter(mRegAdapter);
 
-        mWifiScanner = new WifiConnectionManager(mActivity);
+        mWifiScanner = new WifiConnectionManager(mContext);
         mWifiScanner.setOnWifiScanResultCallbacks(this);
         mUDPBroadcaster = new UDPBroadcaster();
         mUDPBroadcaster.setOnUDPResponseCallbacks(this);
@@ -204,7 +205,7 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
             mIvIsBlConnect.setImageResource(R.drawable.icon_bluetooth);
             mTvIsBlConnect.setText(SPConfig.OFF_TEXT);
         }
-        if( WifiConnectionManager.isWifiEnabled(mActivity)){
+        if( WifiConnectionManager.isWifiEnabled(mContext)){
             mIvIsWifiConnect.setImageResource(R.drawable.icon_wifi_point);
             mTvIsWifiConnect.setText(SPConfig.ON_TEXT);
         } else {
@@ -219,7 +220,7 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
     }
 
     private void setAssociatedDevice(){
-        List<PlugVo> plugVoList = new PlugAllService(mActivity).selectDbPlugList();
+        List<PlugVo> plugVoList = new PlugAllService(mContext).selectDbPlugList();
         for(int cnt=0; cnt<plugVoList.size(); cnt++){
             PlugVo plugVo = plugVoList.get(cnt);
             String networkType = plugVo.getNetworkType();
@@ -264,10 +265,10 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
         mNonRegListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                String label = DateUtils.formatDateTime(mActivity.getApplicationContext(), System.currentTimeMillis(),
+                String label = DateUtils.formatDateTime(mContext.getApplicationContext(), System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
                 Log.d(RegDeviceFragment.class.getCanonicalName(), "onRefreshing..." + label);
-                mNonRegAdapter.removeAll();
+                //mNonRegAdapter.removeAll();
                 mNonRegAdapter.notifyDataSetChanged();
                 if (mService.isAPMode()) {
 
@@ -292,10 +293,10 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
         mRegListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                String label = DateUtils.formatDateTime(mActivity.getApplicationContext(), System.currentTimeMillis(),
+                String label = DateUtils.formatDateTime(mContext.getApplicationContext(), System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
                 Log.d(RegDeviceFragment.class.getCanonicalName(), "onRefreshing..." + label);
-                mRegAdapter.removeAll();
+                //mRegAdapter.removeAll();
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -341,13 +342,13 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
 
     // 미등록 리스트 등록 (공통 프로세스 처리)
     private void setNonRegDeviceVoList(final RegDeviceVo regDeviceVo){
-        if( mTvPullRefresh1.getVisibility() == View.VISIBLE) {
-            mTvPullRefresh1.setVisibility(View.GONE);
-        }
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
+                if( mTvPullRefresh1.getVisibility() == View.VISIBLE) {
+                    mTvPullRefresh1.setVisibility(View.GONE);
+                }
                 List<RegDeviceVo> nonRegDeviceVoList = mNonRegAdapter.getAll();
                 if (nonRegDeviceVoList.size() == 0) {
                     nonRegDeviceVoList.add(regDeviceVo);
@@ -373,13 +374,13 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
 
     // 등록된 리스트 등록 (공통 프로세스 처리)
     private void setRegDeviceVoList(final RegDeviceVo regDeviceVo){
-        if( mTvPullRefresh2.getVisibility() == View.VISIBLE) {
-            mTvPullRefresh2.setVisibility(View.GONE);
-        }
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
+                if( mTvPullRefresh2.getVisibility() == View.VISIBLE) {
+                    mTvPullRefresh2.setVisibility(View.GONE);
+                }
                 List<RegDeviceVo> regDeviceVoList = mRegAdapter.getAll();
                 if (regDeviceVoList.size() == 0) {
                     regDeviceVoList.add(regDeviceVo);
@@ -399,7 +400,6 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                 }
 
                 mRegAdapter.notifyDataSetChanged();
-                SPUtil.dismissDialog();
             }
         });
     }
@@ -438,16 +438,14 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
     @Override
     public void onBLAssociationCompleteResult(final int deviceId, int uuidHash) {
         SPUtil.dismissDialog();
-        SPUtil.dismissDialog();
-        SPUtil.dismissDialog();
         if( deviceId == 0 && uuidHash == 0) { // Association Fail
-            //SPFragment.intentBLSecurityFragmentDialog(mActivity, PlugAllFragment.stBluetoothManager);
+            //SPFragment.intentBLSecurityFragmentDialog(mContext, PlugAllFragment.stBluetoothManager);
         } else {
-            PlaceSettingService settingService = new PlaceSettingService(mActivity);
+            PlaceSettingService settingService = new PlaceSettingService(mContext);
             PlaceSettingVo settingVo = settingService.selectDbBLPassword();
             DbBluetoothVo dbBluetoothVo = new DbBluetoothVo(String.valueOf(deviceId), settingVo.getSetVal());
             mService.requestUpdateBluetooth(dbBluetoothVo);
-            SPUtil.showToast(mActivity, String.format("%x", deviceId) + " 플러그를 추가하였습니다.");
+            SPUtil.showToast(mContext, String.format("%x", deviceId) + " 플러그를 추가하였습니다.");
             mNonRegAdapter.removeBluetooth();
             mNonRegAdapter.notifyDataSetChanged();
             if (MainActivity.stBluetoothManager.isConnected()) {
@@ -457,10 +455,15 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
         }
     }
 
+    Handler mHandler = new Handler(Looper.getMainLooper());
     @Override
     public void onRegCompleteResult(RegDeviceVo regDeviceVo) {
-        SPUtil.dismissDialog();
-        SPUtil.showDialog(mActivity);
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                SPUtil.showDialog(mContext);
+            }
+        });
         mNonRegAdapter.removeItem(regDeviceVo);
         mNonRegAdapter.notifyDataSetChanged();
         if (mService.isAPMode()) {
@@ -516,7 +519,7 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                     }
                 } catch (JsonSyntaxException jse){
                     jse.printStackTrace();
-                    SPUtil.showToast(mActivity, "잘못된 데이터 수신");
+                    SPUtil.showToast(mContext, "잘못된 데이터 수신");
                 }
                 SPUtil.dismissDialog();
             }
@@ -542,21 +545,21 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
     public void onCompleteCreateBLGroup(int groupId, boolean isCreate) {
         if( isCreate){
 //            if( mService.updateDbPlugList(Arrays.asList(mRegedPlugVo), "")) {
-//                SPUtil.showToast(mActivity, "선택하신 Bluetooth 플러그를 추가하였습니다.");
+//                SPUtil.showToast(mContext, "선택하신 Bluetooth 플러그를 추가하였습니다.");
 //            } else {
-//                SPUtil.showToast(mActivity, "Bluetooth 플러그를 추가하지 못했습니다.");
+//                SPUtil.showToast(mContext, "Bluetooth 플러그를 추가하지 못했습니다.");
 //            }
-            SPUtil.showToast(mActivity, String.valueOf(groupId) + " 블루투스 플러그를 추가하였습니다.");
+            SPUtil.showToast(mContext, String.valueOf(groupId) + " 블루투스 플러그를 추가하였습니다.");
             mNonRegAdapter.notifyDataSetChanged();
             setAssociatedDevice();
             SPUtil.dismissDialog();
         } else {
-//            PlugAllService service = new PlugAllService(mActivity);
+//            PlugAllService service = new PlugAllService(mContext);
 //            int deviceId = Integer.parseInt(mRegedPlugVo.getUuid());
 //            SPUtil.sleep(1000);
 //            service.deleteAssociatedDevice(mRegedPlugVo);
 //            MainActivity.stBluetoothManager.removeDevice(deviceId);
-            SPUtil.showToast(mActivity, "블루투스 플러그를 추가하지 못했습니다.");
+            SPUtil.showToast(mContext, "블루투스 플러그를 추가하지 못했습니다.");
         }
     }
 
@@ -571,30 +574,30 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                         onRegCompleteResult(regDeviceVo);
                         return;
                     } else {
-                        SPUtil.showToast(mActivity, "블루투스 플러그를 찾을 수 없습니다.");
+                        SPUtil.showToast(mContext, "블루투스 플러그를 찾을 수 없습니다.");
                         SPUtil.dismissDialog();
                     }
                 } else {
-                    SPUtil.showToast(mActivity, "블루투스 플러그를 찾을 수 없습니다.");
+                    SPUtil.showToast(mContext, "블루투스 플러그를 찾을 수 없습니다.");
                     SPUtil.dismissDialog();
                 }
             } else {
-                SPUtil.showToast(mActivity, "블루투스 플러그를 찾을 수 없습니다.");
+                SPUtil.showToast(mContext, "블루투스 플러그를 찾을 수 없습니다.");
                 SPUtil.dismissDialog();
             }
         } else
         if( dialogName.equalsIgnoreCase(WifiSecurityDialogFragment.class.getSimpleName())) {
             if (regDeviceVo.getNetworkType().equalsIgnoreCase(SPConfig.PLUG_TYPE_WIFI_ROUTER)) {
                 PlugVo plugVo = new PlugVo(regDeviceVo.getPlugId(), regDeviceVo.getPlugId(), regDeviceVo.getNetworkType(), SPConfig.PLUG_DEFAULT_IMAGE_NAME + "_00", false);
-                RegRouterService service = new RegRouterService(mActivity);
-                WifiVo currentWifiVo = new WifiConnectionManager(mActivity).getConnectedWifiInfo();
+                RegRouterService service = new RegRouterService(mContext);
+                WifiVo currentWifiVo = new WifiConnectionManager(mContext).getConnectedWifiInfo();
 
                 // Station Mode 1. 플러그 와이파이 접속
                 if (!service.connectPlugWifi(plugVo)) {
                     return;
                 }
                 // Station Mode 2. 와이파이 접속 대기 -> 연결 완료시 3. UDP 통신으로 AP 에 로컬망 Wifi 정보 전달
-                SPFragment.intentWifiConnectWaitFragmentDialog(mActivity, this, currentWifiVo);
+                SPFragment.intentWifiConnectWaitFragmentDialog((Activity) mContext, this, currentWifiVo);
             }
         } else if( dialogName.equalsIgnoreCase(StationModeDialogFragment.class.getSimpleName())){
             onRegCompleteResult(regDeviceVo);
@@ -611,11 +614,10 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                     if( resultNum == HttpConfig.HTTP_SUCCESS) {
                         DbBluetoothVo dbBluetoothVo = new Gson().fromJson(responseVo.getJsonStr(), DbBluetoothVo.class);
                         if( !mService.updateDbBluetooth(dbBluetoothVo)){
-                            SPUtil.showToast(mActivity, "블루투스 정보를 저장하지 못했습니다.");
+                            SPUtil.showToast(mContext, "블루투스 정보를 저장하지 못했습니다.");
                         }
-
                     } else {
-                        SPUtil.showToast(mActivity, "블루투스 비밀번호를 동기화하지 못했습니다.");
+                        SPUtil.showToast(mContext, "블루투스 비밀번호를 동기화하지 못했습니다.");
                     }
                 }
             } catch (JsonParseException jpe){
@@ -626,7 +628,7 @@ public class RegDeviceFragment extends Fragment implements RegPlugResultCallback
                 e.printStackTrace();
             }
         } else {
-            SPUtil.showToast(mActivity, "서버 연결에 실패하였습니다.");
+            SPUtil.showToast(mContext, "서버 연결에 실패하였습니다.");
         }
     }
 

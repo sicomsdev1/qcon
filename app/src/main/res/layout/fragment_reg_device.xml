@@ -7,22 +7,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="13"/>
+        android:layout_weight="@integer/actionbar_height_weight"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:background="@drawable/line_division2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="87"
+        android:layout_weight="88"
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"
-            android:background="#10000000">
+            android:layout_weight="18"
+            android:background="@color/color09">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,14 +75,14 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/line_division2"/>
         <RelativeLayout android:id="@+id/rl_non_reg"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="80"
-            android:background="#65000000">
+            android:layout_weight="82"
+            android:background="@color/trans01">
             <com.handmark.pulltorefresh.library.PullToRefreshListView
                 android:id="@+id/lv_non_reg_device"
                 android:layout_width="match_parent"
@@ -101,14 +106,14 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/line_division2"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"
-            android:background="#10000000">
+            android:layout_weight="18"
+            android:background="@color/color09">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,25 +129,25 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/selector_finish_btn"/>
+                android:src="@drawable/selector_finish_dark_btn"/>
             <ImageView android:id="@+id/iv_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/iv_complete"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/selector_wastebasket_btn"/>
+                android:src="@drawable/selector_wastebasket_dark_btn"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/line_division2"/>
         <RelativeLayout android:id="@+id/rl_reg"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="80"
-            android:background="#65000000">
+            android:layout_weight="82"
+            android:background="@color/trans01">
             <com.handmark.pulltorefresh.library.PullToRefreshListView
                 android:id="@+id/lv_reg_device"
                 android:layout_width="match_parent"

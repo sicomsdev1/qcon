@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#65000000">
+    android:background="@color/trans01">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14"/>
+        android:layout_weight="@integer/actionbar_height_weight"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="86"
+        android:layout_weight="88"
         android:orientation="vertical">
         <LinearLayout android:id="@+id/ll_change_password"
             android:layout_width="match_parent"

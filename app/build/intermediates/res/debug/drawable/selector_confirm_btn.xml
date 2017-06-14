@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/btn_confirm_p" />
+    <item
+        android:state_pressed ="false"
+        android:drawable="@drawable/btn_confirm" />
+</selector><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/drawable/selector_confirm_btn.xml -->

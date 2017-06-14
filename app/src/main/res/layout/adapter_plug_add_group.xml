@@ -11,12 +11,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp">
-            <CheckBox android:id="@+id/cb_plug"
+            <ImageView android:id="@+id/iv_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_alignParentRight="true"
-                android:button="@drawable/selector_checkbox"/>
+                android:src="@drawable/checkbox_on"/>
             <com.sicoms.smartplug.util.profile.CircleImageView
                 android:id="@+id/iv_plug_icon"
                 android:layout_width="80dp"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"/>
 
-    <RelativeLayout android:id="@+id/rl_is_onoff"
+    <RelativeLayout android:id="@+id/rl_is_checked"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#20000000"

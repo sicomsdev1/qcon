@@ -38,7 +38,7 @@ public class PlaceGalleryFragment extends Fragment {
     private PlaceEvent mEvent;
 
     private RecyclerView mRecyclerView;
-    private PlaceGalleryAdapter mAdapter;private ImageView mIvFinishBtn;
+    private PlaceGalleryAdapter mAdapter;
 
     public static PlaceGalleryFragment newInstance(ImageSelectedResultCallbacks callbacks) {
         PlaceGalleryFragment fragment = new PlaceGalleryFragment();

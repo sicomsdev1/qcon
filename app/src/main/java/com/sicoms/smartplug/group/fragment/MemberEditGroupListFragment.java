@@ -1,6 +1,9 @@
 package com.sicoms.smartplug.group.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,9 +25,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.sicoms.smartplug.R;
-import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.SPEvent;
-import com.sicoms.smartplug.common.SPFragment;
 import com.sicoms.smartplug.domain.GroupVo;
 import com.sicoms.smartplug.domain.HttpResponseVo;
 import com.sicoms.smartplug.domain.UserVo;
@@ -52,7 +53,8 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
 
     private CharSequence mTitle = "사용자 추가";
 
-    private Activity mActivity;
+    private Context mContext;
+    private View mView;
     private static EditGroupResultCallbacks mCallbacks;
 
     private MemberService mMemberService;
@@ -76,6 +78,13 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
         return fragment;
     }
 
+    private void initialize(){
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
+        if( bitmap != null) {
+            mView.setBackground(new BitmapDrawable(getResources(), bitmap));
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,13 +102,16 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(this);
+        mView = view;
 
-        mActivity = getActivity();
-        ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
-        mSPEvent = new SPEvent(mActivity);
+        mContext = getActivity();
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
+        initialize();
+
+        mSPEvent = new SPEvent();
         mSelectedVoList = new ArrayList<>();
-        mMemberService = new MemberService(mActivity);
-        mGroupService = new GroupService(mActivity);
+        mMemberService = new MemberService(mContext);
+        mGroupService = new GroupService(mContext);
         mMemberService.setOnHttpResponseCallbacks(this);
         mGroupService.setOnHttpResponseCallbacks(this);
 
@@ -218,12 +230,12 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
                         if (mMemberService.insertDbMemberList(voList)) {
                             fillAdapterData();
                         } else {
-                            Toast.makeText(mActivity, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "동기화에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                         }
                     } else if (CloudManager.CLOUD_REQUEST_NUM == ContextPathStore.REQUEST_INSERT_GROUP_USER) {
                         mGroupVo = new Gson().fromJson(responseVo.getJsonStr(), GroupVo.class);
                         if (mGroupVo == null) {
-                            SPUtil.showToast(mActivity, "그룹에 추가하지 못했습니다.");
+                            SPUtil.showToast(mContext, "그룹에 추가하지 못했습니다.");
                             return;
                         }
 
@@ -232,12 +244,12 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
                             if( mCallbacks != null) {
                                 mCallbacks.onCompleteEditMember();
                             }
-                            ((ActionBarActivity) mActivity).getSupportFragmentManager().popBackStack();
+                            ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
                             SPUtil.dismissDialog();
                         }
                     }
                 } else {
-                    Toast.makeText(mActivity, "서버 요청에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "서버 요청에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                 }
             } catch (JsonParseException jpe){
                 jpe.printStackTrace();
@@ -245,7 +257,7 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
                 nfe.printStackTrace();
             }
         } else {
-            Toast.makeText(mActivity, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -256,7 +268,7 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
                 getFragmentManager().popBackStack();
             }
 //            mTitle = mGroupVo.getGroupName();
-//            ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
+//            ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
             return true;
         } else {
             return false;
@@ -268,6 +280,6 @@ public class MemberEditGroupListFragment extends Fragment implements MemberCheck
         super.onDestroyView();
 
         mTitle = mGroupVo.getGroupName();
-        ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
     }
 }

@@ -102,7 +102,7 @@ public class CutoffAdapter extends BaseAdapter {
         }
 
         viewHolder.tv_power.setText(mVoList.get(position).getPower());
-        viewHolder.tv_time.setText(mVoList.get(position).getMin());
+        viewHolder.tv_time.setText(mVoList.get(position).getTime());
 
         if( mVoList.get(position).isOn()){
             viewHolder.iv_switch.setSelected(true);

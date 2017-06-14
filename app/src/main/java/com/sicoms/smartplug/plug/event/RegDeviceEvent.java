@@ -106,35 +106,44 @@ public class RegDeviceEvent implements View.OnClickListener, AdapterView.OnItemC
                 if( mRegAdapter == null){
                     return;
                 }
+                SPUtil.showDialog(mContext);
                 PlugAllService plugAllService = new PlugAllService(mContext);
                 final List<PlugVo> plugVoList = plugAllService.selectDbPlugList();
-                SPUtil.showDialog(mContext);
                 final List<RegDeviceVo> regDeviceVoList = mRegAdapter.getAll();
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        SPUtil.dismissDialog();
+                        List<RegDeviceVo> removeList = new ArrayList<RegDeviceVo>();
                         for (int rCnt = 0; rCnt < regDeviceVoList.size(); rCnt++) {
                             RegDeviceVo regDeviceVo = regDeviceVoList.get(rCnt);
                             if (!regDeviceVo.isRegDevice()) {
                                 continue;
                             }
                             if (!regDeviceVo.getNetworkType().equalsIgnoreCase(SPConfig.PLUG_TYPE_BLUETOOTH)) {
-                                SPUtil.showToast(mContext, regDeviceVo.getPlugId() + " 플러그를 지울 수 없습니다. 블루투스 타입 외에는 수동으로 초기화 할 수 있습니다.");
+                                SPUtil.showToast(mContext, regDeviceVo.getPlugId() + " 플러그를 지울 수 없습니다. 블루투스 타입 외에는 원격으로 초기화 할 수 없습니다.");
+                                SPUtil.dismissDialog();
                                 return;
                             }
                             for( int pCnt=0; pCnt < plugVoList.size(); pCnt++) {
                                 PlugVo plugVo = plugVoList.get(pCnt);
                                 if( plugVo.getPlugId().equalsIgnoreCase(regDeviceVo.getPlugId())){
                                     SPUtil.showToast(mContext, regDeviceVo.getPlugId() + " 플러그를 지울 수 없습니다. 플러그 리스트에서 먼저 제거해주시기 바랍니다.");
+                                    SPUtil.dismissDialog();
                                     return;
                                 }
                             }
                             mService.deleteAssociatedDevice(regDeviceVo);
                             MainActivity.stBluetoothManager.removeDevice(regDeviceVo.getDeviceId());
-                            mRegAdapter.removeItem(regDeviceVo);
+                            removeList.add(regDeviceVo);
+
                             SPUtil.sleep(500);
+                        }
+                        for(int rCnt=0; rCnt<removeList.size(); rCnt++){
+                            RegDeviceVo regDeviceVo = removeList.get(rCnt);
+                            if (regDeviceVo.isRegDevice()) {
+                                mRegAdapter.removeItem(regDeviceVo);
+                            }
                         }
                         SPUtil.showToast(mContext, "선택한 플러그를 삭제하였습니다.");
                         SPUtil.dismissDialog();

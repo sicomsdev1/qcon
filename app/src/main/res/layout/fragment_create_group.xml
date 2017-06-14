@@ -9,19 +9,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14"/>
+        android:layout_weight="@integer/actionbar_height_weight"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="86"
+        android:layout_weight="88"
         android:orientation="vertical"
         android:gravity="center_vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="30"
-            android:background="#80000000">
+            android:background="#30000000">
             <com.sicoms.smartplug.util.profile.CircleImageView
                 android:id="@+id/iv_group_icon"
                 android:layout_width="114dp"
@@ -69,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="15"
-            android:background="#80000000">
+            android:background="#30000000">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -132,7 +137,7 @@
             android:layout_height="0dp"
             android:layout_weight="15"
             android:orientation="horizontal"
-            android:background="#80000000">
+            android:background="#30000000">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

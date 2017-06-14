@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<android.support.v4.view.ViewPager android:id="@+id/pager"
+		 android:layout_width="match_parent"
+		 android:layout_height="match_parent"
+		 android:orientation="vertical"/>
+	<LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:layout_marginBottom="8dp"
+       android:layout_alignParentBottom="true"
+       android:gravity="center"
+       android:orientation="horizontal">
+       <LinearLayout android:id="@+id/mark1"
+           android:layout_width="15dp"
+           android:layout_height="12dp"
+           android:orientation="vertical"/>
+        <LinearLayout android:id="@+id/mark2"
+            android:layout_width="15dp"
+            android:layout_height="12dp"
+            android:orientation="vertical"/>
+        <LinearLayout android:id="@+id/mark3"
+            android:layout_width="15dp"
+            android:layout_height="12dp"
+            android:orientation="vertical"/>
+   </LinearLayout>
+</RelativeLayout>
+<!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/layout_view_pager.xml -->

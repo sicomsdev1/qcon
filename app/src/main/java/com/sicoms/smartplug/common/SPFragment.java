@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
+import com.sicoms.smartplug.common.interfaces.ConfirmCallbacks;
 import com.sicoms.smartplug.common.interfaces.OutCallbacks;
 import com.sicoms.smartplug.common.interfaces.PictureMenuCallbacks;
+import com.sicoms.smartplug.common.popup.ConfirmDialogFragment;
 import com.sicoms.smartplug.common.popup.OutDialogFragment;
 import com.sicoms.smartplug.common.popup.PictureMenuDialogFragment;
 import com.sicoms.smartplug.domain.CutoffVo;
@@ -287,6 +289,16 @@ public class SPFragment extends Fragment {
     public static void intentOutFragmentDialog(Activity activity, OutCallbacks callbacks){
         FragmentManager fm = ((ActionBarActivity) activity).getSupportFragmentManager();
         OutDialogFragment dialog = OutDialogFragment.newInstance(callbacks);
+        dialog.show(fm, null);
+    }
+    public static void intentOutFragmentDialog(Activity activity, OutCallbacks callbacks, String topicName, String btnName){
+        FragmentManager fm = ((ActionBarActivity) activity).getSupportFragmentManager();
+        OutDialogFragment dialog = OutDialogFragment.newInstance(callbacks, topicName, btnName);
+        dialog.show(fm, null);
+    }
+    public static void intentConfirmFragmentDialog(Activity activity, RegDeviceVo regDeviceVo, ConfirmCallbacks callbacks){
+        FragmentManager fm = ((ActionBarActivity) activity).getSupportFragmentManager();
+        ConfirmDialogFragment dialog = ConfirmDialogFragment.newInstance(callbacks, regDeviceVo);
         dialog.show(fm, null);
     }
 }

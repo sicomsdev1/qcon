@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_place"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#60000000">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+            <ImageView android:id="@+id/iv_is_place"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/selector_is_place_btn"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:id="@+id/rl_place_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:gravity="center">
+            <TextView android:id="@+id/tv_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="24sp"
+                android:textColor="@color/color01"
+                android:maxLines="1"/>
+            <TextView android:id="@+id/tv_place_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_below="@id/tv_place_name"
+                android:text="경기도 광명시 하안로 60, SK 테크노파크 B동 308호"
+                android:textColor="@color/color01"
+                android:textSize="15sp"
+                android:maxLines="2"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_place_address"
+                android:layout_centerVertical="true">
+                <ImageView android:id="@+id/plug_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/icon_place_plug"/>
+                <TextView android:id="@+id/tv_plug_count"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/plug_icon"
+                    android:textSize="15sp"
+                    android:textColor="@color/color04"/>
+                <ImageView android:id="@+id/member_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_plug_count"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/icon_place_member"/>
+                <TextView android:id="@+id/tv_member_count"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/member_icon"
+                    android:textSize="15sp"
+                    android:textColor="@color/color04"/>
+                <TextView android:id="@+id/tv_auth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_member_count"
+                    android:textSize="15sp"
+                    android:textColor="@color/color07"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:id="@+id/rl_mod_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_list_arrow_b"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/adapter_place.xml -->

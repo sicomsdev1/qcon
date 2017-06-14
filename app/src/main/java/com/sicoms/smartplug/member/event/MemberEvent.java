@@ -13,6 +13,7 @@ import com.sicoms.smartplug.domain.UserVo;
 import com.sicoms.smartplug.member.adapter.MemberAdapter;
 import com.sicoms.smartplug.member.service.MemberService;
 import com.sicoms.smartplug.network.http.HttpResponseCallbacks;
+import com.sicoms.smartplug.util.SPUtil;
 
 import antistatic.spinnerwheel.AbstractWheel;
 
@@ -69,6 +70,7 @@ public class MemberEvent implements View.OnClickListener, MemberAdapter.OnItemCl
 
             // Edit Member
             case R.id.iv_finish_btn :
+                SPUtil.showDialog(mContext);
                 int auth = mWvAuth.getCurrentItem();
                 mUserVo.setAuth(auth);
                 mService.requestUpdateMember(mUserVo);

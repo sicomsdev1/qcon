@@ -58,7 +58,7 @@ import java.util.List;
 /**
  * Created by gudnam on 2015. 5. 19..
  */
-public class MypageFragment extends Fragment implements PictureMenuCallbacks, EditNameFinishCallbacks, HttpResponseCallbacks, HttpBitmapResponseCallbacks, View.OnKeyListener {
+public class MypageFragment extends Fragment implements PictureMenuCallbacks, EditNameFinishCallbacks, HttpResponseCallbacks, HttpBitmapResponseCallbacks {
 
     private static final String TAG = MypageFragment.class.getSimpleName();
 
@@ -66,11 +66,9 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
     private final int MENU_ALBUM = 6;
 
     private Context mContext;
-    private View mView;
 
     private MypageEvent mEvent;
     private MypageService mService;
-    private SPEvent mSPEvent;
     private UserVo mUserVo;
 
     private CircleImageView mIvProfile;
@@ -86,7 +84,6 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
     private ImageView mIvFinishBtn;
 
     private int mMenuStatus = 0;
-    private boolean isChanged;
 
     public static MypageFragment newInstance() {
         MypageFragment fragment = new MypageFragment();
@@ -101,19 +98,14 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
         setHasOptionsMenu(true);
 
         View view = inflater.inflate(R.layout.fragment_mypage_list, container, false);
-        mView = view;
-        mView.setFocusableInTouchMode(true);
-        mView.requestFocus();
-        mView.setOnKeyListener(this);
 
-        isChanged = false;
         mContext = getActivity();
         mUserVo = LoginService.loadLastLoginUser(mContext);
         mEvent = new MypageEvent(mContext, mUserVo);
         mEvent.setPictureMenuCallbacks(this);
         mEvent.setEditNameFinishCallbacks(this);
         mService = new MypageService(mContext);
-        mSPEvent = new SPEvent((Activity) mContext);
+        mService.setOnHttpResponseCallbacks(this);
 
         mIvProfile = (CircleImageView) view.findViewById(R.id.iv_profile);
         mIvMemberRank = (ImageView) view.findViewById(R.id.iv_member_rank);
@@ -150,20 +142,6 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
         }
 
         setProfile();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if( isChanged) {
-                    SPActivity.intentMainActivity((Activity) mContext);
-                } else {
-                    ((Activity) mContext).finish();
-                }
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void setProfile(){
@@ -256,7 +234,6 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
         mUserVo.setUserName(name);
         mTvNickname.setText(name);
         LoginService.saveLastLoginUser(mContext, mUserVo);
-        isChanged = true;
     }
 
     @Override
@@ -286,7 +263,7 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
                     if (resultNum != HttpConfig.HTTP_SUCCESS) {
                         SPUtil.showToast(mContext, "프로필 이미지를 수정하지 못했습니다.");
                     }
-                    isChanged = true;
+                    SPUtil.showToast(mContext, "프로필 이미지를 수정하였습니다.");
                 } else if (CloudManager.CLOUD_REQUEST_NUM == ContextPathStore.REQUEST_UPLOAD_COMMON_IMAGE) {
                     if (resultNum == HttpConfig.HTTP_SUCCESS) {
                         LoginService.saveLastLoginUser(mContext, mUserVo);
@@ -310,22 +287,6 @@ public class MypageFragment extends Fragment implements PictureMenuCallbacks, Ed
         if (result == HttpConfig.HTTP_SUCCESS) {
             SPUtil.saveBitmapImage(fileName, bitmap);
             setProfile();
-        }
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if( keyCode == KeyEvent.KEYCODE_BACK){
-            if( mSPEvent.isBack()) {
-                if (isChanged) {
-                    SPActivity.intentMainActivity((Activity) mContext);
-                } else {
-                    ((Activity) mContext).finish();
-                }
-            }
-            return true;
-        } else {
-            return false;
         }
     }
 }

@@ -2,12 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dpbg_01">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/trans01">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,7 +27,8 @@
                 android:layout_height="30dp"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/gradation_bg_black"/>
+                android:background="@drawable/gradation_bg_black"
+                android:visibility="invisible"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -48,14 +51,14 @@
             android:id="@+id/sliding_drawer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="33"
+            android:layout_weight="@integer/sliding_drawer_height_weight"
             android:layout_alignParentBottom="true"
             app:content="@+id/drawer_top"
             app:handle="@+id/drawer_handle">
             <RelativeLayout android:id="@+id/drawer_handle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#80000000">
+                android:background="@drawable/gradation_bg_black" >
                 <ImageView android:id="@+id/iv_drawer_handle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,7 +85,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:background="#20000000">
+                        android:background="@color/trans01">
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -94,7 +97,8 @@
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
                             android:text="Place Member"
-                            android:textColor="@color/color01"/>
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="1dp"
@@ -104,7 +108,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:background="#20000000">
+                        android:background="@color/trans01">
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -116,7 +120,8 @@
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
                             android:text="QCON Plug"
-                            android:textColor="@color/color01"/>
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="1dp"
@@ -126,7 +131,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:background="#20000000">
+                        android:background="@color/trans01">
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -138,7 +143,8 @@
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
                             android:text="QCON Socket"
-                            android:textColor="@color/color01"/>
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                 </LinearLayout>
                 <RelativeLayout
@@ -154,7 +160,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:background="#20000000">
+                        android:background="@color/trans01">
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -166,7 +172,8 @@
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
                             android:text="QCON Bulbs"
-                            android:textColor="@color/color01"/>
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="1dp"
@@ -176,7 +183,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:background="#20000000">
+                        android:background="@color/trans01">
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -188,7 +195,8 @@
                             android:layout_alignParentBottom="true"
                             android:gravity="center"
                             android:text="QCON Switch"
-                            android:textColor="@color/color01"/>
+                            android:textColor="@color/color01"
+                            android:textStyle="bold"/>
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="1dp"

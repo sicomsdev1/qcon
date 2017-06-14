@@ -129,7 +129,7 @@ public class PlaceMapFragment extends Fragment implements HttpResponseCallbacks,
         setHasOptionsMenu(true);
 
         mContext = getActivity();
-        mSPEvent = new SPEvent((Activity)mContext);
+        mSPEvent = new SPEvent();
         Bundle args = getArguments();
         if (args != null)
             mPlaceVo = new Gson().fromJson(getArguments().getString(TAG), PlaceVo.class);
@@ -575,7 +575,7 @@ public class PlaceMapFragment extends Fragment implements HttpResponseCallbacks,
     }
 
     @Override
-    public void outOutResult() {
+    public void onOutResult() {
         if (((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount() > 0) {
             ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
         } else {

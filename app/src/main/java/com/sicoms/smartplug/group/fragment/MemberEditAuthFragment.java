@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.group.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
     private static final String TAG = MemberEditAuthFragment.class.getSimpleName();
     private CharSequence mTitle;
 
-    private Activity mActivity;
+    private Context mContext;
     private View mView;
 
     private GroupMemberEvent mEvent;
@@ -75,7 +76,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
     }
 
     private void initialize(){
-        Bitmap bitmap = SPUtil.getBackgroundImage(mActivity);
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
         if( bitmap != null) {
             mView.setBackground(new BitmapDrawable(getResources(), bitmap));
         }
@@ -91,14 +92,14 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
             mUserVo = new Gson().fromJson(getArguments().getString(TAG), UserVo.class);
         if (savedInstanceState != null)
             mUserVo = new Gson().fromJson(savedInstanceState.getString(TAG), UserVo.class);
-        mActivity = getActivity();
+        mContext = getActivity();
         mTitle = mUserVo.getUserName();
-        ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
-        mSPEvent = new SPEvent(mActivity);
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
+        mSPEvent = new SPEvent();
 
-        mEvent = new GroupMemberEvent(mActivity, mUserVo);
+        mEvent = new GroupMemberEvent(mContext, mUserVo);
         mEvent.setOnHttpResponseCallbacks(this);
-        mService = new GroupService(mActivity);
+        mService = new GroupService(mContext);
     }
 
     @Override
@@ -127,7 +128,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
             mIvFinishBtn.setOnClickListener(mEvent);
         }
 
-        mAdapter = new AuthGroupAdapter(mActivity);
+        mAdapter = new AuthGroupAdapter(mContext);
         mWvAuth.setViewAdapter(mAdapter);
         mWvAuth.setCurrentItem(1);
 
@@ -152,7 +153,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home :
-                mActivity.finish();
+                ((Activity)mContext).finish();
                 break;
         }
 
@@ -171,9 +172,9 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
     }
 
     private boolean isMaster(){
-        GroupService service = new GroupService(mActivity);
+        GroupService service = new GroupService(mContext);
         GroupVo groupVo = service.loadLastGroup();
-        UserVo loginVo = LoginService.loadLastLoginUser(mActivity);
+        UserVo loginVo = LoginService.loadLastLoginUser(mContext);
         List<UserVo> userVoList = groupVo.getUserVoList();
         for(int cnt=0; cnt<userVoList.size(); cnt++){
             UserVo userVo = userVoList.get(cnt);
@@ -197,16 +198,16 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
                         GroupVo groupVo = new Gson().fromJson(responseVo.getJsonStr(), GroupVo.class);
                         if( groupVo == null){
                             SPUtil.dismissDialog();
-                            SPUtil.showToast(mActivity, "그룹 수정하지 못했습니다.");
+                            SPUtil.showToast(mContext, "그룹 수정하지 못했습니다.");
                             return;
                         }
                         if( mService.updateDbGroupUserMapping(null, groupVo, groupVo.getUserVoList())){
                             mService.saveLastGroupVo(groupVo);
-                            SPUtil.showToast(mActivity, "그룹을 수정하였습니다.");
-                            mActivity.finish();
+                            SPUtil.showToast(mContext, "그룹을 수정하였습니다.");
+                            ((Activity)mContext).finish();
                         }
                     } else {
-                        SPUtil.showToast(mActivity, "그룹을 수정하지 못했습니다.");
+                        SPUtil.showToast(mContext, "그룹을 수정하지 못했습니다.");
                     }
                 }
             } catch (JsonParseException jpe){
@@ -217,7 +218,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
                 e.printStackTrace();
             }
         } else {
-            Toast.makeText(mActivity, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
         SPUtil.dismissDialog();
     }
@@ -226,7 +227,7 @@ public class MemberEditAuthFragment extends Fragment implements HttpResponseCall
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if( keyCode == KeyEvent.KEYCODE_BACK){
             if( mSPEvent.isBack()) {
-                mActivity.finish();
+                ((Activity)mContext).finish();
             }
             return true;
         } else {

@@ -12,9 +12,12 @@ import android.widget.TextView;
 import com.sicoms.smartplug.R;
 import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.SPFragment;
+import com.sicoms.smartplug.dao.DbBluetoothVo;
+import com.sicoms.smartplug.domain.PlaceSettingVo;
 import com.sicoms.smartplug.domain.RegDeviceVo;
 import com.sicoms.smartplug.domain.WifiVo;
 import com.sicoms.smartplug.main.activity.MainActivity;
+import com.sicoms.smartplug.menu.service.PlaceSettingService;
 import com.sicoms.smartplug.network.bluetooth.BLConfig;
 import com.sicoms.smartplug.network.wifi.WifiConnectionManager;
 import com.sicoms.smartplug.plug.interfaces.DialogFinishCallbacks;
@@ -92,10 +95,11 @@ public class NonRegDeviceAdapter extends BaseAdapter {
                     if (regDeviceVo == null) {
                         return;
                     }
-                    SPUtil.showDialog(mContext);
                     String type = regDeviceVo.getNetworkType();
                     if (type.equalsIgnoreCase(SPConfig.PLUG_TYPE_BLUETOOTH)) {
-                        if( MainActivity.stBluetoothManager.getNetworkKeyPhrase().equalsIgnoreCase(BLConfig.BL_DEFAULT_SECURITY_PASSWORD)){
+                        PlaceSettingVo settingVo = new PlaceSettingService(mContext).selectDbBLPassword();
+                        String blNetworkKey = settingVo.getSetVal();
+                        if( blNetworkKey.equalsIgnoreCase(BLConfig.BL_DEFAULT_SECURITY_PASSWORD)){
                             SPFragment.intentBLSecurityFragmentDialog((Activity)mContext, regDeviceVo, mDialogCallbacks);
                         } else {
                             int hash = regDeviceVo.getUuidHash();

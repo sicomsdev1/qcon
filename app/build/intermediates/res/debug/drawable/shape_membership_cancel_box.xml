@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <corners android:radius="20dp" />
+
+    <gradient
+        android:startColor="@color/color09"
+        android:endColor="#d3d3d3"
+        android:angle="90"
+        />
+
+</shape><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/drawable/shape_membership_cancel_box.xml -->

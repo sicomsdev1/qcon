@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="bar_stroke_width">20</integer>
-
+    <integer name="actionbar_height_weight">14</integer>
+    <integer name="sliding_drawer_height_weight">31</integer>
 </resources>

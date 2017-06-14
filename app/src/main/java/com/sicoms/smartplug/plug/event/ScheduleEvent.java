@@ -54,10 +54,8 @@ public class ScheduleEvent implements View.OnClickListener {
                 iv_start_switch.setSelected(isStartSelect);
                 if(isStartSelect){
                     rl_start_bg.setVisibility(View.INVISIBLE);
-                    ll_start_wv.setVisibility(View.VISIBLE);
                 } else {
                     rl_start_bg.setVisibility(View.VISIBLE);
-                    ll_start_wv.setVisibility(View.INVISIBLE);
                 }
                 v.setSelected(isStartSelect);
                 break;
@@ -70,10 +68,8 @@ public class ScheduleEvent implements View.OnClickListener {
                 iv_end_switch.setSelected(isEndSelect);
                 if(isEndSelect){
                     rl_end_bg.setVisibility(View.INVISIBLE);
-                    ll_end_wv.setVisibility(View.VISIBLE);
                 } else {
                     rl_end_bg.setVisibility(View.VISIBLE);
-                    ll_end_wv.setVisibility(View.INVISIBLE);
                 }
                 v.setSelected(isEndSelect);
                 break;
@@ -81,24 +77,18 @@ public class ScheduleEvent implements View.OnClickListener {
             // Add Schedule
             case R.id.rl_start :
                 LinearLayout ll_start_edit = (LinearLayout)root.findViewById(R.id.ll_start_edit);
-                ImageView iv_start_arrow_btn = (ImageView) root.findViewById(R.id.iv_start_arrow_btn);
                 if( ll_start_edit.getVisibility() == View.VISIBLE) {
                     ll_start_edit.setVisibility(View.INVISIBLE);
-                    iv_start_arrow_btn.setSelected(false);
                 } else {
                     ll_start_edit.setVisibility(View.VISIBLE);
-                    iv_start_arrow_btn.setSelected(true);
                 }
                 break;
             case R.id.rl_end :
                 LinearLayout ll_end_edit = (LinearLayout)root.findViewById(R.id.ll_end_edit);
-                ImageView iv_end_arrow_btn = (ImageView) root.findViewById(R.id.iv_end_arrow_btn);
                 if( ll_end_edit.getVisibility() == View.VISIBLE) {
                     ll_end_edit.setVisibility(View.INVISIBLE);
-                    iv_end_arrow_btn.setSelected(false);
                 } else {
                     ll_end_edit.setVisibility(View.VISIBLE);
-                    iv_end_arrow_btn.setSelected(true);
                 }
                 break;
         }

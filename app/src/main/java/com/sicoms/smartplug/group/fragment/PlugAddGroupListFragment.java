@@ -1,6 +1,9 @@
 package com.sicoms.smartplug.group.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -45,9 +48,11 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
 
     private static String TAG = PlugAddGroupListFragment.class.getSimpleName();
 
-    private CharSequence mTitle = "All Plug";
+    private CharSequence mTitle = "플러그 추가";
 
-    private Activity mActivity;
+    private Context mContext;
+    private View mView;
+
     private static CreateGroupResultCallbacks mCallbacks;
     private GroupVo mGroupVo;
     private PlugAllService mService;
@@ -69,16 +74,10 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
         return fragment;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        MenuItem item = menu.findItem(R.id.action_complete);
-        if( item != null) {
-            item.setVisible(false);
-        }
-        MenuItem item2 = menu.findItem(R.id.action_group_menu);
-        if( item2 != null){
-            item2.setVisible(false);
+    private void initialize(){
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
+        if( bitmap != null) {
+            mView.setBackground(new BitmapDrawable(getResources(), bitmap));
         }
     }
 
@@ -96,27 +95,30 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
         }
 
         View view = inflater.inflate(R.layout.fragment_plug_add_group_list, container, false);
+        mView = view;
 
-        mActivity = getActivity();
-        ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mTitle);
-        mService = new PlugAllService(mActivity);
+        mContext = getActivity();
+        ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
+        initialize();
+
+        mService = new PlugAllService(mContext);
         mService.setOnHttpResponseCallbacks(this);
 
-        SPUtil.hideKeyboard(mActivity, view);
+        SPUtil.hideKeyboard(mContext, view);
 
         mSelectedPlugVoList = new ArrayList<>();
         mTvPlugCount = (TextView) view.findViewById(R.id.tv_plug_count);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_plug);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mActivity, 3));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.HORIZONTAL_LIST));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
         mRecyclerView.getItemAnimator().setAddDuration(1000);
         mRecyclerView.getItemAnimator().setChangeDuration(1000);
         mRecyclerView.getItemAnimator().setMoveDuration(1000);
         mRecyclerView.getItemAnimator().setRemoveDuration(1000);
 
-        mAdapter = new PlugAddGroupAdapter(mActivity, this);
+        mAdapter = new PlugAddGroupAdapter(mContext, this);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -126,12 +128,25 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item = menu.findItem(R.id.action_complete);
+        if( item != null) {
+            item.setVisible(false);
+        }
+        MenuItem item2 = menu.findItem(R.id.action_group_menu);
+        if( item2 != null){
+            item2.setVisible(false);
+        }
+    }
+
     private void fillAdapterData(){
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
-                List<PlugVo> plugVoList = new PlugAllService(mActivity).selectDbPlugList();
+                List<PlugVo> plugVoList = new PlugAllService(mContext).selectDbPlugList();
                 if (plugVoList == null) {
                     return;
                 }
@@ -168,10 +183,10 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case android.R.id.home :
-                if( ((ActionBarActivity) mActivity).getSupportFragmentManager().getBackStackEntryCount()>0) {
-                    ((ActionBarActivity) mActivity).getSupportFragmentManager().popBackStack();
+                if( ((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount()>0) {
+                    ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
                 } else {
-                    mActivity.finish();
+                    ((Activity)mContext).finish();
                 }
                 break;
         }
@@ -208,7 +223,7 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
                         }
                         if (plugVoList.size() > 0) {
                             if (!mService.insertDbPlugList(plugVoList)) {
-                                SPUtil.showToast(mActivity, "플러그 리스트를 저장하지 못했습니다.");
+                                SPUtil.showToast(mContext, "플러그 리스트를 저장하지 못했습니다.");
                                 return;
                             }
                             fillAdapterData();
@@ -216,7 +231,7 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
 
                     }
                 } else {
-                    SPUtil.showToast(mActivity, "플러그 리스트를 저장하지 못했습니다.");
+                    SPUtil.showToast(mContext, "플러그 리스트를 저장하지 못했습니다.");
                 }
             } catch (JsonParseException jpe){
                 jpe.printStackTrace();
@@ -224,7 +239,7 @@ public class PlugAddGroupListFragment extends Fragment implements PlugCheckResul
                 nfe.printStackTrace();
             }
         } else {
-            SPUtil.showToast(mActivity, "서버 연결에 실패하였습니다.");
+            SPUtil.showToast(mContext, "서버 연결에 실패하였습니다.");
         }
     }
 }

@@ -20,8 +20,6 @@ public class RegDeviceActivity extends ActionBarActivity {
 
     private CharSequence mTitle = "새로운 장치 추가";
 
-    private Menu mMenu;
-
     private void initialize(){
         PlaceVo placeVo = PlaceService.loadLastPlace(this);
         SPUtil.setBackgroundForLinear(this, placeVo.getPlaceImg());

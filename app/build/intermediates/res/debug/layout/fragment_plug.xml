@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color01">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="@integer/actionbar_height_weight"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="32">
+
+        <RelativeLayout android:id="@+id/line_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="#b7b7b7"/>
+        <TextView android:id="@+id/tv_plug_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/line_bottom"
+            android:layout_marginBottom="10dp"
+            android:text="Gudnam 노트북"
+            android:textSize="20sp"
+            android:textColor="@color/color02"
+            android:maxLength="15"
+            android:maxLines="1"/>
+        <ImageView android:id="@+id/iv_plug_name_edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_plug_name"
+            android:layout_above="@id/line_bottom"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/icon_pen_g"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_plug_name"
+            android:layout_marginBottom="10dp">
+            <com.sicoms.smartplug.util.profile.CircleImageView
+                android:id="@+id/iv_plug_icon"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                app:border_width="3dp"
+                app:border_color="#10000000"
+                app:border_overlay="true"/>
+            <ImageView android:id="@+id/iv_set_led_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="31dp"
+                android:layout_toLeftOf="@id/iv_plug_icon"
+                android:src="@drawable/icon_mood_on"/>
+            <ImageView android:id="@+id/iv_set_camera_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="31dp"
+                android:layout_toRightOf="@id/iv_plug_icon"
+                android:src="@drawable/icon_camera_g"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="39"
+        android:orientation="horizontal"
+        android:background="@drawable/plugbg_c01">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="47"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="59"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="140"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="110">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="실시간 전력량"
+                    android:textColor="@color/color02"
+                    android:textSize="14sp"/>
+                <TextView android:id="@+id/watt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="Wh"
+                    android:textSize="20sp"
+                    android:textColor="@color/color06"
+                    android:textStyle="bold"/>
+                <TextView android:id="@+id/tv_realtime_power"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/watt1"
+                    android:layout_toLeftOf="@id/watt1"
+                    android:layout_marginRight="3dp"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textColor="@color/color06"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="실시간 요금"
+                    android:textColor="@color/color02"
+                    android:textSize="14sp"/>
+                <TextView android:id="@+id/won1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="원"
+                    android:textSize="18sp"
+                    android:textColor="@color/color02"
+                    android:textStyle="bold"/>
+                <TextView android:id="@+id/tv_realtime_won"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/won1"
+                    android:layout_toLeftOf="@id/won1"
+                    android:layout_marginRight="2dp"
+                    android:text="0"
+                    android:textColor="@color/color02"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="한달 예상 전력량"
+                    android:textColor="@color/color02"
+                    android:textSize="14sp"/>
+                <TextView android:id="@+id/watt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="Wh"
+                    android:textSize="18sp"
+                    android:textColor="@color/color02"
+                    android:textStyle="bold"/>
+                <TextView android:id="@+id/tv_forecast_power"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/watt2"
+                    android:layout_toLeftOf="@id/watt2"
+                    android:layout_marginRight="2dp"
+                    android:text="0"
+                    android:textColor="@color/color02"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="한달 예상 요금"
+                    android:textColor="@color/color02"
+                    android:textSize="14sp"/>
+                <TextView android:id="@+id/won2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="원"
+                    android:textSize="18sp"
+                    android:textColor="@color/color02"
+                    android:textStyle="bold"/>
+                <TextView android:id="@+id/tv_forecast_won"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/won2"
+                    android:layout_toLeftOf="@id/won2"
+                    android:layout_marginRight="2dp"
+                    android:text="0"
+                    android:textColor="@color/color02"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="138"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#b7b7b7"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:orientation="horizontal">
+        <RelativeLayout android:id="@+id/rl_set_schedule_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/color05">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView android:id="@+id/iv_set_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/btn_icon_plug_schedule"/>
+                <TextView android:id="@+id/tv_set_schedule_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="스케쥴 설정"
+                    android:textSize="17sp"
+                    android:textColor="@color/color02"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#b7b7b7"/>
+        <RelativeLayout android:id="@+id/rl_set_cutoff_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/color05">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView android:id="@+id/iv_set_cutoff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/btn_icon_plug_cutoff"/>
+                <TextView android:id="@+id/iv_set_cutoff_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="전원 차단 설정"
+                    android:textSize="17sp"
+                    android:textColor="@color/color02"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout><!-- From: file:/Users/gudnam/Develop/git/qcon/app/src/main/res/layout/fragment_plug.xml -->

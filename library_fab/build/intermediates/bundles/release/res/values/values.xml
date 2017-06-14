@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_fab/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/gudnam/Develop/git/qcon/library_fab/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="fab_material_amber_500">#ffc107</color>
     <color name="fab_material_amber_900">#ff6f00</color>
@@ -43,7 +43,7 @@
     <color name="fab_material_yellow_500">#ffeb3b</color>
     <color name="fab_material_yellow_900">#f57f17</color>
     <declare-styleable name="ActionButton"><attr format="enum" name="type"><enum name="DEFAULT" value="0"/><enum name="MINI" value="1"/><enum name="BIG" value="2"/><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="dimension" name="size"/><attr format="color" name="button_color"/><attr format="color" name="button_colorPressed"/><attr format="boolean" name="rippleEffect_enabled"/><attr format="color" name="button_colorRipple"/><attr format="dimension" name="shadow_radius"/><attr format="dimension" name="shadow_xOffset"/><attr format="dimension" name="shadow_yOffset"/><attr format="color" name="shadow_color"/><attr format="boolean" name="shadowResponsiveEffect_enabled"/><attr format="dimension" name="stroke_width"/><attr format="color" name="stroke_color"/><attr format="reference" name="show_animation"/><attr format="reference" name="hide_animation"/><attr format="reference" name="image"/><attr format="dimension" name="image_size"/><attr format="reference" name="animation_onShow"/><attr format="reference" name="animation_onHide"/></declare-styleable>
-    <!-- From: file:/Users/gudnam/Develop/AndroidStudioProjects/SmartPlug_dashboard4/library_fab/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/gudnam/Develop/git/qcon/library_fab/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="fab_margin">16dp</dimen>
 </resources>

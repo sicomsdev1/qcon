@@ -77,14 +77,13 @@ public class BLSecurityDialogFragment extends DialogFragment implements HttpResp
         ImageView okBtn = (ImageView) view.findViewById(R.id.network_assocoiation_ok);
         final EditText passPhraseView = (EditText) view.findViewById(R.id.et_password);
         if (phrase != null) {
-            passPhraseView.setText(phrase);
+            passPhraseView.setText(SPConfig.CURRENT_PLACE_BL_PASSWORD);
         }
         okBtn.setClickable(true);
 
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SPUtil.showDialog(mContext);
                 String password = passPhraseView.getText().toString();
                 if (password.trim().length() < 4) {
                     SPUtil.showToast(mContext, mContext.getString(R.string.password_more_than_four));
@@ -92,6 +91,7 @@ public class BLSecurityDialogFragment extends DialogFragment implements HttpResp
                 } else if(password.equalsIgnoreCase(BLConfig.BL_DEFAULT_SECURITY_PASSWORD)){
                     SPUtil.showToast(mContext, mContext.getString(R.string.password_not_default));
                 }
+                SPUtil.showDialog(mContext);
                 // Hide soft keyboard.
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(passPhraseView.getWindowToken(), 0);
@@ -125,6 +125,7 @@ public class BLSecurityDialogFragment extends DialogFragment implements HttpResp
                         PlaceSettingService service = new PlaceSettingService(mContext);
                         service.updateDbBLPassword(settingVo);
                         MainActivity.stBluetoothManager.setSecurity(settingVo.getSetVal(), false);
+                        SPConfig.CURRENT_PLACE_BL_PASSWORD = settingVo.getSetVal();
                         mListener.onDialogFinishCallbacks(TAG, mRegDeviceVo);
                         getDialog().dismiss();
 

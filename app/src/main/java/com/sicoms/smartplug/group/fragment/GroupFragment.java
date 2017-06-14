@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.group.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,10 +25,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
-import com.hollowsoft.library.slidingdrawer.SlidingDrawer;
 import com.sicoms.smartplug.R;
 import com.sicoms.smartplug.common.SPConfig;
-import com.sicoms.smartplug.common.SPPagerAdapter;
 import com.sicoms.smartplug.dao.DbGroupUserMappingVo;
 import com.sicoms.smartplug.dao.DbLastDataVo;
 import com.sicoms.smartplug.domain.GroupVo;
@@ -41,14 +39,12 @@ import com.sicoms.smartplug.group.interfaces.EditGroupResultCallbacks;
 import com.sicoms.smartplug.group.service.GroupAllService;
 
 import com.sicoms.smartplug.group.service.GroupService;
-import com.sicoms.smartplug.main.activity.MainActivity;
 import com.sicoms.smartplug.network.http.CloudManager;
 import com.sicoms.smartplug.network.http.ContextPathStore;
 import com.sicoms.smartplug.network.http.HttpConfig;
 import com.sicoms.smartplug.network.http.HttpResponseCallbacks;
 import com.sicoms.smartplug.plug.adapter.PlugAdapter;
 import com.sicoms.smartplug.plug.event.PlugAllEvent;
-import com.sicoms.smartplug.plug.fragment.DashboardPageFragment;
 import com.sicoms.smartplug.plug.interfaces.ControlResultCallbacks;
 import com.sicoms.smartplug.plug.service.PlugAllService;
 import com.sicoms.smartplug.util.DividerItemDecoration;
@@ -65,7 +61,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
 
     private static String TAG = GroupFragment.class.getSimpleName();
 
-    private Activity mActivity;
+    private Context mContext;
     private ActionMode mActionMode;
     private View mView;
 
@@ -92,7 +88,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
     }
 
     private void initialize(){
-        Bitmap bitmap = SPUtil.getBackgroundImage(mActivity);
+        Bitmap bitmap = SPUtil.getBackgroundImage(mContext);
         if( bitmap != null) {
             mView.setBackground(new BitmapDrawable(getResources(), bitmap));
         }
@@ -109,18 +105,18 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
         if (savedInstanceState != null)
             mGroupVo = new Gson().fromJson(savedInstanceState.getString(TAG), GroupVo.class);
 
-        mActivity = getActivity();
+        mContext = getActivity();
 
-        mGroupEvent = new GroupEvent(mActivity, mGroupVo);
+        mGroupEvent = new GroupEvent(mContext, mGroupVo);
         mGroupEvent.setOnEditGroupResultCallbacks(this);
         mGroupEvent.setOnControlResultCallbacks(this);
-        mPluMainEvent = new PlugAllEvent(mActivity);
+        mPluMainEvent = new PlugAllEvent(mContext);
         mPluMainEvent.setOnControlResultCallbacks(this);
-        mService = new GroupService(mActivity);
+        mService = new GroupService(mContext);
         mService.setOnHttpResponseCallbacks(this);
         mService.setOnGroupResultCallbacks(this);
         mService.saveLastGroupVo(mGroupVo);
-        mAllService = new GroupAllService(mActivity);
+        mAllService = new GroupAllService(mContext);
     }
 
     @Override
@@ -139,9 +135,9 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
 
         mRlAllPowerBtn.setOnClickListener(mGroupEvent);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mActivity, 3));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.HORIZONTAL_LIST));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
         mRecyclerView.getItemAnimator().setAddDuration(1000);
         mRecyclerView.getItemAnimator().setChangeDuration(1000);
         mRecyclerView.getItemAnimator().setMoveDuration(1000);
@@ -149,7 +145,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
 
         mFabAddDeviceBtn = (ActionButton) view.findViewById(R.id.fab_add_device_btn);
 
-        mAdapter = new PlugAdapter(mActivity);
+        mAdapter = new PlugAdapter(mContext);
         mAdapter.SetOnItemClickListener(mPluMainEvent);
         DbGroupUserMappingVo vo = mService.selectDbGroupUserMapping(mGroupVo);
         if( vo == null){
@@ -192,7 +188,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
             public void run() {
                 try {
                     mGroupVo = mAllService.selectDbGroup(Long.parseLong(mGroupVo.getGroupId()));
-                    ((ActionBarActivity) mActivity).getSupportActionBar().setTitle(mGroupVo.getGroupName());
+                    ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mGroupVo.getGroupName());
                 } catch (NumberFormatException nfe) {
                     nfe.printStackTrace();
                     return;
@@ -232,10 +228,10 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case android.R.id.home :
-                if( ((ActionBarActivity) mActivity).getSupportFragmentManager().getBackStackEntryCount()>0) {
-                    ((ActionBarActivity) mActivity).getSupportFragmentManager().popBackStack();
+                if( ((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount()>0) {
+                    ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
                 } else {
-                    mActivity.finish();
+                    ((Activity)mContext).finish();
                 }
                 break;
         }
@@ -255,7 +251,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
 
     @Override
     public void onControlOnOffResult(PlugVo plugVo, boolean isOn) {
-        PlugAllService service = new PlugAllService(mActivity);
+        PlugAllService service = new PlugAllService(mContext);
         DbLastDataVo dbLastDataVo = service.selectDbLastData(plugVo);
         dbLastDataVo.setOnOff(isOn ? SPConfig.STATUS_ON : SPConfig.STATUS_OFF);
         service.updateDbLastData(dbLastDataVo);
@@ -265,7 +261,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
 
     @Override
     public void onGroupControlOnOffResult(List<PlugVo> plugVoList, boolean isOn) {
-        PlugAllService service = new PlugAllService(mActivity);
+        PlugAllService service = new PlugAllService(mContext);
         for(int cnt=0; cnt<plugVoList.size(); cnt++){
             PlugVo plugVo = plugVoList.get(cnt);
             DbLastDataVo dbLastDataVo = service.selectDbLastData(plugVo);
@@ -314,7 +310,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
                                 mService.requestDeleteGroupPlugList(mGroupVo, checkedVoList);
                             }
                             if (apPlugVoList.size() > 0) {
-                                SPUtil.showToast(mActivity, "AP 플러그를 삭제하지 못했습니다.");
+                                SPUtil.showToast(mContext, "AP 플러그를 삭제하지 못했습니다.");
                             }
                         }
                     });
@@ -348,7 +344,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
                             return;
                         }
                         if (!mService.updateDbGroup(groupVo)) {
-                            Toast.makeText(mActivity, "그룹정보를 변경하지 못했습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "그룹정보를 변경하지 못했습니다", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         fillAdapterData();
@@ -358,7 +354,7 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
                         nfe.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(mActivity, "그룹정보를 변경하지 못했습니다", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "그룹정보를 변경하지 못했습니다", Toast.LENGTH_SHORT).show();
                 }
             } else if (CloudManager.CLOUD_REQUEST_NUM == ContextPathStore.REQUEST_DELETE_GROUP_PLUG) {
                 if( resultNum == HttpConfig.HTTP_SUCCESS) {
@@ -370,9 +366,9 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
                         mGroupVo = groupVo;
                         if (mService.deleteDbGroupPlugList(mGroupVo, mAdapter.getCheckedItem())) {
                             mAdapter.removeCheckedItem();
-                            SPUtil.showToast(mActivity, "플러그를 삭제하였습니다.");
+                            SPUtil.showToast(mContext, "플러그를 삭제하였습니다.");
                         } else {
-                            SPUtil.showToast(mActivity, "플러그를 삭제하지 못했습니다.");
+                            SPUtil.showToast(mContext, "플러그를 삭제하지 못했습니다.");
                         }
                         fillAdapterData();
                     } catch (JsonParseException jpe) {
@@ -381,11 +377,11 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
                         nfe.printStackTrace();
                     }
                 } else if( resultNum == -1){
-                    SPUtil.showToast(mActivity, "플러그 삭제 요청에 실패하였습니다.");
+                    SPUtil.showToast(mContext, "플러그 삭제 요청에 실패하였습니다.");
                 }
             }
         } else {
-            Toast.makeText(mActivity, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "서버 연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -407,9 +403,9 @@ public class GroupFragment extends Fragment implements HttpResponseCallbacks, Ed
     @Override
     public void onCompleteCreateBLGroup(int groupId, boolean isCreate) {
         if( !isCreate){
-            ((ActionBarActivity) mActivity).getSupportFragmentManager().popBackStack();
+            ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
         } else {
-            Toast.makeText(mActivity, "Bluetooth 그룹 편집 실패", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Bluetooth 그룹 편집 실패", Toast.LENGTH_SHORT).show();
         }
         SPUtil.dismissDialog();
         fillAdapterData();

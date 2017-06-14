@@ -6,24 +6,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14">
+        android:layout_weight="@integer/actionbar_height_weight">
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color07"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="86"
-        android:orientation="vertical"
-        android:background="@color/color04">
+        android:layout_weight="88"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_alignParentTop="true"
-                android:background="#b7b7b7"/>
+            android:layout_weight="8"
+            android:background="@color/color09">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,8 +83,9 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_member"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:choiceMode= "multipleChoice" />
+                android:layout_height="wrap_content"
+                android:choiceMode= "multipleChoice"
+                android:background="@color/trans01"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

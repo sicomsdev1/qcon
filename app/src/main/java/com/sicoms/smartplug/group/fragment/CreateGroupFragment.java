@@ -101,7 +101,7 @@ public class CreateGroupFragment extends Fragment implements CreateGroupResultCa
 
         mContext = getActivity();
         ((ActionBarActivity) mContext).getSupportActionBar().setTitle(mTitle);
-        mSPEvent = new SPEvent((Activity)mContext);
+        mSPEvent = new SPEvent();
 
         mService = new CreateGroupService(mContext);
         mService.setOnHttpResponseCallbacks(this);
@@ -418,7 +418,7 @@ public class CreateGroupFragment extends Fragment implements CreateGroupResultCa
     }
 
     @Override
-    public void outOutResult() {
+    public void onOutResult() {
         if( ((ActionBarActivity) mContext).getSupportFragmentManager().getBackStackEntryCount()>0) {
             ((ActionBarActivity) mContext).getSupportFragmentManager().popBackStack();
         } else {

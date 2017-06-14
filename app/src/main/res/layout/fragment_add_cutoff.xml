@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
-                <antistatic.spinnerwheel.WheelVerticalView android:id="@+id/wv_min"
+                <antistatic.spinnerwheel.WheelVerticalView android:id="@+id/wv_time"
                     app:visibleItems="5"
                     app:isCyclic="true"
                     android:layout_width="30dp"

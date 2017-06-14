@@ -5,13 +5,13 @@ package com.sicoms.smartplug.domain;
  */
 public class CutoffVo {
     private String power;
-    private String min;
+    private String time;
     private boolean isOn;
 
     public CutoffVo(){}
-    public CutoffVo(String power, String min, boolean isOn){
+    public CutoffVo(String power, String time, boolean isOn){
         this.power = power;
-        this.min = min;
+        this.time = time;
         this.isOn = isOn;
     }
 
@@ -23,12 +23,12 @@ public class CutoffVo {
         this.power = power;
     }
 
-    public String getMin() {
-        return min;
+    public String getTime() {
+        return time;
     }
 
-    public void setMin(String min) {
-        this.min = min;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public boolean isOn() {

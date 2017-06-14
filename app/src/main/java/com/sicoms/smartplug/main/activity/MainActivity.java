@@ -1,7 +1,7 @@
 package com.sicoms.smartplug.main.activity;
 
-import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -24,7 +24,6 @@ import com.sicoms.smartplug.domain.ImgFileVo;
 import com.sicoms.smartplug.domain.UserVo;
 import com.sicoms.smartplug.login.service.LoginService;
 import com.sicoms.smartplug.main.fragment.HomeFragment;
-import com.sicoms.smartplug.main.service.MainService;
 import com.sicoms.smartplug.main.service.RealtimeService;
 import com.sicoms.smartplug.menu.activity.MypageActivity;
 import com.sicoms.smartplug.menu.activity.PlaceActivity;
@@ -48,9 +47,8 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
 
     //private GroupNavigationDrawerFragment mNavigationDrawerFragment;
 
-    private Activity mActivity;
+    private Context mContext;
     private SPEvent mSPEvent;
-    private MainService mService;
     private Thread mRealTimeThread;
     private UserVo mUserVo;
     private boolean isInit = false;
@@ -61,38 +59,30 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
     public void init(Bundle savedInstanceState) {
         // set header data
         SPActivity.actList.add(this);
-        mActivity = this;
-        mSPEvent = new SPEvent();
-        mService = new MainService();
+        mContext = this;
 
-        stBluetoothManager = new BluetoothManager(mActivity);
+        mSPEvent = new SPEvent();
+        stBluetoothManager = new BluetoothManager(mContext);
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), 0x80000000);
         setDrawerBackgroundBitmap(bitmap);
-
-        mUserVo = LoginService.loadLastLoginUser(this);
-        setProfileImage();
-        setUsername(mUserVo.getUserName());
-        setUserEmail(mUserVo.getUserId());
-        String userImagePath = SPConfig.FILE_PATH + "_" + mUserVo.getUserId() + "_" + SPConfig.USER_IMAGE_NAME;
-        Bitmap userBitmap = BitmapFactory.decodeFile(userImagePath);
         //setFirstAccountPhoto(new BitmapDrawable(getResources(), userBitmap));
 
         getSupportActionBar().setIcon(R.drawable.logo_sicoms_s);
         // create sections
-        this.addSection(newSection("Home", R.drawable.icon_menu_home, HomeFragment.newInstance()));
-        this.addSection(newSection("Shop", R.drawable.icon_menu_shop, intentShopBrowser()));
-        this.addSection(newSection("My Page", R.drawable.icon_menu_mypage, new Intent(this, MypageActivity.class)));
-        this.addSection(newSection("Place", R.drawable.icon_menu_location, new Intent(this, PlaceActivity.class)));
+        addSection(newSection("Home", R.drawable.icon_menu_home, HomeFragment.newInstance()));
+        addSection(newSection("Shop", R.drawable.icon_menu_shop, intentShopBrowser()));
+        addSection(newSection("My Page", R.drawable.icon_menu_mypage, new Intent(this, MypageActivity.class)));
+        addSection(newSection("Place", R.drawable.icon_menu_location, new Intent(this, PlaceActivity.class)));
         // create bottom section
-        this.addBottomSection(newSection("Place Setting", R.drawable.ic_settings_black_24dp, new Intent(this, PlaceSettingActivity.class)));
+        addBottomSection(newSection("Place Setting", R.drawable.ic_settings_black_24dp, new Intent(this, PlaceSettingActivity.class)));
 
-        mRealtimeService = new RealtimeService(mActivity);
+        mRealtimeService = new RealtimeService(mContext);
         mRealTimeThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
-                    Log.d(TAG, "Schedule Realtime Service Run");
+                    Log.d(TAG, "Realtime Service Run");
                     mRealtimeService.runService();
                     SPUtil.sleep(5 * 1000);
                 }
@@ -158,6 +148,11 @@ public class MainActivity extends MaterialNavigationDrawer implements HttpBitmap
     @Override
     protected void onResume() {
         super.onResume();
+
+        mUserVo = LoginService.loadLastLoginUser(this);
+        setProfileImage();
+        setUserEmail(mUserVo.getUserId());
+        setUsername(mUserVo.getUserName());
 
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);

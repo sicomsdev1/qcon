@@ -1,6 +1,7 @@
 package com.sicoms.smartplug.menu.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,6 @@ import com.sicoms.smartplug.common.SPConfig;
 import com.sicoms.smartplug.common.SPFragment;
 import com.sicoms.smartplug.domain.PlaceVo;
 import com.sicoms.smartplug.menu.interfaces.PlaceResultCallbacks;
-import com.sicoms.smartplug.util.SPUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +24,14 @@ import java.util.List;
  */
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
 
-    private Activity mActivity;
+    private Context mContext;
     private ArrayList<PlaceVo> mVoList;
     private OnItemClickListener mItemClickListener;
     private PlaceResultCallbacks mCallbacks;
     private int mLastPosition = 0;
 
-    public PlaceAdapter(Activity activity) {
-        mActivity = activity;
+    public PlaceAdapter(Context context) {
+        mContext = context;
         mVoList = new ArrayList<>();
     }
     public void setPlaceResultCallbacks(PlaceResultCallbacks callbacks){
@@ -79,7 +79,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
             public void onClick(View v) {
                 if( mCallbacks != null) {
                     PlaceVo placeVo = mVoList.get(position);
-                    SPFragment.intentAddPlaceFragment(mActivity, placeVo, mCallbacks);
+                    SPFragment.intentAddPlaceFragment((Activity) mContext, placeVo, mCallbacks);
                     mLastPosition = position;
                 }
             }
